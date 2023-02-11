@@ -11,10 +11,12 @@
 |
 */
 
+// Route::get('/', function () {
+//     return view('home.index');
+// });
 Route::get('/', function () {
-    return view('home.index');
+    return view('home.index2');
 });
-
 
 Auth::routes();
 Route::get('activate', 'AuthController@verifyAccount');
