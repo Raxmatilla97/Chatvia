@@ -1,8 +1,8 @@
-# Laravel Chat Library
-#### Steps for installation :
-    1. Create .env into projets root.  
-    2. Setup database information and APP_URL to .env
-    3. Run `npm install`
-    4. Run `php artisan key:genrate`
-    5. Run `php artisan migrate`
-    6. Run `npm run dev`
+# Laravel proyektim
+#### o'rnatish uchun quydagilarni bajarasiz :
+    1. .env fayilini yaratib olasiz.  
+    2. .env fayili ichidagi APP_URL va baza danix ma'lumotlarini kiritiasiz
+    3. Ishga tushuramiz `npm install`
+    4. Ishga tushuramiz `php artisan key:genrate`
+    5. Ishga tushuramiz `php artisan migrate`
+    6. Ishga tushuramiz `npm run dev`
