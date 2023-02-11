@@ -1,4 +1,7 @@
+/node_modules
 /public/hot
+/public/assets
+/public/fonts
 /public/storage
 /storage/*.key
 /vendor
@@ -7,3 +10,8 @@
 .phpunit.result.cache
 Homestead.json
 Homestead.yaml
+npm-debug.log
+yarn-error.log
+/.idea
+/_ide_helper.php
+public/mix-manifest.json

@@ -1,9 +1,5 @@
 <?php
 
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
-
-
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,58 +11,104 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', function () {
+    return view('home.index');
+});
+
+
 Auth::routes();
+Route::get('activate', 'AuthController@verifyAccount');
 
-Route::get('/', 'HomeController@index');
+Route::get('/home', 'HomeController@index');
+Route::group(['middleware' => ['user.activated', 'auth']], function () {
+    //view routes
+    Route::get('/conversations', 'ChatController@index')->name('conversations');
+    Route::get('profile', 'UserController@getProfile');
+    Route::group(['namespace' => 'API'], function () {
+        Route::get('logout', 'Auth\LoginController@logout');
 
-Route::get('/chat', 'HomeController@chat');
+        //get all user list for chat
+        Route::get('users-list', 'UserAPIController@getUsersList');
+        Route::get('get-users', 'UserAPIController@getUsers');
+        Route::delete('remove-profile-image', 'UserAPIController@removeProfileImage');
+        /** Change password */
+        Route::post('change-password', 'UserAPIController@changePassword');
+        Route::get('conversations/{ownerId}/archive-chat', 'UserAPIController@archiveChat');
 
-//Massage
-Route::get('/message/{id}', 'HomeController@getMessage')->name('message');
-Route::post('message', 'HomeController@sendMessage');
-Route::post('typing', 'HomeController@sendTyping');
-Route::get('/lastmessage/{id}', 'HomeController@getLastMessage');
+        Route::get('get-profile', 'UserAPIController@getProfile');
+        Route::post('profile', 'UserAPIController@updateProfile')->name('update.profile');
+        Route::post('update-last-seen', 'UserAPIController@updateLastSeen');
 
-//Update avatar
-Route::post('/updateavatar', 'UserController@update')->name('updateavatar');
+        Route::post('send-message',
+            'ChatAPIController@sendMessage')->name('conversations.store')->middleware('sendMessage');
+        Route::get('users/{id}/conversation', 'UserAPIController@getConversation');
+        Route::get('conversations-list', 'ChatAPIController@getLatestConversations');
+        Route::get('archive-conversations', 'ChatAPIController@getArchiveConversations');
+        Route::post('read-message', 'ChatAPIController@updateConversationStatus');
+        Route::post('file-upload', 'ChatAPIController@addAttachment')->name('file-upload');
+        Route::post('image-upload', 'ChatAPIController@imageUpload')->name('image-upload');
+        Route::get('conversations/{userId}/delete', 'ChatAPIController@deleteConversation');
+        Route::post('conversations/message/{conversation}/delete', 'ChatAPIController@deleteMessage');
+        Route::post('conversations/{conversation}/delete', 'ChatAPIController@deleteMessageForEveryone');
+        Route::get('/conversations/{conversation}', 'ChatAPIController@show');
+        Route::post('send-chat-request', 'ChatAPIController@sendChatRequest')->name('send-chat-request');
+        Route::post('accept-chat-request', 'ChatAPIController@acceptChatRequest')->name('accept-chat-request');
+        Route::post('decline-chat-request', 'ChatAPIController@declineChatRequest')->name('decline-chat-request');
 
-//Update Name
-Route::post('/nameupdate', 'UserController@nameupdate')->name('nameupdate');
+        /** Web Notifications */
+        Route::put('update-web-notifications', 'UserAPIController@updateNotification');
 
-//Delete Contact
-Route::delete('/delete/{id}', 'UserController@destroy')->name('contact.destroy');
+        /** BLock-Unblock User */
+        Route::put('users/{user}/block-unblock', 'BlockUserAPIController@blockUnblockUser');
+        Route::get('blocked-users', 'BlockUserAPIController@blockedUsers');
 
-//Search Contact
-Route::get('/search','UserController@search');
+        /** My Contacts */
+        Route::get('my-contacts', 'UserAPIController@myContacts')->name('my-contacts');
 
-//Search Recent Contact
-Route::get('/recentsearch','UserController@recentsearch');
+        /** Groups API */
+        Route::post('groups', 'GroupAPIController@create');
+        Route::post('groups/{group}', 'GroupAPIController@update');
+        Route::get('groups', 'GroupAPIController@index');
+        Route::get('groups/{group}', 'GroupAPIController@show');
+        Route::put('groups/{group}/add-members', 'GroupAPIController@addMembers');
+        Route::delete('groups/{group}/members/{user}', 'GroupAPIController@removeMemberFromGroup');
+        Route::delete('groups/{group}/leave', 'GroupAPIController@leaveGroup');
+        Route::delete('groups/{group}/remove', 'GroupAPIController@removeGroup');
+        Route::put('groups/{group}/members/{user}/make-admin', 'GroupAPIController@makeAdmin');
+        Route::put('groups/{group}/members/{user}/dismiss-as-admin', 'GroupAPIController@dismissAsAdmin');
+        Route::get('users-blocked-by-me', 'BlockUserAPIController@blockUsersByMe');
 
-//chat Message Search
-Route::get('/messagesearch','UserController@messagesearch');
+        Route::get('notification/{notification}/read', 'NotificationController@readNotification');
+        Route::get('notification/read-all', 'NotificationController@readAllNotification');
 
-//Delete Message
-Route::get('/deleteMessage/{id}','HomeController@deleteMessage');
+        //set user custom status route
+        Route::post('set-user-status', 'UserAPIController@setUserCustomStatus')->name('set-user-status');
+        Route::get('clear-user-status', 'UserAPIController@clearUserCustomStatus')->name('clear-user-status');
+        
+        //report user
+        Route::post('report-user', 'ReportUserController@store')->name('report-user.store');
+    });
+});
 
-// Delete Conversation
-Route::get('/deleteConversation/{id}', 'HomeController@deleteConversation')->name('conversation.delete');
+Route::group(['middleware' => ['role:Admin', 'auth', 'user.activated']], function () {
+    Route::resource('users', 'UserController');
+    Route::post('users/{user}/active-de-active', 'UserController@activeDeActiveUser')
+        ->name('active-de-active-user');
+    Route::post('users/{user}/update', 'UserController@update');
+    Route::delete('users/{user}/archive', 'UserController@archiveUser');
+    Route::post('users/restore', 'UserController@restoreUser');
 
-//Group Create
-Route::post('/groups', 'GroupController@store')->name('groups');
+    Route::resource('roles', 'RoleController');
+    Route::post('roles/{role}/update', 'RoleController@update');
+    
+    Route::get('settings', 'SettingsController@index')->name('settings.index');
+    Route::post('settings', 'SettingsController@update')->name('settings.update');
 
-//Group Search
-Route::get('/groupsearch','GroupController@groupsearch');
+    Route::resource('reported-users', 'ReportUserController');
+});
 
-//Group Massage
-Route::get('/groupmessage/{id}', 'GroupController@getGroupMessage')->name('groupmessage');
-Route::post('groupmessage', 'GroupController@sendGroupMessage');
-Route::get('/grouplastmessage/{id}', 'GroupController@getGroupLastMessage');
+Route::group(['middleware' => ['web']], function () {
 
-// Delete Group Message
-Route::get('/deletegroupmessage/{id}','GroupController@deletegroupmessage');
-
-// Delete Group Conversation
-Route::get('/deleteGroupConversation/{id}', 'GroupController@deleteGroupConversation')->name('groupconversation.delete');
-
-//Group Message Search
-Route::get('/groupmessagesearch','GroupController@groupmessagesearch');
+    Route::get('login/{provider}', 'Auth\SocialAuthController@redirect');
+    Route::get('login/{provider}/callback', 'Auth\SocialAuthController@callback');
+});

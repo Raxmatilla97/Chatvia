@@ -2,147 +2,211 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller;
+use App\Http\Requests\CreateUserRequest;
+use App\Http\Requests\UpdateUserRequest;
+use App\Models\Role;
+use App\Models\User;
+use App\Queries\UserDataTable;
+use App\Repositories\UserRepository;
+use DataTables;
+use Exception;
+use Hash;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
+use Illuminate\View\View;
+use Response;
 
-use App\User;
-use App\Message;
-
-class UserController extends Controller
+class UserController extends AppBaseController
 {
-    // Update user Avatar
-    public function update(Request $request)
+    /** @var  UserRepository */
+    private $userRepository;
+
+    public function __construct(UserRepository $userRepo)
     {
-        $validation = Validator::make($request->all(), [
-            'file' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048'
-        ]);
-        if ($validation->passes()) {
-            $avataruloaded = $request->file('file');
-            $avatarname = time() . '.' . $avataruloaded->getClientOriginalExtension();
-            $avatarpath = public_path('/images/');
-            $avataruloaded->move($avatarpath, $avatarname);
-
-            $my_id = Auth::id();
-            $user = User::find($my_id);
-            if (file_exists(public_path($user->avatar))) {
-                unlink(public_path($user->avatar));
-            }
-            $user->avatar = '/images/' . $avatarname;
-            $user->update();
-
-            $response = [
-                "success" => 1,
-                "data" => 'images/' . $avatarname
-            ];
-        } else {
-            $response = [
-                "success" => 0,
-                "data" => 'Not Uploaded'
-            ];
-        }
-        return json_encode($response);
+        $this->userRepository = $userRepo;
     }
 
-    // Update user Name
-    public function nameupdate(Request $request)
+    /**
+     * @return Factory|View
+     */
+    public function getProfile()
     {
-        $validation = Validator::make($request->all(), [
-            'name' => ['required', 'string', 'max:255']
-        ]);
-        if ($validation->passes()) {
-            $my_id = Auth::id();
-            $user = User::find($my_id);
-            $user->name = $request->name;
-            $user->save();
-            $response = [
-                "success" => 1,
-                "data" => $user->name
-            ];
-        } else {
-            $response = [
-                "success" => 0,
-                "data" => 'Not Valid name'
-            ];
-        }
-        return json_encode($response);
+        return view('profile');
     }
 
-    // Delete Selected Contact 
+    /**
+     * Display a listing of the User.
+     *
+     * @param  Request  $request
+     * @throws Exception
+     * @return Response
+     */
+    public function index(Request $request)
+    {
+        if ($request->ajax()) {
+            return Datatables::of((new UserDataTable())->get($request->only(['filter_user'])))->make(true);
+        }
+        $roles = Role::all()->pluck('name', 'id')->toArray();
+
+        return view('users.index')->with([
+            'roles' => $roles,
+        ]);
+    }
+
+    /**
+     * Show the form for creating a new User.
+     *
+     * @return Response
+     */
+    public function create()
+    {
+        $roles = Role::all()->pluck('name', 'id')->toArray();
+
+        return view('users.create')->with(['roles' => $roles]);
+    }
+
+    /**
+     * Store a newly created User in storage.
+     *
+     * @param  CreateUserRequest  $request
+     *
+     * @return Response
+     */
+    public function store(CreateUserRequest $request)
+    {
+        $input = $this->validateInput($request->all());
+
+        $this->userRepository->store($input);
+
+        return $this->sendSuccess('User saved successfully.');
+    }
+
+    /**
+     * Display the specified User.
+     * @param  User  $user
+     *
+     * @return Response
+     */
+    public function show(User $user)
+    {
+        $user->roles;
+        $user = $user->apiObj();
+
+        return view('users.show')->with('user', $user);
+    }
+
+    /**
+     * Show the form for editing the specified User.
+     *
+     * @param  User  $user
+     * @return Response
+     */
+    public function edit(User $user)
+    {
+        $user->roles;
+        $user = $user->apiObj();
+
+        return $this->sendResponse(['user' => $user], 'User retrieved successfully.');
+    }
+
+    /**
+     * Update the specified User in storage.
+     *
+     * @param  User  $user
+     * @param  UpdateUserRequest  $request
+     *
+     * @return Response
+     */
+    public function update(User $user, UpdateUserRequest $request)
+    {
+        if ($user->is_system) {
+            return $this->sendError('You can not update system generated user.');
+        }
+
+        $input = $this->validateInput($request->all());
+        $this->userRepository->update($input, $user->id);
+
+        return $this->sendSuccess('User updated successfully.');
+    }
+
+    /**
+     * Remove the specified User from storage.
+     *
+     * @param User $user
+     * 
+     * @throws Exception
+     *
+     * @return JsonResponse
+     */
+    public function archiveUser(User $user)
+    {
+        if ($user->is_system) {
+            return $this->sendError('You can not archive system generated user.');
+        }
+        $this->userRepository->delete($user->id);
+
+        return $this->sendSuccess('User archived successfully.');
+    }
+
+    /**
+     * Remove the specified User from storage.
+     *
+     * @param Request $request
+     * 
+     * @return JsonResponse
+     */
+    public function restoreUser(Request $request)
+    {
+        $id = $request->get('id');
+        $this->userRepository->restore($id);
+
+        return $this->sendSuccess('User restored successfully.');
+    }
+
+    /**
+     * Remove the specified User from storage.
+     *
+     * @param integer $id
+     * 
+     * @throws Exception
+     * 
+     * @return JsonResponse
+     */
     public function destroy($id)
     {
-        $users = User::findOrFail($id);
-        $users->delete();
+        $user = User::withTrashed()->whereId($id)->first();
+        if ($user->is_system) {
+            return $this->sendError('You can not delete system generated user.');
+        }
+        $this->userRepository->deleteUser($user->id);
 
-        $collection = User::orderBy('name')->get();
-        $contacts = $collection->groupBy(function ($item, $key) {
-            return substr($item->name, 0, 1);
-        });
-        $htmldata = view('layouts.tabpane-contact-list')->with('contacts', $contacts)->render();
-        return Response($htmldata);
+        return $this->sendSuccess('User deleted successfully.');
     }
 
-    // Search Contact
-    public function search(Request $request)
+    /**
+     * @param  User  $user
+     *
+     * @return JsonResponse
+     */
+    public function activeDeActiveUser(User $user)
     {
-        if ($request->ajax()) {
-            $datas = User::where('name', 'LIKE', '%' . $request->search . "%")->orderBy('name')->get();
-            $contacts = $datas->groupBy(function ($item, $key) {
-                return substr($item->name, 0, 1);
-            });
-            $htmldata = view('layouts.tabpane-contact-list')->with('contacts', $contacts)->render();
-            return Response($htmldata);
-        }
+        $this->userRepository->checkUserItSelf($user->id);
+        $this->userRepository->activeDeActiveUser($user->id);
+
+        return $this->sendSuccess('User updated successfully.');
     }
 
-    // Search Recent chat Userlist
-    public function recentsearch(Request $request)
+    public function validateInput($input)
     {
-        if ($request->ajax()) {
-
-            $users = DB::select("SELECT chatdata.*,users.id,users.name,users.avatar from (SELECT t1.*, CASE WHEN t1.from_user != " . Auth::id() . " THEN t1.from_user ELSE t1.to_user END AS userid , (SELECT SUM(is_read=0) as unread FROM `messages` WHERE messages.to_user=" . Auth::id() . " AND messages.from_user=userid GROUP BY messages.from_user) as unread
-                FROM messages AS t1
-                INNER JOIN
-                (
-                    SELECT
-                        LEAST(`from_user`, `to_user`) AS sender_id,
-                        GREATEST(`from_user`, `to_user`) AS receiver_id,
-                        MAX(id) AS max_id
-                    FROM messages
-                    GROUP BY
-                        LEAST(sender_id, receiver_id),
-                        GREATEST(sender_id, receiver_id)
-                ) AS t2
-                    ON LEAST(t1.`from_user`, t1.`to_user`) = t2.sender_id AND
-                    GREATEST(t1.`from_user`, t1.`to_user`) = t2.receiver_id AND
-                    t1.id = t2.max_id
-                    WHERE t1.`from_user` = " . Auth::id() . " OR t1.`to_user` =" . Auth::id() . ") chatdata JOIN users On users.id=userid  and users.name LIKE '%" . $request->search . "%' ORDER BY chatdata.id DESC");
-
-            $htmldata = view('layouts.tabpane-recent-contact-list')->with('users', $users)->render();
-            return Response($htmldata);
+        if (isset($input['password']) && ! empty($input['password'])) {
+            $input['password'] = Hash::make($input['password']);
+        } else {
+            unset($input['password']);
         }
-    }
 
-    // Search Selected user chat messages
-    public function messagesearch(Request $request)
-    {
-        if ($request->ajax()) {
-            $my_id = Auth::id();
-            $user_id = $request->userid;
-            $serachquery = $request->search;
+        $input['is_active'] = (! empty($input['is_active'])) ? 1 : 0;
 
-            $messages = Message::where(function ($query) use ($user_id, $my_id, $serachquery) {
-                $query->where('from_user', $user_id)->where('to_user', $my_id)->where('message', 'LIKE', '%' . $serachquery . "%");
-            })->oRwhere(function ($query) use ($user_id, $my_id, $serachquery) {
-                $query->where('from_user', $my_id)->where('to_user', $user_id)->where('message', 'LIKE', '%' . $serachquery . "%");
-            })->get();
-
-            $chatUser = User::find($user_id);
-
-            $htmldata = view('layouts.message-conversation')->with(['messages' => $messages])->with(['chatUser' => $chatUser])->render();
-            return Response($htmldata);
-        }
+        return $input;
     }
 }

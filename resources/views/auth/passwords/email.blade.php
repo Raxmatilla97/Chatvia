@@ -1,80 +1,46 @@
-@extends('layouts.master-without-nav')
-
-@section('title'){{ __('Reset Password') }} @endsection
-
-@section('body') 
-<body> 
+@extends('layouts.auth_layout')
+@section('title')
+    {{ __('messages.forget_password') }}
 @endsection
-
+@section('meta_content')
+- {{ __('messages.request_for_password_reset_link') }}
+@endsection
+@section('page_css')
+    <link rel="stylesheet" href="{{ mix('assets/css/simple-line-icons.css')}}">
+@endsection
 @section('content')
-    <div class="account-pages my-5 pt-sm-5">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-8 col-lg-6 col-xl-5">
-                    <div class="text-center mb-4">
-                        <a href="{{ url('/') }}" class="auth-logo mb-5 d-block">
-                            <img src="{{ URL::asset('assets/images/logo-dark.png') }}" alt="" height="30"
-                                class="logo logo-dark">
-                            <img src="{{ URL::asset('assets/images/logo-light.png') }}" alt="" height="30"
-                                class="logo logo-light">
-                        </a>
-
-                        <h4>{{ __('Reset Password') }}</h4>
-                        <p class="text-muted mb-4">{{ __('Reset Password With Chatvia.') }}</p>
-
-                    </div>
-                    <div class="card">
-
-                        <div class="card-body p-4">
-                            <div class="p-3">
-                                @if (session('status'))
-                                    <div class="alert alert-success" role="alert">
-                                        {{ session('status') }}
-                                    </div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card mx-4">
+                    <div class="card-body p-4">
+                        @include('flash::message')
+                        <form method="post" action="{{ url('/password/email') }}" id="forgetPasswordForm">
+                            {{ csrf_field() }}
+                            <h1>{{ __('messages.forgot_your_password') }}</h1>
+                            <p class="text-muted">{{ __('messages.enter_email_to_reset_password') }}</p>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">
+                                      <i class="fa fa-btn fa-envelope"></i>
+                                    </span>
+                                </div>
+                                <input type="email" class="form-control {{ $errors->has('email')?'is-invalid':'' }}"
+                                       name="email" value="{{ old('email') }}" id="email"
+                                       placeholder="{{ __('messages.email') }}" required>
+                                @if ($errors->has('email'))
+                                    <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('email') }}</strong>
+                                </span>
                                 @endif
-
-                                <form method="POST" action="{{ route('password.email') }}">
-                                    @csrf
-
-                                    <div class="form-group mb-4">
-                                        <label for="email">{{ __('E-Mail Address') }}</label>
-                                        <div class="input-group mb-3 bg-soft-light input-group-lg rounded-lg">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text border-light text-muted">
-                                                    <i class="ri-mail-line"></i>
-                                                </span>
-                                            </div>
-                                            <input id="email" type="email"
-                                                class="form-control bg-soft-light border-light @error('email') is-invalid @enderror"
-                                                placeholder="{{ __('Enter Email') }}" name="email"
-                                                value="{{ old('email') }}" required autocomplete="email" autofocus>
-                                            @error('email')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <button type="submit"
-                                            class="btn btn-primary btn-block waves-effect waves-light">
-                                            {{ __('Send Password Reset Link') }}
-                                        </button>
-                                    </div>
-                                </form>
                             </div>
-                        </div>
-                    </div>
-                    <div class="mt-5 text-center">
-                        <p>{{ __('Remember It ?') }} <a href="{{ url('auth-login') }}"
-                                class="font-weight-medium text-primary">{{ __('Signin') }} </a> </p>
-                        <p>{{ __('© 2020 Chatvia. Crafted with') }} <i class="mdi mdi-heart text-danger"></i>
-                            {{ __('by Themesbrand') }}</p>
+                            <button type="button" id="forgetPasswordBtn" class="btn btn-primary float-right">
+                                <i class="fa fa-btn fa-envelope mr-2"></i> {{ __('messages.reset_password') }}
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 @endsection

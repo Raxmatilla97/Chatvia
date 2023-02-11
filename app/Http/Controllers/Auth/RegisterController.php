@@ -2,12 +2,16 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\Role;
+use App\Models\User;
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
-use App\User;
+use App\Repositories\AccountRepository;
+use App\Repositories\UserRepository;
+use App\Rules\NoSpaceContaine;
+use Exception;
+use Hash;
+use Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
@@ -24,20 +28,28 @@ class RegisterController extends Controller
 
     use RegistersUsers;
 
+    /** @var AccountRepository */
+    public $accountRepo;
+    /** @var  UserRepository */
+    private $userRepository;
+
     /**
      * Where to redirect users after registration.
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/conversations';
 
     /**
      * Create a new controller instance.
      *
-     * @return void
+     * @param  AccountRepository  $accountRepository
+     * @param  UserRepository  $userRepo
      */
-    public function __construct()
+    public function __construct(AccountRepository $accountRepository, UserRepository $userRepo)
     {
+        $this->accountRepo = $accountRepository;
+        $this->userRepository = $userRepo;
         $this->middleware('guest');
     }
 
@@ -49,13 +61,11 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
+        $data['name'] = htmlspecialchars($data['name']);
         return Validator::make($data, [
-            'phone' => ['required', 'numeric'],
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'avatar' => ['sometimes', 'image', 'mimes:jpg,jpeg,png,jpg,gif,svg', 'max:5000'],
-            'location' => ['required', 'string', 'max:500'],
+            'name' => ['required', 'string', 'max:100'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users', 'regex:/^[\w\-\.\+]+\@[a-zA-Z0-9\.\-]+\.[a-zA-z0-9]{2,4}$/'],
+            'password' => ['required', 'string', 'min:8', 'max:30', 'confirmed', new NoSpaceContaine()],
         ]);
     }
 
@@ -63,31 +73,21 @@ class RegisterController extends Controller
      * Create a new user instance after a valid registration.
      *
      * @param  array  $data
-     * @return \App\User
+     * @throws Exception
+     * @return User
      */
     protected function create(array $data)
     {
-        if (request()->has('avatar')) {
-            $avataruloaded = request()->file('avatar');
-            $avatarname = time() . '.' . $avataruloaded->getClientOriginalExtension();
-            $avatarpath = public_path('/images/');
-            $avataruloaded->move($avatarpath, $avatarname);
-            return User::create([
-                'phone' => $data['phone'],
-                'name' => $data['name'],
-                'email' => $data['email'],
-                'password' => Hash::make($data['password']),
-                'avatar' => '/images/' . $avatarname,
-                'location' => $data['location'],
-            ]);
-        }
-        return User::create([
-            'phone' => $data['phone'],
-            'name' => $data['name'],
+        $user = User::create([
+            'name' => htmlspecialchars($data['name']),
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'avatar' => $data['avatar'],
-            'location' => $data['location'],
         ]);
+
+        $this->userRepository->assignRoles($user, ['role_id' => Role::MEMBER_ROLE]);
+        $activateCode = $this->accountRepo->generateUserActivationToken($user->id);
+        $this->accountRepo->sendConfirmEmail($user->name, $user->email, $activateCode);
+
+        return $user;
     }
 }

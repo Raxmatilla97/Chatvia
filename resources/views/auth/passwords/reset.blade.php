@@ -1,111 +1,79 @@
-@extends('layouts.master-without-nav')
-
-@section('title'){{ __("Reset Password") }} @endsection
-
-@section('body')
-<body>
+@extends('layouts.auth_layout')
+@section('title')
+    {{ __('messages.reset_password') }}
 @endsection
-
+@section('meta_content')
+    - {{ __('messages.reset_password') }}
+@endsection
+@section('page_css')
+    <link rel="stylesheet" href="{{ mix('assets/css/simple-line-icons.css')}}">
+@endsection
 @section('content')
-    <div class="account-pages my-5 pt-sm-5">
-        <div class="container">
-            <div class="row justify-content-center">
-                <div class="col-md-8 col-lg-6 col-xl-5">
-                    <div class="text-center mb-4">
-                        <a href="{{ url('/') }}" class="auth-logo mb-5 d-block">
-                            <img src="{{ URL::asset('assets/images/logo-dark.png') }}" alt="" height="30"
-                                class="logo logo-dark">
-                            <img src="{{ URL::asset('assets/images/logo-light.png') }}" alt="" height="30"
-                                class="logo logo-light">
-                        </a>
-
-                        <h4>{{ __("Reset Password") }}</h4>
-                        <p class="text-muted mb-4">{{ __("Reset Password With Chatvia.") }}</p>
-
-                    </div>
-                    <div class="card">
-
-                        <div class="card-body p-4">
-                            <div class="p-3">
-                                <form method="POST" action="{{ route('password.update') }}">
-                                    @csrf
-
-                                    <input type="hidden" name="token" value="{{ $token }}">
-
-                                    <div class="form-group mb-4">
-                                        <label for="email">{{ __('E-Mail Address') }}</label>
-                                        <div class="input-group mb-3 bg-soft-light input-group-lg rounded-lg">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text border-light text-muted">
-                                                    <i class="ri-mail-line"></i>
-                                                </span>
-                                            </div>
-                                            <input id="email" type="email"
-                                                class="form-control bg-soft-light border-light @error('email') is-invalid @enderror"
-                                                placeholder="{{ __("Enter Email") }}" name="email" value="{{ old('email') }}"
-                                                required autocomplete="email" autofocus>
-                                            @error('email')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group mb-4">
-                                        <label for="password">{{ __('Password') }}</label>
-                                        <div class="input-group mb-3 bg-soft-light input-group-lg rounded-lg">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text border-light text-muted">
-                                                    <i class="ri-lock-2-line"></i>
-                                                </span>
-                                            </div>
-                                            <input id="password" type="password"
-                                                class="form-control bg-soft-light border-light @error('password') is-invalid @enderror"
-                                                name="password" required autocomplete="new-password"
-                                                placeholder="{{ __("Enter Password") }}">
-                                            @error('password')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group mb-4">
-                                        <label for="password-confirm">{{ __('Confirm Password') }}</label>
-                                        <div class="input-group mb-3 bg-soft-light input-group-lg rounded-lg">
-                                            <div class="input-group-prepend">
-                                                <span class="input-group-text border-light text-muted">
-                                                    <i class="ri-lock-2-line"></i>
-                                                </span>
-                                            </div>
-                                            <input id="password-confirm" type="password"
-                                                class="form-control bg-soft-light border-light"
-                                                name="password_confirmation" required autocomplete="new-password"
-                                                placeholder="{{ __("Enter Password") }}">
-
-                                        </div>
-                                    </div>
-
-                                    <div>
-                                        <button type="submit"
-                                            class="btn btn-primary btn-block waves-effect waves-light">
-                                            {{ __('Reset Password') }}
-                                        </button>
-                                    </div>
-                                </form>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card mx-4">
+                <div class="card-body p-4">
+                    @if(Session::has('error'))
+                        <div class="alert alert-danger">{{Session::get('error')}}</div>
+                    @endif
+                    @if(Session::has('success'))
+                        <div class="alert alert-success">{{Session::get('success')}}</div>
+                    @endif
+                    <form method="post" action="{{ url('/password/reset') }}" id="resetPasswordForm">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="token" value="{{$token}}">
+                        <h1>{{ __('messages.reset_password') }}</h1>
+                        <p class="text-muted">{{ __('messages.enter_email_and_new_password') }}</p>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">@</span>
                             </div>
+                            <input type="email" class="form-control {{ $errors->has('email')?'is-invalid':'' }}"
+                                   name="email" value="{{ (old('email')) ? old('email') : $email }}" id="email"
+                                   placeholder="{{ __('messages.email') }}">
+                            @if ($errors->has('email'))
+                                <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('email') }}</strong>
+                                </span>
+                            @endif
                         </div>
-                    </div>
-                    <div class="mt-5 text-center">
-                        <p>{{ __("Remember It ?") }} <a href="{{ url('auth-login') }}" class="font-weight-medium text-primary">
-                            {{ __("Signin") }} </a> </p>
-                        <p>{{ __("© 2020 Chatvia. Crafted with") }} <i class="mdi mdi-heart text-danger"></i> {{ __("by Themesbrand") }}</p>
-                    </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text">
+                                <i class="icon-lock"></i>
+                              </span>
+                            </div>
+                            <input type="password" class="form-control {{ $errors->has('password')?'is-invalid':''}}"
+                                   name="password" id="password" placeholder="{{ __('messages.password') }}"
+                                   onkeypress="return avoidSpace(event)">
+                            @if ($errors->has('password'))
+                                <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('password') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                        <div class="input-group mb-4">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text">
+                                <i class="icon-lock"></i>
+                              </span>
+                            </div>
+                            <input type="password" name="password_confirmation" id="password_confirmation" class="form-control"
+                                   placeholder="{{ __('messages.confirm_password') }}" onkeypress="return avoidSpace(event)">
+                            @if ($errors->has('password_confirmation'))
+                                <span class="help-block">
+                                  <strong>{{ $errors->first('password_confirmation') }}</strong>
+                               </span>
+                            @endif
+                        </div>
+                        <button type="button" id="resetPasswordBtn" class="btn btn-block btn-primary btn-block btn-flat">
+                            <i class="fa fa-btn fa-refresh"></i> {{ __('messages.reset') }}
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
-
+</div>
 @endsection

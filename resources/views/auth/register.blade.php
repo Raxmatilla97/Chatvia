@@ -1,159 +1,87 @@
-@extends('layouts.master-without-nav')
-
-@section('title'){{ __("Register") }} @endsection
-
-@section('body')
-<body>
+@extends('layouts.auth_layout')
+@section('title')
+    {{ __('messages.register') }}
 @endsection
-
+@section('meta_content')
+    - {{ __('messages.register') }} {{ __('messages.to') }} {{getAppName()}}
+@endsection
+@section('page_css')
+    <link rel="stylesheet" href="{{ mix('assets/css/simple-line-icons.css')}}">
+@endsection
 @section('content')
-
-<div class="account-pages my-5 pt-sm-5">
-    <div class="container">
-        <div class="row justify-content-center">
-            <div class="col-md-8 col-lg-6 col-xl-5">
-                <div class="text-center mb-4">
-                    <a href="{{url('/')}}" class="auth-logo mb-5 d-block">
-                        <img src="{{ URL::asset('assets/images/logo-dark.png')}}" alt="" height="30" class="logo logo-dark">
-                        <img src="{{ URL::asset('/assets/images/logo-light.png')}}" alt="" height="30" class="logo logo-light">
-                    </a>
-                    <h4>{{ __("Sign up") }}</h4>
-                    <p class="text-muted mb-4">{{ __("Get your Chatvia account now.") }}</p>
-                    
-                </div>
-
-                <div class="card">
-                    <div class="card-body p-4">
-                        <div class="p-3">
-                            <form method="POST" action="{{ route('register') }}" enctype="multipart/form-data">
-                                @csrf
-
-                                <div class="form-group">
-                                    <label>{{ __("Email") }}</label>
-                                    <div class="input-group mb-3 bg-soft-light input-group-lg rounded-lg">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text border-light text-muted">
-                                                <i class="ri-mail-line"></i>
-                                            </span>
-                                        </div>
-                                        <input id="email" type="email" class="form-control bg-soft-light border-light @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="{{ __("Enter Email") }}">
-                                        @error('email')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>{{ __("Contact No.") }}</label>
-                                    <div class="input-group mb-3 bg-soft-light input-group-lg rounded-lg">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text border-light text-muted">
-                                                <i class="ri-user-2-line"></i>
-                                            </span>
-                                        </div>
-                                        <input id="phone" type="text" class="form-control bg-soft-light border-light @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="phone" autofocus placeholder="{{ __("Enter Contact No.") }}">
-                                        @error('phone')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror 
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label>{{ __("Username") }}</label>
-                                    <div class="input-group mb-3 bg-soft-light input-group-lg rounded-lg">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text border-light text-muted">
-                                                <i class="ri-user-2-line"></i>
-                                            </span>
-                                        </div>
-                                        <input id="name" type="text" class="form-control bg-soft-light border-light @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus placeholder="{{ __("Enter Username") }}">
-                                        @error('name')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror 
-                                    </div>
-                                </div>
-
-                                <div class="form-group mb-4">
-                                    <label>{{ __("Password") }}</label>
-                                    <div class="input-group mb-3 bg-soft-light input-group-lg rounded-lg">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text border-light text-muted">
-                                                <i class="ri-lock-2-line"></i>
-                                            </span>
-                                        </div>
-                                        <input id="password" type="password" class="form-control bg-soft-light border-light @error('password') is-invalid @enderror" name="password" required autocomplete="new-password" placeholder="{{ __("Enter Password") }}">
-                                        @error('password')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <div class="form-group mb-4">
-                                    <label>{{ __("Confirm Password") }}</label>
-                                    <div class="input-group mb-3 bg-soft-light input-group-lg rounded-lg">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text border-light text-muted">
-                                                <i class="ri-lock-2-line"></i>
-                                            </span>
-                                        </div>
-                                        <input id="password-confirm" type="password" class="form-control bg-soft-light border-light" name="password_confirmation" required autocomplete="new-password" placeholder="{{ __("Enter Confirm Password") }}">
-                                    </div>
-                                </div>
-
-                                <div class="form-group mb-4">
-                                    <label for="avatar">{{ __("Profile Picture") }}</label>
-                                    <input type="file" class="form-control bg-soft-light border-light @error('avatar') is-invalid @enderror" name="avatar" required id="avatar">
-                                    @error('avatar')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                    @enderror
-                                </div>
-                                
-                                <div class="form-group">
-                                    <label>{{ __("Location") }}</label>
-                                    <div class="input-group mb-3 bg-soft-light input-group-lg rounded-lg">
-                                        <div class="input-group-prepend">
-                                            <span class="input-group-text border-light text-muted">
-                                                <i class="ri-user-2-line"></i>
-                                            </span>
-                                        </div>
-                                        <textarea id="location" type="text" class="form-control bg-soft-light border-light @error('location') is-invalid @enderror" name="location" value="{{ old('location') }}" required autocomplete="location" autofocus></textarea>
-                                        @error('location')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
-                                </div>
-
-                                <div>
-                                    <button class="btn btn-primary btn-block waves-effect waves-light" type="submit">{{ __("Sign up") }}</button>
-                                </div>
-
-                                <div class="mt-4 text-center">
-                                    <p class="text-muted mb-0">{{ __("By registering you agree to the Chatvia") }} <a href="#" class="text-primary">{{ __("Terms of Use") }}</a></p>
-                                </div>
-                                
-                            </form>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card mx-4">
+                <div class="card-body p-4">
+                    <form method="post" action="{{ url('/register') }}" id="registerForm">
+                        {{ csrf_field() }}
+                        <h1>{{ __('messages.register') }}</h1>
+                        <p class="text-muted">{{ __('messages.create_your_account') }}</p>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text">
+                                <i class="icon-user"></i>
+                              </span>
+                            </div>
+                            <input type="text" class="form-control {{ $errors->has('name')?'is-invalid':'' }}" name="name" value="{{ old('name') }}"
+                                   placeholder="{{ __('messages.full_name') }}" id="name">
+                            @if ($errors->has('name'))
+                                <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('name') }}</strong>
+                                </span>
+                            @endif
                         </div>
-                    </div>
-                </div>
-
-                <div class="mt-5 text-center">
-                    <p>{{ __("Already have an account ?") }} <a href="{{url('login')}}" class="font-weight-medium text-primary"> {{ __("Signin") }} </a> </p>
-                    <p>{{ __("© 2020 Chatvia. Crafted with") }} <i class="mdi mdi-heart text-danger"></i> {{ __("by Themesbrand") }}</p>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text">@</span>
+                            </div>
+                            <input type="email" class="form-control {{ $errors->has('email')?'is-invalid':'' }}"
+                                   name="email" value="{{ old('email') }}" placeholder="{{ __('messages.email') }}"
+                                   id="email">
+                            @if ($errors->has('email'))
+                                <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('email') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                        <div class="input-group mb-3">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text">
+                                <i class="icon-lock"></i>
+                              </span>
+                            </div>
+                            <input type="password" class="form-control {{ $errors->has('password')?'is-invalid':''}}"
+                                   name="password" placeholder="{{ __('messages.password') }}" id="password"
+                                   onkeypress="return avoidSpace(event)">
+                            @if ($errors->has('password'))
+                                <span class="invalid-feedback">
+                                    <strong>{{ $errors->first('password') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                        <div class="input-group mb-4">
+                            <div class="input-group-prepend">
+                              <span class="input-group-text">
+                                <i class="icon-lock"></i>
+                              </span>
+                            </div>
+                            <input type="password" name="password_confirmation" class="form-control"
+                                   placeholder="{{ __('messages.confirm_password') }}" id="password_confirmation" onkeypress="return avoidSpace(event)">
+                            @if ($errors->has('password_confirmation'))
+                                <span class="help-block">
+                                  <strong>{{ $errors->first('password_confirmation') }}</strong>
+                               </span>
+                            @endif
+                        </div>
+                        <button type="button" id="registerBtn"
+                                class="btn btn-primary btn-block btn-flat">{{ __('messages.register') }}</button>
+                        <a href="{{ url('/login') }}" class="text-center">{{ __('messages.already_have_membership') }}</a>
+                    </form>
                 </div>
             </div>
         </div>
     </div>
 </div>
 @endsection
+

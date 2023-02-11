@@ -3,8 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Providers\RouteServiceProvider;
+use App\Rules\NoSpaceContaine;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use Illuminate\Http\Request;
+use Session;
 
 class ResetPasswordController extends Controller
 {
@@ -26,5 +28,31 @@ class ResetPasswordController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/conversations';
+
+    /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('guest');
+    }
+
+    protected function rules()
+    {
+        return [
+            'token' => 'required',
+            'email' => 'required|email',
+            'password' => ['required', 'confirmed', 'min:8', new NoSpaceContaine()]
+        ];
+    }
+
+    protected function sendResetFailedResponse(Request $request, $response)
+    {
+        //overwrite this request to return user on login page if there is any error other than validation
+        Session::flash('error', trans($response));
+        return redirect('login');
+    }
 }
