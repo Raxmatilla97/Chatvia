@@ -498,7 +498,7 @@
       <!-- section close -->
 
       <!-- section begin -->
-      <section id="section-schedule" aria-label="section-services-tab" data-bgimage="url(public/images-event/bg/2.png'}}) fixed center no-repeat">
+      <section id="section-schedule" aria-label="section-services-tab" data-bgimage="url({{'frontend/images-event/bg/2.png'}}) fixed center no-repeat">
         <!-- <div class="wm wm-border dark wow fadeInDown ">расписание</div> -->
         <div class="container">
           <div class="row">
