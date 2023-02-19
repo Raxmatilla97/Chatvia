@@ -47,7 +47,7 @@ class AccountRepository
     {
         $data['link'] = ($url != '') ? $url.'/activate?token='.$activateCode : URL::to('/activate?token='.$activateCode);
         $data['username'] = $username;
-
+        // dd(config('mail'));
         try {
             Mail::to($email)
                 ->send(new MarkdownMail('auth.emails.account_verification', 'Activate your account', $data));
