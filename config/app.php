@@ -80,8 +80,13 @@ return [
     |
     */
 
-    'locale' => 'en',
+    'locale' => 'uz',
 
+    'available_locales' => [
+        'uz',
+        'en',
+        'ru'
+    ],
     /*
     |--------------------------------------------------------------------------
     | Application Fallback Locale
@@ -93,7 +98,7 @@ return [
     |
     */
 
-    'fallback_locale' => 'en',
+    'fallback_locale' => 'uz',
 
     /*
     |--------------------------------------------------------------------------

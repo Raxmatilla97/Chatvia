@@ -32,7 +32,21 @@
           <!-- <li><a href="#section-ticket">Ticket<span></span></a></li> -->
           <li><a href="#section-sponsors">Спонсоры<span></span></a></li>
           <li><a href="#section-register">Зарегистрироваться<span></span></a></li>
-          <li><a href="en.html">EN<span></span></a></li>
+        
+          @if(App::isLocale('en'))
+          <li><a href="{{ url('setlocale/uz')}}">Uz<span></span></a></li>
+          <li><a href="{{ url('setlocale/ru')}}">Ru<span></span></a></li>
+          @endif
+
+          @if(App::isLocale('uz'))
+          <li><a href="{{ url('setlocale/en')}}">En<span></span></a></li>
+          <li><a href="{{ url('setlocale/ru')}}">Ru<span></span></a></li>
+          @endif
+
+          @if(App::isLocale('ru'))
+          <li><a href="{{ url('setlocale/uz')}}">Uz<span></span></a></li>
+          <li><a href="{{ url('setlocale/en')}}">En<span></span></a></li>
+          @endif
         </ul>
         <!-- mainmenu close -->
       </div>

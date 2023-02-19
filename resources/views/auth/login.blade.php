@@ -7,6 +7,17 @@
 @endsection
 @section('css')
     <link rel="stylesheet" href="{{ asset('css/login.css') }}">
+    <style>
+        body{
+            background-image: url('{{ asset('assets/images/city.webp')}}');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+        .bg-primary{
+            background-image: url('{{ asset('assets/images/bg-2.webp')}}');
+        }
+    </style>
 @endsection
 @section('content')
 <div class="container">
