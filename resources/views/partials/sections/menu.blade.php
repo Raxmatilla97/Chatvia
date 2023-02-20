@@ -25,13 +25,13 @@
 
         <!-- mainmenu begin -->
         <ul id="mainmenu" class="ms-2">
-          <li><a href="#section-hero">Asosiy sahifa<span></span></a></li>
-          <li><a href="#section-about">О нас<span></span></a></li>
-          <li><a href="#section-speakers">Спикеры<span></span></a></li>
-          <li><a href="#section-schedule">Расписание<span></span></a></li>
+          <li><a href="#section-hero">@lang('asosiy-sahifa.asosiy_sahifa')<span></span></a></li>
+          <li><a href="#section-about">@lang('asosiy-sahifa.biz_haqimizda')<span></span></a></li>
+          <li><a href="#section-speakers">@lang('asosiy-sahifa.spikerlar')<span></span></a></li>
+          <li><a href="#section-schedule">@lang('asosiy-sahifa.jadval')<span></span></a></li>
           <!-- <li><a href="#section-ticket">Ticket<span></span></a></li> -->
-          <li><a href="#section-sponsors">Спонсоры<span></span></a></li>
-          <li><a href="#section-register">Зарегистрироваться<span></span></a></li>
+          <li><a href="#section-sponsors">@lang('asosiy-sahifa.homiylar')<span></span></a></li>
+          <li><a href="#section-register">@lang('asosiy-sahifa.royxatdan_otish')<span></span></a></li>
         
           @if(App::isLocale('en'))
           <li><a href="{{ url('setlocale/uz')}}">Uz<span></span></a></li>
