@@ -26,17 +26,6 @@ Route::group(['middleware'=>'language'],function ()
         return view('home.index2');
     });
     Auth::routes();
-});
-
-
-// Route::group(['middleware' => ['setlocale'],'prefix' => '{locale}', 'where' => ['locale' => '[a-zA-Z]{2}']], function() {
-   
-//     Route::get('/', function () {       
-//         return view('home.index2');
-//     });
-//     Auth::routes();
-// });
-   
 
 
     Route::get('activate', 'AuthController@verifyAccount');
@@ -134,3 +123,18 @@ Route::group(['middleware'=>'language'],function ()
         Route::get('login/{provider}', 'Auth\SocialAuthController@redirect');
         Route::get('login/{provider}/callback', 'Auth\SocialAuthController@callback');
     });
+
+
+
+});
+
+
+// Route::group(['middleware' => ['setlocale'],'prefix' => '{locale}', 'where' => ['locale' => '[a-zA-Z]{2}']], function() {
+   
+//     Route::get('/', function () {       
+//         return view('home.index2');
+//     });
+//     Auth::routes();
+// });
+   
+

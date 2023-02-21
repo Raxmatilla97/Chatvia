@@ -53,7 +53,7 @@ class AccountRepository
                 ->send(new MarkdownMail('auth.emails.account_verification', 'Activate your account', $data));
 
         } catch (Exception $e) {
-            throw new Exception('Account created, but unable to send email');
+            throw new Exception("Akkout yaratildi ammo emailingizga tasdiqlash xabarini yuborib bo'lmadi!");
         }
     }
 }
