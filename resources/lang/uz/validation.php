@@ -13,10 +13,10 @@ return [
     |
     */
 
-    'accepted'             => 'The :attribute must be accepted.',
-    'active_url'           => 'The :attribute is not a valid URL.',
-    'after'                => 'The :attribute must be a date after :date.',
-    'after_or_equal'       => 'The :attribute must be a date after or equal to :date.',
+    'accepted'             => ':attribute qabul qilinishi kerak.',
+    'active_url'           => ':attribute yaroqli URL manzil emas.',
+    'after'                => ":attribute :date dan keyingi sana bo'lishi kerak.",
+    'after_or_equal'       => ":attribute :date keyingi sana yoki unga teng bo'lishi kerak.",
     'alpha'                => 'The :attribute may only contain letters.',
     'alpha_dash'           => 'The :attribute may only contain letters, numbers, dashes and underscores.',
     'alpha_num'            => 'The :attribute may only contain letters and numbers.',
@@ -112,7 +112,7 @@ return [
     'starts_with'          => 'The :attribute must start with one of the following: :values',
     'string'               => 'The :attribute must be a string.',
     'timezone'             => 'The :attribute must be a valid zone.',
-    'unique'               => 'The :attribute has already been taken.',
+    'unique'               => ':attribute allaqachon bazada mavjud.',
     'uploaded'             => 'The :attribute failed to upload.',
     'url'                  => 'The :attribute format is invalid.',
     'uuid'                 => 'The :attribute must be a valid UUID.',
