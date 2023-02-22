@@ -20,7 +20,7 @@ class SetLocale
     {
         if (!Session::has('locale'))
          {
-           Session::put('locale', Config::get('uz'));
+           Session::put('locale', Config::get('app.locale'));
         }
         App::setLocale(Session::get('locale'));
         return $next($request);
