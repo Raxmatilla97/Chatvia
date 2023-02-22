@@ -225,4 +225,7 @@ return [
     'reported_to'   => 'Kimga xabar berildi',
     'reported_at'   => 'Xabar berilgan',
     'reported_user' => 'Xabar qilingan foydalanuvchilar',
+    'yashash_hududi' => "Yashash hududingiz",
+    'yashash_hududi_placeholder' => "Yashash hududingizni to'liq yozing",
+    'ish_joyi_yok_oqishi_placeholder' => "Ish joyingiz, talaba bo'lsangiz OTM nomini yozing"
 ];

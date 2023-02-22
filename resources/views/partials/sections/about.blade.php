@@ -1,6 +1,12 @@
-
+ <div class="wm wm-border dark wow fadeInDown" style="    margin-top: 60px;">Biz haqimizda</div>
+ <div class="col-md-6 offset-md-3 text-center wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp; background-size: cover;">
+  <h1>Qisqacha ma'lumotlar </h1>
+  <div class="separator" style="background-size: cover;"><span><i class="fa fa-square"></i></span></div>
+  <div class="spacer-single" style="background-size: cover;"></div>
+</div>
       <!-- section begin -->
-      <section id="section-about" data-bgimage="url(public/images-event/bg/1.png'}}) fixed no-repeat">
+      <section id="section-about" data-bgimage="url(public/images-event/bg/1.png'}}) fixed no-repeat" >
+       
         <div class="container">
           <div class="row align-items-center">
 
@@ -17,10 +23,10 @@
             </div>
 
             <div class="col-lg-6 mb-sm-30 text-center wow fadeInRight">
-              <div class="de-images">
-                <img class="di-small wow fadeIn" src="{{'/frontend/images-event/misc/2.jpg'}}" alt="" />
-                <img class="di-small-2 wow fadeIn" src="{{'/frontend/images-event/misc/3.jpg'}}" alt="" />
-                <img class="di-big img-fluid wow fadeInRight" data-wow-delay=".25s" src="{{'/frontend/images-event/misc/1.jpg'}}" alt="" />
+              <div class="">
+                 {{-- <img class="di-small wow fadeIn" src="{{'/frontend/images/333.gif'}}" alt="" />  --}}
+                <img style="height: 250px;" class="di-small-2 wow fadeIn" src="{{'/frontend/images/666.gif'}}" alt="" />
+                <img class="di-big img-fluid wow fadeInRight" data-wow-delay=".25s" src="{{'/frontend/images/222.jpg'}}" alt="" />
               </div>
             </div>
 

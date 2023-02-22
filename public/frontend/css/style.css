@@ -1745,14 +1745,14 @@ header.smaller.header-scroll:not(.autoshow) {
   width: 98%;
 }
 
-#contact_form {
+#registerForm {
   margin-top: 20px;
 }
 
-#contact_form input[type=text],
-#contact_form textarea,
-#contact_form input[type=email],
-#contact_form input[type=number],
+#registerForm input[type=text],
+#registerForm textarea,
+#registerForm input[type=email],
+#registerForm input[type=number],
 #search {
   padding: 10px;
   margin-bottom: 20px;
@@ -1763,9 +1763,9 @@ header.smaller.header-scroll:not(.autoshow) {
   height: auto;
 }
 
-.de_light #contact_form input[type=text],
-.de_light #contact_form textarea,
-.de_light #contact_form input[type=email],
+.de_light #registerForm input[type=text],
+.de_light #registerForm textarea,
+.de_light #registerForm input[type=email],
 .de_light #search {
   border: solid 1px #ddd;
   background: #f5f5f5;
@@ -1775,22 +1775,22 @@ header.smaller.header-scroll:not(.autoshow) {
 
 
 
-#contact_form input[placeholder],
-#contact_form textarea[placeholder] {
+#registerForm input[placeholder],
+#registerForm textarea[placeholder] {
   color: #eee;
 }
 
-#contact_form input[type=submit].btn-line {
+#registerForm input[type=submit].btn-line {
   background: none;
   padding: 8px 20px;
 }
 
-#contact_form input[type=submit].btn-line:hover {
+#registerForm input[type=submit].btn-line:hover {
   background: #111;
   border-color: #111;
 }
 
-#contact_form textarea {
+#registerForm textarea {
   height: 178px;
 }
 
@@ -4679,8 +4679,8 @@ a.btn-line:after,
 .de-gallery .overlay .icon i,
 .de-gallery .overlay .icon i:hover,
 header.smaller:not(.header-bottom),
-#contact_form input[type=submit],
-#contact_form input[type=submit]:hover,
+#registerForm input[type=submit],
+#registerForm input[type=submit]:hover,
 .product img,
 .product img:hover,
 .mfp-close,
