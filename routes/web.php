@@ -10,18 +10,17 @@ Route::group(['middleware'=>'language'],function ()
     Route::get('/', function () {       
         return view('home.index2');
     });
+    
     Auth::routes();
-
-
     Route::get('activate', 'AuthController@verifyAccount');
-
     Route::get('/home', 'HomeController@index');
+
     Route::group(['middleware' => ['user.activated', 'auth']], function () {
         //ko'rish routerlari
         Route::get('/conversations', 'ChatController@index')->name('conversations');
         Route::get('profile', 'UserController@getProfile');
-        Route::group(['namespace' => 'API'], function () {
-            Route::get('logout', 'Auth\LoginController@logout');
+        Route::get('logout', 'Auth\LoginController@logout');
+        Route::group(['namespace' => 'API'], function () {          
 
             //get all user list for chat
             Route::get('users-list', 'UserAPIController@getUsersList');

@@ -12,7 +12,7 @@ return [
     'royxatdan_otish' => "Ro'yxatdan o'tish",
     'login' => "Kirish",
     'modul_mazmuni' => "Modul mazmuni",
-    '' => "",
+    'faoliyat' => "Faoliyat",
     '' => "",
     '' => "",
     '' => "",

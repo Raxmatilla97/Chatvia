@@ -3,7 +3,7 @@
     <div class="container">
       <div class="row align-items-middle" style="justify-content: space-between;">
         <div class="col-md-3">
-          <img src="{{'/frontend/images-event/logo.png'}}" class="logo-small" alt=""><br>
+          <img style="width: 100px;" src="{{'/frontend/images/logo.png'}}" class="logo-small" alt=""><br>
         </div>
 
         <div class="col-md-3 text-right">
@@ -20,7 +20,7 @@
 
     </div>
     <p style="text-align:center">
-      <a target="_blank" href="https://wdagency.org/">Made Test <i style="color: red;" class="fa fa-heart heart" aria-hidden="true"></i>by Web Digital</a>
+      <a target="_blank" href="https://raxi-dev.uz/">RAXI-DEV <i style="color: red;" class="fa fa-heart heart" aria-hidden="true"></i> by Raxmatilla</a>
     </p>
 
 
