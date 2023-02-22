@@ -34,17 +34,59 @@
                         </div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
-                                <span class="input-group-text">@</span>
+                              <span class="input-group-text"><i class="icon-user"></i></span>
                             </div>
-                            <input type="email" class="form-control {{ $errors->has('email')?'is-invalid':'' }}"
-                                   name="email" value="{{ old('email') }}" placeholder="{{ __('messages.email') }}"
-                                   id="email">
-                            @if ($errors->has('email'))
+                            <input type="text" class="form-control {{ $errors->has('yashash_hududi')?'is-invalid':'' }}"
+                                   name="yashash_hududi" value="{{ old('yashash_hududi') }}" placeholder="{{ __('messages.yashash_hududi_placeholder') }}"
+                                   id="yashash_hududi">
+                            @if ($errors->has('yashash_hududi'))
                                 <span class="invalid-feedback">
-                                    <strong>{{ $errors->first('email') }}</strong>
+                                    <strong>{{ $errors->first('yashash_hududi') }}</strong>
                                 </span>
                             @endif
                         </div>
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text"><i class="icon-user"></i></span>
+                          </div>
+                          <input type="text" class="form-control {{ $errors->has('ish_joyi_yok_oqishi')?'is-invalid':'' }}"
+                                 name="ish_joyi_yok_oqishi" value="{{ old('ish_joyi_yok_oqishi') }}" placeholder="{{ __('messages.ish_joyi_yok_oqishi_placeholder') }}"
+                                 id="ish_joyi_yok_oqishi">
+                          @if ($errors->has('ish_joyi_yok_oqishi'))
+                              <span class="invalid-feedback">
+                                  <strong>{{ $errors->first('ish_joyi_yok_oqishi') }}</strong>
+                              </span>
+                          @endif
+                      </div>
+
+                      <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="icon-user"></i></span>
+                        </div>
+                        <select name="ticher_or_student" class="form-select form-control" aria-label="Default select example">                          
+                          <option value="ticher">O'qituvchiman</option>
+                          <option value="student">Talabaman</option>                        
+                        </select>
+                        @if ($errors->has('ticher_or_student'))
+                            <span class="invalid-feedback">
+                                <strong>{{ $errors->first('ticher_or_student') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+
+                        <div class="input-group mb-3">
+                          <div class="input-group-prepend">
+                              <span class="input-group-text">@</span>
+                          </div>
+                          <input type="email" class="form-control {{ $errors->has('email')?'is-invalid':'' }}"
+                                 name="email" value="{{ old('email') }}" placeholder="{{ __('messages.email') }}"
+                                 id="email">
+                          @if ($errors->has('email'))
+                              <span class="invalid-feedback">
+                                  <strong>{{ $errors->first('email') }}</strong>
+                              </span>
+                          @endif
+                      </div>
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
                               <span class="input-group-text">

@@ -129,6 +129,9 @@ class User extends Authenticatable
      */
     protected $fillable = [
         'name',
+        'yashash_hududi',
+        'ish_joyi_yok_oqishi',
+        'ticher_or_student',
         'email',
         'password',
         'phone',
@@ -170,6 +173,9 @@ class User extends Authenticatable
     protected $casts = [
         'id'                => 'integer',
         'name'              => 'string',
+        'yashash_hududi'    => 'string',
+        'ish_joyi_yok_oqishi'  => 'string',
+        'ticher_or_student' => 'string',
         'email_verified_at' => 'datetime',
         'created_at'        => 'datetime',
         'updated_at'        => 'datetime',
@@ -187,6 +193,9 @@ class User extends Authenticatable
      */
     public static $rules = [
         'name'    => 'required|string|max:100',
+        'yashash_hududi'    => 'required|string|max:100',
+        'ish_joyi_yok_oqishi'    => 'required|string|max:100',
+        'ticher_or_student'    => 'required|string|max:100',
         'phone'   => 'nullable|integer',
         'role_id' => 'required|integer',
         'privacy' => 'required',
@@ -251,6 +260,9 @@ class User extends Authenticatable
         return [
             'id'        => $this->id,
             'name'      => $this->name,
+            'yashash_hududi'      => $this->yashash_hududi,
+            'ish_joyi_yok_oqishi' => $this->ish_joyi_yok_oqishi,
+            'ticher_or_student'  => $this->ticher_or_student,
             'email'     => $this->email,
             'phone'     => $this->phone,
             'last_seen' => $this->last_seen,
@@ -269,6 +281,9 @@ class User extends Authenticatable
         return [
             'id'                => $this->id,
             'name'              => $this->name,
+            'yashash_hududi'      => $this->yashash_hududi,
+            'ish_joyi_yok_oqishi' => $this->ish_joyi_yok_oqishi,
+            'ticher_or_student'  => $this->ticher_or_student,
             'email'             => $this->email,
             'email_verified_at' => (! empty($this->email_verified_at)) ? $this->email_verified_at->toDateTimeString() : '',
             'phone'             => $this->phone,

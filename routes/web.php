@@ -1,20 +1,5 @@
 <?php
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
-// Route::get('/', function () {
-//     return view('home.index');
-// });
-
 Route::get('setlocale/{locale}',function($lang){
     \Session::put('locale',$lang);
     return redirect()->back();   
@@ -32,7 +17,7 @@ Route::group(['middleware'=>'language'],function ()
 
     Route::get('/home', 'HomeController@index');
     Route::group(['middleware' => ['user.activated', 'auth']], function () {
-        //view routes
+        //ko'rish routerlari
         Route::get('/conversations', 'ChatController@index')->name('conversations');
         Route::get('profile', 'UserController@getProfile');
         Route::group(['namespace' => 'API'], function () {
@@ -127,14 +112,4 @@ Route::group(['middleware'=>'language'],function ()
 
 
 });
-
-
-// Route::group(['middleware' => ['setlocale'],'prefix' => '{locale}', 'where' => ['locale' => '[a-zA-Z]{2}']], function() {
-   
-//     Route::get('/', function () {       
-//         return view('home.index2');
-//     });
-//     Auth::routes();
-// });
-   
 

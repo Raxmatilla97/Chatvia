@@ -50,11 +50,11 @@
 
       @include('partials.sections.spickers')
      
-      @include('partials.sections.schedule')
+      {{-- @include('partials.sections.schedule') --}}
 
-      @include('partials.sections.ticket')
+      {{-- @include('partials.sections.ticket') --}}
       
-      @include('partials.sections.sponsors')
+      {{-- @include('partials.sections.sponsors') --}}
 
       @include('partials.sections.fikrmulohazalar')
 
