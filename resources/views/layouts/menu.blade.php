@@ -30,3 +30,9 @@
         </a>
     </li>
 @endif
+<li class="nav-item {{ Request::is('news*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('news.index') }}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>News</span>
+    </a>
+</li>
