@@ -25,4 +25,9 @@ class HomeController extends Controller
     {
         return redirect('/conversations');
     }
+
+    public function site()
+    {
+        return view('home.index2');
+    }
 }

@@ -1,21 +1,23 @@
 <?php
 
-Route::get('setlocale/{locale}',function($lang){
-    \Session::put('locale',$lang);
-    return redirect()->back();   
-});
+// Route::get('setlocale/{locale}',function($lang){
+//     \Session::put('locale',$lang);
+//     return redirect()->back();   
+// });
 
 Route::group(['middleware'=>'language'],function ()
 {
-    Route::get('/', function () {       
-        return view('home.index2');
-    });
+    // Route::get('/', function () {       
+    //     return view('home.index2');
+    // });
+    Route::get('/', 'HomeController@site');
     
     Auth::routes();
     Route::get('activate', 'AuthController@verifyAccount');
     Route::get('/home', 'HomeController@index');
-
+    Route::resource('news', 'NewsController');
     Route::group(['middleware' => ['user.activated', 'auth']], function () {
+        
         //ko'rish routerlari
         Route::get('/conversations', 'ChatController@index')->name('conversations');
         Route::get('profile', 'UserController@getProfile');
@@ -111,4 +113,6 @@ Route::group(['middleware'=>'language'],function ()
 
 
 });
+
+
 
