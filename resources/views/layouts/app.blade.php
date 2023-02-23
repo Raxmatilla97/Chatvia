@@ -245,6 +245,7 @@
 <script src="{{ mix('assets/js/notification.js') }}"></script>
 <script src="{{ mix('assets/js/set_user_status.js') }}"></script>
 <script src="{{ mix('assets/js/set-user-on-off.js') }}"></script>
+<script src="https://coreui.io/docs/dist/js/coreui.bundle.min.js"></script>
 
 @yield('scripts')
 

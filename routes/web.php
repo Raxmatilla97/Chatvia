@@ -13,13 +13,16 @@ Route::group(['middleware'=>'language'],function ()
     Route::get('/', 'HomeController@site');
     
     Auth::routes();
+
+    // Route::prefix('profile')->group(function () {
+       
     Route::get('activate', 'AuthController@verifyAccount');
     Route::get('/home', 'HomeController@index');
     Route::resource('news', 'NewsController');
     Route::group(['middleware' => ['user.activated', 'auth']], function () {
         
         //ko'rish routerlari
-        Route::get('/conversations', 'ChatController@index')->name('conversations');
+        Route::get('conversations', 'ChatController@index')->name('conversations');
         Route::get('profile', 'UserController@getProfile');
         Route::get('logout', 'Auth\LoginController@logout');
         Route::group(['namespace' => 'API'], function () {          
@@ -111,8 +114,9 @@ Route::group(['middleware'=>'language'],function ()
     });
 
 
+    });
 
-});
+// });
 
 
 

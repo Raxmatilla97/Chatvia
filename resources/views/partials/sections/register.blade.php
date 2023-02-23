@@ -1,9 +1,14 @@
-
-
-
-
-
-
+ <style>
+  input[type=text]:focus{
+    border-color: #ec167f !important;
+  }
+  input[type=email]:focus{
+    border-color: #ec167f !important;
+  }
+  input[type=password]:focus{
+    border-color: #ec167f !important;
+  }
+  </style>
  <!-- section begin -->
  <section id="section-register" >
     <div class="wm wm-border dark wow fadeInDown">Kirish uchun</div> 
