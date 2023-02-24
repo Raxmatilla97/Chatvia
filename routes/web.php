@@ -18,7 +18,9 @@ Route::group(['middleware'=>'language'],function ()
        
     Route::get('activate', 'AuthController@verifyAccount');
     Route::get('/home', 'HomeController@index');
+
     Route::resource('news', 'NewsController');
+
     Route::group(['middleware' => ['user.activated', 'auth']], function () {
         
         //ko'rish routerlari
