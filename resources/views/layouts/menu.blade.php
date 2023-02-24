@@ -3,6 +3,13 @@
         <i class="nav-icon icon-speech mr-4"></i> {{ __('messages.conversations') }}
     </a>
 </li>
+<li class="nav-item {{ Request::is('news*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('news.index') }}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>Yangiliklar</span>
+    </a>
+</li>
+
 @if(Auth::user()->hasRole('Admin'))
     <li class="nav-item {{ Request::is('users*') ? 'active' : '' }}">
         <a class="nav-link {{ Request::is('users*') ? 'active' : '' }}" href="{{ route('users.index') }}">
@@ -30,9 +37,3 @@
         </a>
     </li>
 @endif
-<li class="nav-item {{ Request::is('news*') ? 'active' : '' }}">
-    <a class="nav-link" href="{{ route('news.index') }}">
-        <i class="nav-icon icon-cursor"></i>
-        <span>News</span>
-    </a>
-</li>
