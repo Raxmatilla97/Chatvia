@@ -1,21 +1,19 @@
 <!-- Title Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('title', 'Title:') !!}
-    {!! Form::text('title', null, ['class' => 'form-control']) !!}
+<div class="row">
+    <div class="form-group col-sm-6">
+        {!! Form::label('title', 'Title:') !!}
+        {!! Form::text('title', null, ['class' => 'form-control']) !!}
+    </div>
+    
+    <!-- Img Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('img', 'Img:') !!}
+        {!! Form::file('img') !!}
+    </div>
+    <div class="clearfix"></div>
+   
 </div>
 
-<!-- Slug Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('slug', 'Slug:') !!}
-    {!! Form::text('slug', null, ['class' => 'form-control']) !!}
-</div>
-
-<!-- Img Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('img', 'Img:') !!}
-    {!! Form::file('img') !!}
-</div>
-<div class="clearfix"></div>
 
 <!-- Content Field -->
 <div class="form-group col-sm-12 col-lg-12">

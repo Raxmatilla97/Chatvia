@@ -85,7 +85,7 @@
                                                     @endif" class="card-img-top" alt="...">
                                                     <div class="card-body">
                                                     <h5 class="card-title">{{ $news->title }}</h5>
-                                                    <p class="card-text">Ilim fan</p>
+                                                    <p class="card-text">{{ $news->user_id }}</p>
                                                     <a href="{{ route('news.show', [$news->id]) }}" class="btn btn-primary">O'qish</a>
                                                     </div>
                                                 </div> 
