@@ -18,7 +18,7 @@
                                 <strong>Yangilik yozish formasi</strong>
                             </div>
                             <div class="card-body">
-                                {!! Form::open(['route' => 'news.store', 'files' => true]) !!}
+                                {!! Form::open(['route' => 'news.store', 'id' => 'addForm', 'files' => true]) !!}
 
                                    @include('news.fields')
 
@@ -29,4 +29,6 @@
                 </div>
            </div>
     </div>
+
+
 @endsection

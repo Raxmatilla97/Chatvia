@@ -8,7 +8,7 @@
     <!-- Img Field -->
     <div class="form-group col-sm-6">
         {!! Form::label('img', 'Img:') !!}
-        {!! Form::file('img') !!}
+        {!! Form::file('img',['id' => 'image', 'multiple', 'data-allow-reorder' => 'true', 'data-max-file-size' => '3MB', 'data-max-files' => '1']) !!}
     </div>
     <div class="clearfix"></div>
    
