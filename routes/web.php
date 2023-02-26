@@ -7,9 +7,6 @@
 
 Route::group(['middleware'=>'language'],function ()
 {
-    // Route::get('/', function () {       
-    //     return view('home.index2');
-    // });
     Route::get('/', 'HomeController@site');
     
     Auth::routes();
@@ -18,11 +15,13 @@ Route::group(['middleware'=>'language'],function ()
        
     Route::get('activate', 'AuthController@verifyAccount');
     Route::get('/home', 'HomeController@index');
-
-    Route::resource('news', 'NewsController');
+    
+    // CRUDlar resurslari
+    Route::resource('news', 'NewsController');    
+    Route::resource('modulMazmunis', 'ModulMazmuniController');
 
     Route::group(['middleware' => ['user.activated', 'auth']], function () {
-        
+                
         //ko'rish routerlari
         Route::get('conversations', 'ChatController@index')->name('conversations');
         Route::get('profile', 'UserController@getProfile');
@@ -33,7 +32,7 @@ Route::group(['middleware'=>'language'],function ()
             Route::get('users-list', 'UserAPIController@getUsersList');
             Route::get('get-users', 'UserAPIController@getUsers');
             Route::delete('remove-profile-image', 'UserAPIController@removeProfileImage');
-            /** Change password */
+            /** parol yangilash */
             Route::post('change-password', 'UserAPIController@changePassword');
             Route::get('conversations/{ownerId}/archive-chat', 'UserAPIController@archiveChat');
 
@@ -119,6 +118,7 @@ Route::group(['middleware'=>'language'],function ()
     });
 
 // });
+
 
 
 

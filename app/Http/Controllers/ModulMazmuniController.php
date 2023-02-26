@@ -1,0 +1,156 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Requests\CreateModulMazmuniRequest;
+use App\Http\Requests\UpdateModulMazmuniRequest;
+use App\Repositories\ModulMazmuniRepository;
+use App\Http\Controllers\AppBaseController;
+use Illuminate\Http\Request;
+use Flash;
+use Response;
+
+class ModulMazmuniController extends AppBaseController
+{
+    /** @var  ModulMazmuniRepository */
+    private $modulMazmuniRepository;
+
+    public function __construct(ModulMazmuniRepository $modulMazmuniRepo)
+    {
+        $this->modulMazmuniRepository = $modulMazmuniRepo;
+    }
+
+    /**
+     * Display a listing of the ModulMazmuni.
+     *
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function index(Request $request)
+    {
+        $modulMazmunis = $this->modulMazmuniRepository->all();
+
+        return view('modul_mazmunis.index')
+            ->with('modulMazmunis', $modulMazmunis);
+    }
+
+    /**
+     * Show the form for creating a new ModulMazmuni.
+     *
+     * @return Response
+     */
+    public function create()
+    {
+        return view('modul_mazmunis.create');
+    }
+
+    /**
+     * Store a newly created ModulMazmuni in storage.
+     *
+     * @param CreateModulMazmuniRequest $request
+     *
+     * @return Response
+     */
+    public function store(CreateModulMazmuniRequest $request)
+    {
+        $input = $request->all();
+
+        $modulMazmuni = $this->modulMazmuniRepository->create($input);
+
+        Flash::success('Modul Mazmuni saved successfully.');
+
+        return redirect(route('modulMazmunis.index'));
+    }
+
+    /**
+     * Display the specified ModulMazmuni.
+     *
+     * @param int $id
+     *
+     * @return Response
+     */
+    public function show($id)
+    {
+        $modulMazmuni = $this->modulMazmuniRepository->find($id);
+
+        if (empty($modulMazmuni)) {
+            Flash::error('Modul Mazmuni not found');
+
+            return redirect(route('modulMazmunis.index'));
+        }
+
+        return view('modul_mazmunis.show')->with('modulMazmuni', $modulMazmuni);
+    }
+
+    /**
+     * Show the form for editing the specified ModulMazmuni.
+     *
+     * @param int $id
+     *
+     * @return Response
+     */
+    public function edit($id)
+    {
+        $modulMazmuni = $this->modulMazmuniRepository->find($id);
+
+        if (empty($modulMazmuni)) {
+            Flash::error('Modul Mazmuni not found');
+
+            return redirect(route('modulMazmunis.index'));
+        }
+
+        return view('modul_mazmunis.edit')->with('modulMazmuni', $modulMazmuni);
+    }
+
+    /**
+     * Update the specified ModulMazmuni in storage.
+     *
+     * @param int $id
+     * @param UpdateModulMazmuniRequest $request
+     *
+     * @return Response
+     */
+    public function update($id, UpdateModulMazmuniRequest $request)
+    {
+        $modulMazmuni = $this->modulMazmuniRepository->find($id);
+
+        if (empty($modulMazmuni)) {
+            Flash::error('Modul Mazmuni not found');
+
+            return redirect(route('modulMazmunis.index'));
+        }
+
+        $modulMazmuni = $this->modulMazmuniRepository->update($request->all(), $id);
+
+        Flash::success('Modul Mazmuni updated successfully.');
+
+        return redirect(route('modulMazmunis.index'));
+    }
+
+    /**
+     * Remove the specified ModulMazmuni from storage.
+     *
+     * @param int $id
+     *
+     * @throws \Exception
+     *
+     * @return Response
+     */
+    public function destroy($id)
+    {
+        $modulMazmuni = $this->modulMazmuniRepository->find($id);
+
+        if (empty($modulMazmuni)) {
+            Flash::error('Modul Mazmuni not found');
+
+            return redirect(route('modulMazmunis.index'));
+        }
+
+        $this->modulMazmuniRepository->delete($id);
+
+        Flash::success('Modul Mazmuni deleted successfully.');
+
+        return redirect(route('modulMazmunis.index'));
+    }
+}

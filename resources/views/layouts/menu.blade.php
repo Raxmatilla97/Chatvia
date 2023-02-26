@@ -10,6 +10,14 @@
     </a>
 </li>
 
+<li class="nav-item {{ Request::is('modulMazmunis*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('modulMazmunis.index') }}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>Modul Mazmuni</span>
+    </a>
+</li>
+
+
 @if(Auth::user()->hasRole('Admin'))
     <li class="nav-item {{ Request::is('users*') ? 'active' : '' }}">
         <a class="nav-link {{ Request::is('users*') ? 'active' : '' }}" href="{{ route('users.index') }}">
