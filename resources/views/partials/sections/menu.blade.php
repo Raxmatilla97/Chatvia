@@ -31,10 +31,14 @@
           <li><a href="#section-speakers">@lang('asosiy-sahifa.spikerlar')<span></span></a></li>
           {{-- <li><a href="#section-schedule">@lang('asosiy-sahifa.jadval')<span></span></a></li> --}}
           <!-- <li><a href="#section-ticket">Ticket<span></span></a></li> -->
-          <li><a href="#section-ticket">@lang('asosiy-sahifa.faoliyat')<span></span></a></li>
-          <li><a href="#section-register">@lang('asosiy-sahifa.royxatdan_otish')<span></span></a></li>
-          <li><a href="{{ route('login')}}">@lang('asosiy-sahifa.login')<span></span></a></li>
-         
+          <li><a href="#section-ticket">@lang('asosiy-sahifa.faoliyat')<span></span></a></li>        
+          @if(Auth::user())
+            <li><a href="{{ route('home')}}">@lang('asosiy-sahifa.profile')<span></span></a></li>
+            <li><a href="{{ route('logout')}}">@lang('asosiy-sahifa.chiqish')<span></span></a></li>
+          @else
+            <li><a href="#section-register">@lang('asosiy-sahifa.royxatdan_otish')<span></span></a></li>
+            <li><a href="{{ route('login')}}">@lang('asosiy-sahifa.kirish')<span></span></a></li>
+          @endif
           @if(App::isLocale('en'))
           <li><a href="{{ url('setlocale/uz')}}">Uz<span></span></a></li>
           <li><a href="{{ url('setlocale/ru')}}">Ru<span></span></a></li>
