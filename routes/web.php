@@ -7,25 +7,25 @@
 
 Route::group(['middleware'=>'language'],function ()
 {
-    Route::get('/', 'HomeController@site');
+    Route::get('/', 'FrontendController@index');
     
     Auth::routes();
 
     // Route::prefix('profile')->group(function () {
        
     Route::get('activate', 'AuthController@verifyAccount');
-    Route::get('/home', 'HomeController@index');
+    Route::get('/home', 'HomeController@index')->name('home');
     
     // CRUDlar resurslari
     Route::resource('news', 'NewsController');    
     Route::resource('modulMazmunis', 'ModulMazmuniController');
 
     Route::group(['middleware' => ['user.activated', 'auth']], function () {
-                
+
         //ko'rish routerlari
         Route::get('conversations', 'ChatController@index')->name('conversations');
         Route::get('profile', 'UserController@getProfile');
-        Route::get('logout', 'Auth\LoginController@logout');
+        Route::get('logout', 'Auth\LoginController@logout')->name('logout');
         Route::group(['namespace' => 'API'], function () {          
 
             //get all user list for chat
@@ -122,3 +122,6 @@ Route::group(['middleware'=>'language'],function ()
 
 
 
+
+
+Route::resource('spikerlars', 'SpikerlarController');

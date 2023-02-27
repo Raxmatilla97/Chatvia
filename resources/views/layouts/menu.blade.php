@@ -19,6 +19,13 @@
 
 
 @if(Auth::user()->hasRole('Admin'))
+    <li class="nav-item {{ Request::is('spikerlars*') ? 'active' : '' }}">
+        <a class="nav-link" href="{{ route('spikerlars.index') }}">
+            <i class="nav-icon icon-cursor"></i>
+            <span>Spikerlar</span>
+        </a>
+    </li>
+
     <li class="nav-item {{ Request::is('users*') ? 'active' : '' }}">
         <a class="nav-link {{ Request::is('users*') ? 'active' : '' }}" href="{{ route('users.index') }}">
             <i class="fa fa-users nav-icon mr-4"></i>

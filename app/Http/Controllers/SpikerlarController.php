@@ -1,0 +1,156 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Requests\CreateSpikerlarRequest;
+use App\Http\Requests\UpdateSpikerlarRequest;
+use App\Repositories\SpikerlarRepository;
+use App\Http\Controllers\AppBaseController;
+use Illuminate\Http\Request;
+use Flash;
+use Response;
+
+class SpikerlarController extends AppBaseController
+{
+    /** @var  SpikerlarRepository */
+    private $spikerlarRepository;
+
+    public function __construct(SpikerlarRepository $spikerlarRepo)
+    {
+        $this->spikerlarRepository = $spikerlarRepo;
+    }
+
+    /**
+     * Display a listing of the Spikerlar.
+     *
+     * @param Request $request
+     *
+     * @return Response
+     */
+    public function index(Request $request)
+    {
+        $spikerlars = $this->spikerlarRepository->all();
+
+        return view('spikerlars.index')
+            ->with('spikerlars', $spikerlars);
+    }
+
+    /**
+     * Show the form for creating a new Spikerlar.
+     *
+     * @return Response
+     */
+    public function create()
+    {
+        return view('spikerlars.create');
+    }
+
+    /**
+     * Store a newly created Spikerlar in storage.
+     *
+     * @param CreateSpikerlarRequest $request
+     *
+     * @return Response
+     */
+    public function store(CreateSpikerlarRequest $request)
+    {
+        $input = $request->all();
+
+        $spikerlar = $this->spikerlarRepository->create($input);
+
+        Flash::success('Spikerlar saved successfully.');
+
+        return redirect(route('spikerlars.index'));
+    }
+
+    /**
+     * Display the specified Spikerlar.
+     *
+     * @param int $id
+     *
+     * @return Response
+     */
+    public function show($id)
+    {
+        $spikerlar = $this->spikerlarRepository->find($id);
+
+        if (empty($spikerlar)) {
+            Flash::error('Spikerlar not found');
+
+            return redirect(route('spikerlars.index'));
+        }
+
+        return view('spikerlars.show')->with('spikerlar', $spikerlar);
+    }
+
+    /**
+     * Show the form for editing the specified Spikerlar.
+     *
+     * @param int $id
+     *
+     * @return Response
+     */
+    public function edit($id)
+    {
+        $spikerlar = $this->spikerlarRepository->find($id);
+
+        if (empty($spikerlar)) {
+            Flash::error('Spikerlar not found');
+
+            return redirect(route('spikerlars.index'));
+        }
+
+        return view('spikerlars.edit')->with('spikerlar', $spikerlar);
+    }
+
+    /**
+     * Update the specified Spikerlar in storage.
+     *
+     * @param int $id
+     * @param UpdateSpikerlarRequest $request
+     *
+     * @return Response
+     */
+    public function update($id, UpdateSpikerlarRequest $request)
+    {
+        $spikerlar = $this->spikerlarRepository->find($id);
+
+        if (empty($spikerlar)) {
+            Flash::error('Spikerlar not found');
+
+            return redirect(route('spikerlars.index'));
+        }
+
+        $spikerlar = $this->spikerlarRepository->update($request->all(), $id);
+
+        Flash::success('Spikerlar updated successfully.');
+
+        return redirect(route('spikerlars.index'));
+    }
+
+    /**
+     * Remove the specified Spikerlar from storage.
+     *
+     * @param int $id
+     *
+     * @throws \Exception
+     *
+     * @return Response
+     */
+    public function destroy($id)
+    {
+        $spikerlar = $this->spikerlarRepository->find($id);
+
+        if (empty($spikerlar)) {
+            Flash::error('Spikerlar not found');
+
+            return redirect(route('spikerlars.index'));
+        }
+
+        $this->spikerlarRepository->delete($id);
+
+        Flash::success('Spikerlar deleted successfully.');
+
+        return redirect(route('spikerlars.index'));
+    }
+}
