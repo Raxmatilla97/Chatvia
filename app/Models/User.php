@@ -341,4 +341,9 @@ class User extends Authenticatable
     {
         return $this->hasOne(ReportedUser::class, 'reported_to')->where('reported_by', '=', Auth::id());
     }
+
+    public function news()
+    {
+        return $this->hasOne('App\Models\News');
+    }
 }

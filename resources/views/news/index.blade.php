@@ -75,18 +75,20 @@
                                                     </div>
                                                 </div>
                                             </div> 
-                                            @foreach ($news as $news )
+                                           
+                                            @foreach ($news as $news2 )
                                             <div class="col">
                                                 <div class="card" style="width: 18rem;">
-                                                    <img src="@if($news->img)
-                                                        {{ $news->img }}
+                                                    <img src="@if($news2->img)
+                                                    /image/{{ $news2->img }}
                                                     @else
                                                         {{'frontend/images/a270d270d5ca184422cf980475b99e24.gif'}}
                                                     @endif" class="card-img-top" alt="...">
+                                                    <hr>
                                                     <div class="card-body">
-                                                    <h5 class="card-title">{{ $news->title }}</h5>
-                                                    <p class="card-text">{{ $news->user_id }}</p>
-                                                    <a href="{{ route('news.show', [$news->id]) }}" class="btn btn-primary">O'qish</a>
+                                                    <h5 class="card-title">{{ $news2->title }}</h5>
+                                                    <p class="card-text">{{ $news2->user->name }}</p>
+                                                    <a href="{{ route('news.show', [$news2->id]) }}" class="btn btn-primary">O'qish</a>
                                                     </div>
                                                 </div> 
                                             </div>

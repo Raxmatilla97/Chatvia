@@ -21,8 +21,7 @@ class CreateNewsTable extends Migration
             $table->string('img');
             $table->text('content');
             $table->integer('is_active');
-            $table->boolean('is_ready');
-            $table->integer('user_id');
+            $table->boolean('is_ready');            
             $table->timestamps();
             $table->softDeletes();
         });
