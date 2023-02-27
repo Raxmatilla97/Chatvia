@@ -9,6 +9,7 @@
     <meta name="description" content="@yield('title') - {{getAppName()}}">
     <meta name="keyword" content="CoreUI,Bootstrap,Admin,Template,InfyOm,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <script src="https://cdn.ckeditor.com/4.20.2/standard/ckeditor.js"></script>
     <!-- Bootstrap 4.1.3 -->
     <link rel="stylesheet" href="{{ mix('assets/css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.2/css/select2.min.css">
@@ -16,7 +17,7 @@
     <link rel="stylesheet" href="{{ asset('assets/icheck/skins/all.css') }}">
     <link rel="stylesheet" href="{{ mix('assets/css/jquery.toast.min.css') }}">
 
-
+    
     <script src="{{ mix('assets/js/jquery.min.js') }}"></script>
     
     <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
@@ -248,6 +249,7 @@
 <script src="{{ mix('assets/js/set_user_status.js') }}"></script>
 <script src="{{ mix('assets/js/set-user-on-off.js') }}"></script>
 <script src="https://coreui.io/docs/dist/js/coreui.bundle.min.js"></script>
+
 
 @yield('scripts')
 

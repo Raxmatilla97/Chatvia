@@ -23,7 +23,7 @@
             <td>{{ $news->is_active }}</td>
             <td>{{ $news->is_ready }}</td>
             <td>{{ $news->created_at }}</td>
-            <td>{{ $news->user_id }}</td>
+            <td></td>
                 <td>
                     {!! Form::open(['route' => ['news.destroy', $news->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

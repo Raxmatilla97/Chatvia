@@ -2,13 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use Flash;
+// use Response;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use App\Repositories\NewsRepository;
 use App\Http\Requests\CreateNewsRequest;
 use App\Http\Requests\UpdateNewsRequest;
-use App\Repositories\NewsRepository;
 use App\Http\Controllers\AppBaseController;
-use Illuminate\Http\Request;
-use Flash;
-use Response;
+use Symfony\Component\HttpFoundation\Response;
+use App\Models\News;
+use Auth;
 
 class NewsController extends AppBaseController
 {
@@ -30,7 +34,7 @@ class NewsController extends AppBaseController
     public function index(Request $request)
     {
         $news = $this->newsRepository->all();
-
+        // dd($news);
         return view('news.index')
             ->with('news', $news);
     }
@@ -53,11 +57,19 @@ class NewsController extends AppBaseController
      * @return Response
      */
     public function store(CreateNewsRequest $request)
-    {
+    {   
+        $request['slug'] = SlugService::createSlug(Post::class, 'slug', $request->title);
+        $request['user_id'] = Auth::user()->id;
         $input = $request->all();
-
-        $news = $this->newsRepository->create($input);
-
+  
+        if ($image = $request->file('img')) {
+            $destinationPath = 'image/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $input['img'] = "$profileImage";
+        }
+    
+        News::create($input);
         Flash::success('News saved successfully.');
 
         return redirect(route('news.index'));
