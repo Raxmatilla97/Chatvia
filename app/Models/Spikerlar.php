@@ -57,7 +57,7 @@ class Spikerlar extends Model
         'fish' => 'required',
         'ish_joyi' => 'required',
         'about' => 'required',
-        'is_active' => 'required'
+      
     ];
 
     

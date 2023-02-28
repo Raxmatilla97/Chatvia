@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateSpikerlarRequest;
-use App\Http\Requests\UpdateSpikerlarRequest;
-use App\Repositories\SpikerlarRepository;
-use App\Http\Controllers\AppBaseController;
-use Illuminate\Http\Request;
 use Flash;
 use Response;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use App\Repositories\SpikerlarRepository;
+use App\Http\Controllers\AppBaseController;
+use App\Http\Requests\CreateSpikerlarRequest;
+use App\Http\Requests\UpdateSpikerlarRequest;
 
 class SpikerlarController extends AppBaseController
 {
@@ -54,11 +55,12 @@ class SpikerlarController extends AppBaseController
      */
     public function store(CreateSpikerlarRequest $request)
     {
+      
         $input = $request->all();
 
         $spikerlar = $this->spikerlarRepository->create($input);
 
-        Flash::success('Spikerlar saved successfully.');
+        Flash::success('Spiker saqlandi!');
 
         return redirect(route('spikerlars.index'));
     }
@@ -75,7 +77,7 @@ class SpikerlarController extends AppBaseController
         $spikerlar = $this->spikerlarRepository->find($id);
 
         if (empty($spikerlar)) {
-            Flash::error('Spikerlar not found');
+            Flash::error("Spiker haqida ma'lumotlar topilmadi!");
 
             return redirect(route('spikerlars.index'));
         }
@@ -95,7 +97,7 @@ class SpikerlarController extends AppBaseController
         $spikerlar = $this->spikerlarRepository->find($id);
 
         if (empty($spikerlar)) {
-            Flash::error('Spikerlar not found');
+            Flash::error("Spiker haqida ma'lumotlar topilmadi!");
 
             return redirect(route('spikerlars.index'));
         }
@@ -116,14 +118,14 @@ class SpikerlarController extends AppBaseController
         $spikerlar = $this->spikerlarRepository->find($id);
 
         if (empty($spikerlar)) {
-            Flash::error('Spikerlar not found');
+            Flash::error("Spiker haqida ma'lumotlar topilmadi!");
 
             return redirect(route('spikerlars.index'));
         }
 
         $spikerlar = $this->spikerlarRepository->update($request->all(), $id);
 
-        Flash::success('Spikerlar updated successfully.');
+        Flash::success("Spiker ma'lumotlari yangilandi!");
 
         return redirect(route('spikerlars.index'));
     }
@@ -142,14 +144,14 @@ class SpikerlarController extends AppBaseController
         $spikerlar = $this->spikerlarRepository->find($id);
 
         if (empty($spikerlar)) {
-            Flash::error('Spikerlar not found');
+            Flash::error("Spiker haqida ma'lumotlar topilmadi!");
 
             return redirect(route('spikerlars.index'));
         }
 
         $this->spikerlarRepository->delete($id);
 
-        Flash::success('Spikerlar deleted successfully.');
+        Flash::success("Spiker ma'lumotlari o'chirib yuborildi!");
 
         return redirect(route('spikerlars.index'));
     }
