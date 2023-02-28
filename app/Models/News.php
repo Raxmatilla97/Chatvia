@@ -4,7 +4,7 @@ namespace App\Models;
 
 
 
-use Cviebrock\EloquentSluggable\Sluggable;
+
 
 use Eloquent as Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -25,7 +25,7 @@ use Illuminate\Database\Eloquent\SoftDeletes;
  */
 class News extends Model
 {
-    use SoftDeletes, Sluggable;
+    use SoftDeletes;
   
 
     public $table = 'news';
@@ -83,13 +83,6 @@ class News extends Model
         return $this->belongsTo('App\Models\User');
     }
 
-    public function sluggable()
-    {
-        return [
-            'slug' => [
-                'source' => 'title'
-            ]
-        ];
-    }
+   
     
 }

@@ -63,10 +63,13 @@
                               <div class="tab-content" id="myTabContent">
                                 <div class="tab-pane fade active show" id="grid" role="tabpanel" aria-labelledby="grid-tab">
                                   
-                                    <div class="card-body">
-                                        <div class="row row-cols-1 row-cols-2 g-4">
+                                    <div class="content">
+
+                                        
+                                    
+                                         <div class="row row-cols-1 row-cols-2 g-4">
                                             <div class="col">
-                                                <div class="card" style="width: 18rem;">
+                                                <div class="card" style="width: 25rem;">
                                                     <img src="{{'frontend/images/a270d270d5ca184422cf980475b99e24.gif'}}" class="card-img-top" alt="...">
                                                     <div class="card-body">
                                                     <h5 class="card-title">Yangilik yaratish</h5>
@@ -77,8 +80,9 @@
                                             </div> 
                                            
                                             @foreach ($news as $news2 )
+                                            @if($news2->is_active and $news2->is_ready)   
                                             <div class="col">
-                                                <div class="card" style="width: 18rem;">
+                                                <div class="card" style="width: 20rem;">
                                                     <img src="@if($news2->img)
                                                     /image/{{ $news2->img }}
                                                     @else
@@ -92,8 +96,9 @@
                                                     </div>
                                                 </div> 
                                             </div>
+                                            @endif
                                             @endforeach
-                                        </div>
+                                        </div> 
                                     </div>
 
 
@@ -107,7 +112,12 @@
                                     </div>
                                 </div>
                                 <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-                                  <p>Placeholder content for the tab panel. This one relates to the contact tab. Her love is like a drug. All my girls vintage Chanel baby. Got a motel and built a fort out of sheets. 'Cause she's the muse and the artist. (This is how we do) So you wanna play with magic. So just be sure before you give it all to me. I'm walking, I'm walking on air (tonight). Skip the talk, heard it all, time to walk the walk. Catch her if you can. Stinging like a bee I earned my stripes.</p>
+                                    <div class="card-body">                         
+                                        @include('news.men_yaratgan')
+                                         <div class="pull-right mr-3">
+                                                
+                                         </div>
+                                    </div>
                                 </div>
                               </div>
                             </div>
@@ -118,5 +128,16 @@
              </div>
          </div>
     </div>
+    <style>
+        body{
+            /* Created with https://www.css-gradient.com */
+            background: #23EC55;
+            background: -webkit-radial-gradient(top right, #23EC55, #2D51C1);
+            background: -moz-radial-gradient(top right, #23EC55, #2D51C1);
+            background: radial-gradient(to bottom left, #23EC55, #2D51C1);
+            }
+         
+    </style>
+
 @endsection
 

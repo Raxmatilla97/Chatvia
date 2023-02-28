@@ -10,6 +10,10 @@
     
     <!-- Img Field -->
     <div class="form-group col-sm-4">
+        <div class="col-md-12 mb-2">
+        <img id="image_preview_container" src="{{ asset('storage/default.jpg') }}"
+        alt="preview image" style="max-height: 150px;">
+    </div>
         {!! Form::label('img', 'Yangilik suratini yuklang:') !!}
         {!! Form::file('img',['id' => 'image', 'multiple', 'data-allow-reorder' => 'true', 'data-max-file-size' => '3MB', 'data-max-files' => '1']) !!}
     </div>
@@ -17,10 +21,10 @@
    
 </div>
 
-<div class="col-md-12 mb-2">
-    <img id="image_preview_container" src="{{ asset('storage/image/image-preview.png') }}"
+{{-- <div class="col-md-12 mb-2">
+    <img id="image_preview_container" src="{{ asset('storage/default.jpg') }}"
         alt="preview image" style="max-height: 150px;">
-</div>
+</div> --}}
 
 
 <!-- Content Field -->
@@ -33,14 +37,34 @@
     </script>
 </div>
 
-<!-- Is Ready Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('is_ready', 'Yangilik chop etish uchun tayyormi?:') !!}
-    <label class="checkbox-inline">
-        {!! Form::hidden('is_ready', 0) !!}
-        {!! Form::checkbox('is_ready', '1', null) !!}
-    </label>
+<div class="row">
+    <!-- Is Ready Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('is_active', 'Yangilik chop etish uchun tayyormi?:') !!}
+        <label class="checkbox-inline">
+            {!! Form::hidden('is_active', 0) !!}
+            {!! Form::checkbox('is_active', '1', null) !!}
+        </label>
+    </div>
+
+    @if(Auth::user()->hasRole('Admin') or Auth::user()->hasRole('Moderator'))
+        <div class="form-group col-sm-6">
+            {!! Form::label('is_ready', "Moderatsiyadan o'tdimi?:") !!}
+            <label class="checkbox-inline">
+                {!! Form::hidden('is_ready', 0) !!}
+                {!! Form::checkbox('is_ready', '1', null) !!}
+            </label>
+        </div>    
+    @endif
+   
 </div>
+
+<style>
+input[type=checkbox] {
+    width:3vw;
+    height:3vh;
+}
+</style>
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
@@ -49,26 +73,26 @@
 </div>
 
 <script>
-//     $(document).ready(function (e) {
+    $(document).ready(function (e) {
    
-//    $.ajaxSetup({
-//        headers: {
-//            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-//         }
-//    });
+   $.ajaxSetup({
+       headers: {
+           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+   });
   
-//    $('#image').change(function(){
+   $('#image').change(function(){
            
-//     let reader = new FileReader();
+    let reader = new FileReader();
 
-//     reader.onload = (e) => { 
+    reader.onload = (e) => { 
 
-//       $('#image_preview_container').attr('src', e.target.result); 
-//     }
+      $('#image_preview_container').attr('src', e.target.result); 
+    }
 
-//     reader.readAsDataURL(this.files[0]); 
+    reader.readAsDataURL(this.files[0]); 
   
-//    });
+   });
   
 //    $('.upload_image_form').submit(function(e) {
 
