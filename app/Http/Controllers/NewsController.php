@@ -70,7 +70,7 @@ class NewsController extends AppBaseController
         }
     
         News::create($input);
-        Flash::success('News saved successfully.');
+        Flash::success('Yangilik saqlandi!');
 
         return redirect(route('news.index'));
     }
@@ -87,7 +87,7 @@ class NewsController extends AppBaseController
         $news = $this->newsRepository->find($id);
 
         if (empty($news)) {
-            Flash::error('News not found');
+            Flash::error('Yangilik topilmadi!');
 
             return redirect(route('news.index'));
         }
@@ -107,7 +107,7 @@ class NewsController extends AppBaseController
         $news = $this->newsRepository->find($id);
 
         if (empty($news)) {
-            Flash::error('News not found');
+            Flash::error('Yangilik topilmadi!');
 
             return redirect(route('news.index'));
         }
@@ -128,14 +128,14 @@ class NewsController extends AppBaseController
         $news = $this->newsRepository->find($id);
 
         if (empty($news)) {
-            Flash::error('News not found');
+            Flash::error('Yangilik topilmadi!');
 
             return redirect(route('news.index'));
         }
 
         $news = $this->newsRepository->update($request->all(), $id);
 
-        Flash::success('News updated successfully.');
+        Flash::success("Yangilik o'zgartirildi!");
 
         return redirect(route('news.index'));
     }
@@ -154,14 +154,14 @@ class NewsController extends AppBaseController
         $news = $this->newsRepository->find($id);
 
         if (empty($news)) {
-            Flash::error('News not found');
+            Flash::error('Yangilik topilmadi!');
 
             return redirect(route('news.index'));
         }
 
         $this->newsRepository->delete($id);
 
-        Flash::success('News deleted successfully.');
+        Flash::success("Yangilik o'chirildi!");
 
         return redirect(route('news.index'));
     }

@@ -68,14 +68,11 @@ class News extends Model
      * @var array
      */
     public static $rules = [
-        // 'title' => 'required',
-        // 'slug' => 'required',
-        // 'img' => 'required',
-        // 'content' => 'required',
-        // 'is_active' => 'required',
-        // 'is_ready' => 'required',
-        // 'created_at' => 'required',
-        // 'user_id' => 'required'
+        'title' => 'required',        
+        'img' => 'required',
+        'content' => 'required',
+        'is_active' => 'required'
+       
     ];
 
     public function user()
