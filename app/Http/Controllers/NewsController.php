@@ -58,7 +58,7 @@ class NewsController extends AppBaseController
      */
     public function store(CreateNewsRequest $request)
     {   
-        $request['slug'] = SlugService::createSlug(Post::class, 'slug', $request->title);
+        $request['slug'] = date('His').'-'.Str::slug($request->title);
         $request['user_id'] = Auth::user()->id;
         $input = $request->all();
   
