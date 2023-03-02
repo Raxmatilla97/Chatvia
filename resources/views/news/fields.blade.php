@@ -75,11 +75,11 @@ input[type=checkbox] {
 <script>
     $(document).ready(function (e) {
    
-   $.ajaxSetup({
-       headers: {
-           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-   });
+//    $.ajaxSetup({
+//        headers: {
+//            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//         }
+//    });
   
    $('#image').change(function(){
            

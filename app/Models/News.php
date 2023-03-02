@@ -43,7 +43,9 @@ class News extends Model
         'is_active',
         'is_ready',
         'created_at',
-        'user_id'
+        'user_id',
+        '_method', 
+        '_token'
     ];
 
     /**
@@ -59,7 +61,9 @@ class News extends Model
         'content' => 'string',
         'is_active' => 'integer',
         'is_ready' => 'boolean',
-        'user_id' => 'integer'
+        'user_id' => 'integer',
+        '_method' => 'string', 
+        '_token' => 'string'
     ];
 
     /**

@@ -10,6 +10,7 @@ use App\Repositories\SpikerlarRepository;
 use App\Http\Controllers\AppBaseController;
 use App\Http\Requests\CreateSpikerlarRequest;
 use App\Http\Requests\UpdateSpikerlarRequest;
+use App\Models\Spikerlar;
 
 class SpikerlarController extends AppBaseController
 {
@@ -58,7 +59,14 @@ class SpikerlarController extends AppBaseController
       
         $input = $request->all();
 
-        $spikerlar = $this->spikerlarRepository->create($input);
+        if ($image = $request->file('img')) {
+            $destinationPath = 'image/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $input['img'] = "$profileImage";
+        }
+              dd($input['img']);
+        Spikerlar::create($input);
 
         Flash::success('Spiker saqlandi!');
 
@@ -115,15 +123,27 @@ class SpikerlarController extends AppBaseController
      */
     public function update($id, UpdateSpikerlarRequest $request)
     {
-        $spikerlar = $this->spikerlarRepository->find($id);
 
-        if (empty($spikerlar)) {
-            Flash::error("Spiker haqida ma'lumotlar topilmadi!");
+        // $news = $this->newsRepository->find($id);
+        $data = $request->all();
+        
+        $data = request()->except(['_token']);
+        $data = request()->except(['_method']);
+        if ($image = $request->file('img')) {
+            $destinationPath = 'image/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $img = "$profileImage";
+            $data['img'] = $img;
+        }
+       
+        if (empty($data)) {
+            Flash::error('Spiker topilmadi!');
 
             return redirect(route('spikerlars.index'));
         }
-
-        $spikerlar = $this->spikerlarRepository->update($request->all(), $id);
+       dd($data);
+        Spikerlar::where('id',$id)->update($data);
 
         Flash::success("Spiker ma'lumotlari yangilandi!");
 

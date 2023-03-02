@@ -61,7 +61,7 @@ class NewsController extends AppBaseController
         $request['slug'] = date('His').'-'.Str::slug($request->title);
         $request['user_id'] = Auth::user()->id;
         $input = $request->all();
-  
+        
         if ($image = $request->file('img')) {
             $destinationPath = 'image/';
             $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
@@ -125,16 +125,25 @@ class NewsController extends AppBaseController
      */
     public function update($id, UpdateNewsRequest $request)
     {
-        $news = $this->newsRepository->find($id);
-
-        if (empty($news)) {
+        // $news = $this->newsRepository->find($id);
+        $data = $request->all();
+        $data = request()->except(['_token']);
+        $data = request()->except(['_method']);
+        if ($image = $request->file('img')) {
+            $destinationPath = 'image/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $img = "$profileImage";
+            $data['img'] = $img;
+        }
+       
+        if (empty($data)) {
             Flash::error('Yangilik topilmadi!');
 
             return redirect(route('news.index'));
         }
-
-        $news = $this->newsRepository->update($request->all(), $id);
-
+       
+        News::where('id',$id)->update($data);
         Flash::success("Yangilik o'zgartirildi!");
 
         return redirect(route('news.index'));

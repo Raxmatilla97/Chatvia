@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddRelationNews extends Migration
+class AddImageSpikers extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class AddRelationNews extends Migration
      */
     public function up()
     {
-        Schema::table('news', function (Blueprint $table) {
-            $table->integer('user_id')->unsigned();;
-            $table->foreign('user_id')->references('id')->on('users');
+        Schema::table('spikerlars', function (Blueprint $table) {
+            $table->string('img')->nullable();
+
         });
     }
 
@@ -26,8 +26,8 @@ class AddRelationNews extends Migration
      */
     public function down()
     {
-        Schema::table('news', function (Blueprint $table) {
-            $table->dropColumn('user_id');
+        Schema::table('spikerlars', function (Blueprint $table) {
+              $table->dropColumn('img');
         });
     }
 }
