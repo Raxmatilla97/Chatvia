@@ -31,8 +31,11 @@ class Spikerlar extends Model
         'fish',
         'ish_joyi',
         'about',
+        'img',
         'is_active',
-        'created_at'
+        'created_at',
+        '_token',
+        '_method'
     ];
 
     /**
@@ -43,6 +46,7 @@ class Spikerlar extends Model
     protected $casts = [
         'id' => 'integer',
         'fish' => 'string',
+        'img' => 'string',
         'ish_joyi' => 'string',
         'about' => 'string',
         'is_active' => 'boolean'
@@ -55,6 +59,7 @@ class Spikerlar extends Model
      */
     public static $rules = [
         'fish' => 'required',
+        'img' => 'required',
         'ish_joyi' => 'required',
         'about' => 'required',
       

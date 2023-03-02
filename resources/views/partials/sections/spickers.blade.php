@@ -13,157 +13,28 @@
 
         <div class="clearfix"></div>
 
-        <div class="col-xl-3 col-lg-4 col-sm-6 mb30 wow fadeInUp">
-          <!-- team member -->
-          <div class="de-team-list">
-            <div class="team-pic">
-              <img src="{{'/frontend/images/person.jpeg'}}" class="img-responsive" alt="" />
+        @foreach ($spikers as $spiker)
+          <div class="col-xl-3 col-lg-4 col-sm-6 mb30 wow fadeInUp">
+            <!-- team member -->
+            <div class="de-team-list">
+              <div class="team-pic">
+                <img src="{{'/frontend/images/person.jpeg'}}" class="img-responsive" alt="" />
+              </div>
+              <div class="team-desc">
+                <h3>{{$spiker->fish}}</h3>
+                <p class="lead">{{$spiker->ish_joyi}}</p>
+                <div class="small-border"></div>
+                <p>{{$spiker->about}}</p>
+
+
+
+              </div>
             </div>
-            <div class="team-desc">
-              <h3>Sergey Guriev</h3>
-              <p class="lead">Sciences Po (France)</p>
-              <div class="small-border"></div>
-              <p>Professor Guriev korporativ boshqaruv, mehnat bozoridagi mobillik va iqtisodiy rivojlanish sohasida ilmiy tadqiqotlar olib boradi.</p>
-
-
-
-            </div>
+            <!-- team close -->
           </div>
-          <!-- team close -->
-        </div>
-
-        <div class="col-xl-3 col-lg-4 col-sm-6 mb30 wow fadeInUp">
-          <!-- team member -->
-          <div class="de-team-list">
-            <div class="team-pic">
-              <img src="{{'/frontend/images/person.jpeg'}}" class="img-responsive" alt="" />
-            </div>
-            <div class="team-desc">
-              <h3>Sergey Guriev</h3>
-              <p class="lead">Sciences Po (France)</p>
-              <div class="small-border"></div>
-              <p>Professor Guriev korporativ boshqaruv, mehnat bozoridagi mobillik va iqtisodiy rivojlanish sohasida ilmiy tadqiqotlar olib boradi.</p>
-
-
-
-            </div>
-          </div>
-          <!-- team close -->
-        </div>
-
-        <div class="col-xl-3 col-lg-4 col-sm-6 mb30 wow fadeInUp">
-          <!-- team member -->
-          <div class="de-team-list">
-            <div class="team-pic">
-              <img src="{{'/frontend/images/person.jpeg'}}" class="img-responsive" alt="" />
-            </div>
-            <div class="team-desc">
-              <h3>Sergey Guriev</h3>
-              <p class="lead">Sciences Po (France)</p>
-              <div class="small-border"></div>
-              <p>Professor Guriev korporativ boshqaruv, mehnat bozoridagi mobillik va iqtisodiy rivojlanish sohasida ilmiy tadqiqotlar olib boradi.</p>
-
-
-            </div>
-          </div>
-          <!-- team close -->
-        </div>
-
-        <div class="col-xl-3 col-lg-4 col-sm-6 mb30 wow fadeInUp">
-          <!-- team member -->
-          <div class="de-team-list">
-            <div class="team-pic">
-              <img src="{{'/frontend/images/person.jpeg'}}" class="img-responsive" alt="" />
-            </div>
-            <div class="team-desc">
-              <h3>Sergey Guriev</h3>
-              <p class="lead">Sciences Po (France)</p>
-              <div class="small-border"></div>
-              <p>Professor Guriev korporativ boshqaruv, mehnat bozoridagi mobillik va iqtisodiy rivojlanish sohasida ilmiy tadqiqotlar olib boradi.</p>
-
-
-
-            </div>
-          </div>
-          <!-- team close -->
-        </div>
-
-        <div class="col-xl-3 col-lg-4 col-sm-6 mb30 wow fadeInUp">
-          <!-- team member -->
-          <div class="de-team-list">
-            <div class="team-pic">
-              <img src="{{'/frontend/images/person.jpeg'}}" class="img-responsive" alt="" />
-            </div>
-            <div class="team-desc">
-              <h3>Sergey Guriev</h3>
-              <p class="lead">Sciences Po (France)</p>
-              <div class="small-border"></div>
-              <p>Professor Guriev korporativ boshqaruv, mehnat bozoridagi mobillik va iqtisodiy rivojlanish sohasida ilmiy tadqiqotlar olib boradi.</p>
-
-
-
-
-            </div>
-          </div>
-          <!-- team close -->
-        </div>
-
-        <div class="col-xl-3 col-lg-4 col-sm-6 mb30 wow fadeInUp">
-          <!-- team member -->
-          <div class="de-team-list">
-            <div class="team-pic">
-              <img src="{{'/frontend/images/person.jpeg'}}" class="img-responsive" alt="" />
-            </div>
-            <div class="team-desc">
-              <h3>Sergey Guriev</h3>
-              <p class="lead">Sciences Po (France)</p>
-              <div class="small-border"></div>
-              <p>Professor Guriev korporativ boshqaruv, mehnat bozoridagi mobillik va iqtisodiy rivojlanish sohasida ilmiy tadqiqotlar olib boradi.</p>
-
-
-            </div>
-          </div>
-          <!-- team close -->
-        </div>
-
-        <div class="col-xl-3 col-lg-4 col-sm-6 mb30 wow fadeInUp">
-          <!-- team member -->
-          <div class="de-team-list">
-            <div class="team-pic">
-              <img src="{{'/frontend/images/person.jpeg'}}" class="img-responsive" alt="" />
-            </div>
-            <div class="team-desc">
-              <h3>Sergey Guriev</h3>
-              <p class="lead">Sciences Po (France)</p>
-              <div class="small-border"></div>
-              <p>Professor Guriev korporativ boshqaruv, mehnat bozoridagi mobillik va iqtisodiy rivojlanish sohasida ilmiy tadqiqotlar olib boradi.</p>
-
-
-
-
-            </div>
-          </div>
-          <!-- team close -->
-        </div>
-
-        <div class="col-xl-3 col-lg-4 col-sm-6 mb30 wow fadeInUp">
-          <!-- team member -->
-          <div class="de-team-list">
-            <div class="team-pic">
-              <img src="{{'/frontend/images/person.jpeg'}}" class="img-responsive" alt="" />
-            </div>
-            <div class="team-desc">
-              <h3>Sergey Guriev</h3>
-              <p class="lead">Sciences Po (France)</p>
-              <div class="small-border"></div>
-              <p>Professor Guriev korporativ boshqaruv, mehnat bozoridagi mobillik va iqtisodiy rivojlanish sohasida ilmiy tadqiqotlar olib boradi.</p>
-
-
-
-            </div>
-          </div>
-          <!-- team close -->
-        </div>
+        @endforeach
+      
+      
         <div class="clearfix"></div>
 
       </div>

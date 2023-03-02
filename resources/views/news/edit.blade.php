@@ -19,7 +19,7 @@
                           </div>
                           <div class="card-body">
                               {!! Form::model($news, ['route' => ['news.update', $news->id], 'method' => 'patch', 'files' => true]) !!}
-
+                              
                               @include('news.fields')
 
                               {!! Form::close() !!}
