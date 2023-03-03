@@ -1,64 +1,98 @@
-<!-- Title Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('title', 'Title:') !!}
-    {!! Form::text('title', null, ['class' => 'form-control']) !!}
+
+<div class="row">
+    <div class="form-group col-sm-8" style="margin-top: 40px;">
+        {!! Form::label('title', 'Modul mazmuni nomlanishini qisqa qilib yozing:') !!}
+        {!! Form::text('title', null, ['class' => 'form-control']) !!}
+    </div>
+    
+    <!-- Img Field -->
+    <div class="form-group col-sm-4">
+        <div class="col-md-12 mb-2">
+        <img style="width: 80%" id="image_preview_container" src="{{ asset('storage/default.jpg') }}"
+        alt="preview image" style="max-height: 150px;">
+    </div>
+        {!! Form::label('img', 'Suratini yuklang:') !!}
+        {!! Form::file('img',['id' => 'image', 'multiple', 'data-allow-reorder' => 'true', 'data-max-file-size' => '3MB', 'data-max-files' => '1']) !!}
+    </div>
+    <div class="clearfix"></div>
+   
 </div>
 
-<!-- Slug Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('slug', 'Slug:') !!}
-    {!! Form::text('slug', null, ['class' => 'form-control']) !!}
-</div>
+<div class="row">
+    <!-- File Field -->
+    <div class="form-group col-sm-3">
+        {!! Form::label('file', "Yuklanishi kerak bo'lgan faylni yuklang:") !!}
+        {!! Form::file('file') !!}
+    </div>
 
-<!-- Img Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('img', 'Img:') !!}
-    {!! Form::file('img') !!}
+    <div class="form-group col-sm-4">
+        {!! Form::label('bolimlar', "Modul mazmuni bo'limini tanlang:") !!}
+        {!! Form::select('bolimlar', [
+        'mavular' => 'Mavzular',
+        'tagdimotlar' => "Tag'dimotlar",
+        'video_darslar' => "Video darslar",
+        'oqish_uchun_tafsiya' => "O'qish uchun tafsiya qilingan manbalar",
+        'maqola_va_tezislar' => "Maqola va tezislar",
+        'ilmiy_ishlar' => "Ilmiy ishlar",
+        'meyoriy_hujjatlar' => "Meyoriy hujjatlar",
+        'shaxsiy_hujjatlar' => "Shaxsiy hujjatlar",
+       
+    ], null, ['class' => 'form-control']) !!}
+     </div>
+   <!-- Url Content Field -->
+<div class="form-group col-sm-5">
+    {!! Form::label('url_content', "Faylni boshqa manzildan ko'rsatish:") !!}
+    {!! Form::text('url_content', null, ['class' => 'form-control', 'placeholder' => "https://youtube.com/"]) !!}
 </div>
-<div class="clearfix"></div>
+    
+    <div class="clearfix"></div>
+</div>
 
 <!-- Content Field -->
 <div class="form-group col-sm-12 col-lg-12">
-    {!! Form::label('content', 'Content:') !!}
+    {!! Form::label('content', "Asosiy qism:") !!}
     {!! Form::textarea('content', null, ['class' => 'form-control']) !!}
 </div>
 
-<!-- File Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('file', 'File:') !!}
-    {!! Form::file('file') !!}
-</div>
-<div class="clearfix"></div>
+<script>
+    CKEDITOR.replace( 'content' );
+</script>
 
-<!-- Url Content Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('url_content', 'Url Content:') !!}
-    {!! Form::text('url_content', null, ['class' => 'form-control']) !!}
-</div>
 
-<!-- Created At Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('created_at', 'Created At:') !!}
-    {!! Form::text('created_at', null, ['class' => 'form-control','id'=>'created_at']) !!}
-</div>
+<div class="row">
+        <!-- Is Ready Field -->
+    <div class="form-group col-sm-6">
+        {!! Form::label('is_active', 'Mazmun chop etish uchun tayyormi?:') !!}
+        <label class="checkbox-inline">
+            {!! Form::hidden('is_active', 0) !!}
+            {!! Form::checkbox('is_active', '1', null) !!}
+        </label>
+    </div>
 
-@push('scripts')
-   <script type="text/javascript">
-           $('#created_at').datetimepicker({
-               format: 'YYYY-MM-DD HH:mm:ss',
-               useCurrent: true,
-               icons: {
-                   up: "icon-arrow-up-circle icons font-2xl",
-                   down: "icon-arrow-down-circle icons font-2xl"
-               },
-               sideBySide: true
-           })
-       </script>
-@endpush
+    @if(Auth::user()->hasRole('Admin') or Auth::user()->hasRole('Moderator'))
+    <div class="form-group col-sm-6">
+        {!! Form::label('is_ready', "Moderatsiyadan o'tdimi?:") !!}
+        <label class="checkbox-inline">
+            {!! Form::hidden('is_ready', 0) !!}
+            {!! Form::checkbox('is_ready', '1', null) !!}
+        </label>
+    </div>    
+    @endif
+
+</div>
+   
+
+<style>
+input[type=checkbox] {
+    width:3vw;
+    height:3vh;
+}
+</style>
+
 
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">
-    {!! Form::submit('Save', ['class' => 'btn btn-primary']) !!}
-    <a href="{{ route('modulMazmunis.index') }}" class="btn btn-secondary">Cancel</a>
+    {!! Form::submit('Saqlash', ['class' => 'btn btn-success']) !!}
+    <a href="{{ route('modulMazmunis.index') }}" class="btn btn-secondary">Safidan chiqib ketish</a>
 </div>
