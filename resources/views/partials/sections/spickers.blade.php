@@ -18,7 +18,7 @@
             <!-- team member -->
             <div class="de-team-list">
               <div class="team-pic">
-                <img src="{{'/frontend/images/person.jpeg'}}" class="img-responsive" alt="" />
+                <img src="/image/{{$spiker->img}}" class="img-responsive" alt="" />
               </div>
               <div class="team-desc">
                 <h3>{{$spiker->fish}}</h3>

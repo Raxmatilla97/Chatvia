@@ -18,7 +18,7 @@
                               <strong>Edit Spikerlar</strong>
                           </div>
                           <div class="card-body">
-                              {!! Form::model($spikerlar, ['route' => ['spikerlars.update', $spikerlar->id], 'method' => 'patch']) !!}
+                              {!! Form::model($spikerlar, ['route' => ['spikerlars.update', $spikerlar->id], 'files' => true, 'method' => 'patch']) !!}
 
                               @include('spikerlars.fields')
 

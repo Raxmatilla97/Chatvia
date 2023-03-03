@@ -1,42 +1,36 @@
-<!-- Fish Field -->
-<div class="form-group">
-    {!! Form::label('fish', 'Fish:') !!}
-    <p>{{ $spikerlar->fish }}</p>
+<div class="row">
+
+    <div class="form-group col-sm-3">     
+        <img style="height: auto; width: 50%; display: block; margin-left: auto; margin-right: auto;" src="@if($spikerlar->img)
+            /image/{{ $spikerlar->img }}
+            @else
+                {{'frontend/images/a270d270d5ca184422cf980475b99e24.gif'}}
+            @endif" alt="">
+    </div>
+
+    <!-- Fish Field -->
+    <div class="form-group col-sm-2" style="background-color: aliceblue;">
+        {!! Form::label('fish', 'Familya Ism Sharifi:') !!}
+        <p>{{ $spikerlar->fish }}</p>
+    </div>
+
+    <!-- Ish Joyi Field -->
+    <div class="form-group col-sm-2" style="background-color: #f0f8ff63">
+        {!! Form::label('ish_joyi', 'Ish Joyi:') !!}
+        <p>{{ $spikerlar->ish_joyi }}</p>
+    </div>
+
+    <!-- About Field -->
+    <div class="form-group col-sm-4" style="background-color: aliceblue;">
+        {!! Form::label('about', 'Spiker haqida:') !!}
+        <p>{{ $spikerlar->about }}</p>
+    </div>
+
 </div>
 
-<!-- Ish Joyi Field -->
-<div class="form-group">
-    {!! Form::label('ish_joyi', 'Ish Joyi:') !!}
-    <p>{{ $spikerlar->ish_joyi }}</p>
-</div>
+<style>
+    label{
+        text-align: center; font-weight: 700;
+    }
 
-<!-- About Field -->
-<div class="form-group">
-    {!! Form::label('about', 'About:') !!}
-    <p>{{ $spikerlar->about }}</p>
-</div>
-
-<!-- Is Active Field -->
-<div class="form-group">
-    {!! Form::label('is_active', 'Is Active:') !!}
-    <p>{{ $spikerlar->is_active }}</p>
-</div>
-
-<!-- Created At Field -->
-<div class="form-group">
-    {!! Form::label('created_at', 'Created At:') !!}
-    <p>{{ $spikerlar->created_at }}</p>
-</div>
-
-<!-- Created At Field -->
-<div class="form-group">
-    {!! Form::label('created_at', 'Created At:') !!}
-    <p>{{ $spikerlar->created_at }}</p>
-</div>
-
-<!-- Updated At Field -->
-<div class="form-group">
-    {!! Form::label('updated_at', 'Updated At:') !!}
-    <p>{{ $spikerlar->updated_at }}</p>
-</div>
-
+</style>

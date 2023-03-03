@@ -5,7 +5,7 @@
             <li class="breadcrumb-item">
                 <a href="{{ route('spikerlars.index') }}">Spikerlar</a>
             </li>
-            <li class="breadcrumb-item active">Detail</li>
+            <li class="breadcrumb-item active">Spiker haqida</li>
      </ol>
      <div class="container-fluid">
           <div class="animated fadeIn">
@@ -14,8 +14,8 @@
                      <div class="col-lg-12">
                          <div class="card">
                              <div class="card-header">
-                                 <strong>Details</strong>
-                                  <a href="{{ route('spikerlars.index') }}" class="btn btn-light">Back</a>
+                                 <strong>Ma'lumotlar</strong>
+                                  <a href="{{ route('spikerlars.index') }}" class="btn btn-light">Orqaga qaytish</a>
                              </div>
                              <div class="card-body">
                                  @include('spikerlars.show_fields')
