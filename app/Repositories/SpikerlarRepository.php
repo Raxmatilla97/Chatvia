@@ -19,6 +19,7 @@ class SpikerlarRepository extends BaseRepository
     protected $fieldSearchable = [
         'fish',
         'ish_joyi',
+        'img',
         'about',
         'is_active',
         'created_at'

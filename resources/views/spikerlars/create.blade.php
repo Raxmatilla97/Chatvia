@@ -18,7 +18,7 @@
                                 <strong>Spiker yaratish</strong>
                             </div>
                             <div class="card-body">
-                                {!! Form::open(['route' => 'spikerlars.store']) !!}
+                                {!! Form::open(['route' => 'spikerlars.store', 'files' => true]) !!}
 
                                    @include('spikerlars.fields')
 

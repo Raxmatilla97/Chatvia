@@ -65,7 +65,7 @@ class SpikerlarController extends AppBaseController
             $image->move($destinationPath, $profileImage);
             $input['img'] = "$profileImage";
         }
-              dd($input['img']);
+             
         Spikerlar::create($input);
 
         Flash::success('Spiker saqlandi!');
@@ -142,7 +142,7 @@ class SpikerlarController extends AppBaseController
 
             return redirect(route('spikerlars.index'));
         }
-       dd($data);
+      
         Spikerlar::where('id',$id)->update($data);
 
         Flash::success("Spiker ma'lumotlari yangilandi!");
