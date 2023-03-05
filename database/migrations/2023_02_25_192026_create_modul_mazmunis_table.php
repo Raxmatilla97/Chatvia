@@ -17,15 +17,15 @@ class CreateModulMazmunisTable extends Migration
         Schema::create('modul_mazmunis', function (Blueprint $table) {
             $table->increments('id');
             $table->string('title');
-            $table->string('slug');
-            $table->string('img');
-            $table->string('category');
-            $table->boolean('is_active');
-            $table->boolean('is_moderate');
-            $table->text('content');
-            $table->boolean('is_private');
-            $table->string('file');
-            $table->string('url_content');
+            $table->string('slug')->nullable();
+            $table->string('img')->nullable();
+            $table->string('category')->nullable();
+            $table->boolean('is_active')->nullable();
+            $table->boolean('is_moderate')->nullable();
+            $table->text('content')->nullable();
+            $table->boolean('is_private')->nullable();
+            $table->string('file')->nullable();
+            $table->string('url_content')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
