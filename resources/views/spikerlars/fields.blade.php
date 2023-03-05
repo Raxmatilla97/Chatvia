@@ -18,8 +18,13 @@
     <!-- Img Field -->
     <div class="form-group col-sm-4">
         <div class="col-md-4 mb-2">
-        <img id="image_preview_container" src="{{ asset('storage/default.jpg') }}"
-        alt="preview image" style="max-height: 150px;">
+        @if($spikerlar->img)
+            <img style="width: 80%" id="image_preview_container" src="/image/{{$spikerlar->img}}"
+            alt="preview image" style="max-height: 150px;">
+        @else
+            <img style="width: 80%" id="image_preview_container" src="{{ asset('storage/default.jpg') }}"
+            alt="preview image" style="max-height: 150px;">
+        @endif
     </div>
         {!! Form::label('img', 'Spiker suratini yuklang:') !!}
         {!! Form::file('img',['id' => 'image', 'multiple', 'data-allow-reorder' => 'true', 'data-max-file-size' => '3MB', 'data-max-files' => '1']) !!}

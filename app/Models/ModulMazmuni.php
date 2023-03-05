@@ -44,7 +44,8 @@ class ModulMazmuni extends Model
         'is_private',
         'file',
         'url_content',
-        'created_at'
+        'created_at',
+        'user_id'
     ];
 
     /**
@@ -54,6 +55,7 @@ class ModulMazmuni extends Model
      */
     protected $casts = [
         'id' => 'integer',
+        'user_id' => 'integer',
         'title' => 'string',
         'slug' => 'string',
         'img' => 'string',
@@ -76,11 +78,10 @@ class ModulMazmuni extends Model
         'img' => 'required',
         'category' => 'required',
         'is_active' => 'required',
-        'is_moderate' => 'required',
+        // 'is_moderate' => 'required',
         'content' => 'required',
-        'is_private' => 'required',
-        'file' => 'required',
-        'created_at' => 'required'
+        // 'is_private' => 'required',      
+        // 'created_at' => 'required'
     ];
 
     

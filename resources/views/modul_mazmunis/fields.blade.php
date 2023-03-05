@@ -8,8 +8,14 @@
     <!-- Img Field -->
     <div class="form-group col-sm-4">
         <div class="col-md-12 mb-2">
-        <img style="width: 80%" id="image_preview_container" src="{{ asset('storage/default.jpg') }}"
-        alt="preview image" style="max-height: 150px;">
+            @if($modulMazmuni->img)
+                <img style="width: 80%" id="image_preview_container" src="/image/{{$modulMazmuni->img}}"
+                alt="preview image" style="max-height: 150px;">
+            @else
+                <img style="width: 80%" id="image_preview_container" src="{{ asset('storage/default.jpg') }}"
+                alt="preview image" style="max-height: 150px;">
+            @endif
+       
     </div>
         {!! Form::label('img', 'Suratini yuklang:') !!}
         {!! Form::file('img',['id' => 'image', 'multiple', 'data-allow-reorder' => 'true', 'data-max-file-size' => '3MB', 'data-max-files' => '1']) !!}
@@ -26,8 +32,8 @@
     </div>
 
     <div class="form-group col-sm-4">
-        {!! Form::label('bolimlar', "Modul mazmuni bo'limini tanlang:") !!}
-        {!! Form::select('bolimlar', [
+        {!! Form::label('category', "Modul mazmuni bo'limini tanlang:") !!}
+        {!! Form::select('category', [
         'mavular' => 'Mavzular',
         'tagdimotlar' => "Tag'dimotlar",
         'video_darslar' => "Video darslar",
@@ -42,7 +48,7 @@
    <!-- Url Content Field -->
 <div class="form-group col-sm-5">
     {!! Form::label('url_content', "Faylni boshqa manzildan ko'rsatish:") !!}
-    {!! Form::text('url_content', null, ['class' => 'form-control', 'placeholder' => "https://youtube.com/"]) !!}
+    {!! Form::text('url_content', null, ['class' => 'form-control', 'placeholder' => "https://youtube.com/ yoki boshqa sayt"]) !!}
 </div>
     
     <div class="clearfix"></div>

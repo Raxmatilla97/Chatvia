@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateModulMazmuniRequest;
-use App\Http\Requests\UpdateModulMazmuniRequest;
-use App\Repositories\ModulMazmuniRepository;
-use App\Http\Controllers\AppBaseController;
-use Illuminate\Http\Request;
 use Flash;
 use Response;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\AppBaseController;
+use App\Repositories\ModulMazmuniRepository;
+use App\Http\Requests\CreateModulMazmuniRequest;
+use App\Http\Requests\UpdateModulMazmuniRequest;
+use App\Models\ModulMazmuni;
 
 class ModulMazmuniController extends AppBaseController
 {
@@ -54,11 +57,28 @@ class ModulMazmuniController extends AppBaseController
      */
     public function store(CreateModulMazmuniRequest $request)
     {
+        $request['slug'] = date('His').'-'.Str::slug($request->title);
+        $request['user_id'] = Auth::user()->id;
         $input = $request->all();
+        
+        if ($image = $request->file('img')) {
+            $destinationPath = 'image/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $input['img'] = "$profileImage";
+        }
 
-        $modulMazmuni = $this->modulMazmuniRepository->create($input);
+        if ($file = $request->file('file')) {
+            $destinationPath = 'files/';
+            $profileFile = date('YmdHis') . "." . $file->getClientOriginalExtension();
+            $file->move($destinationPath, $profileFile);
+            $input['file'] = "$profileFile";
+        }
+    
+    
+        ModulMazmuni::create($input);
 
-        Flash::success('Modul Mazmuni saved successfully.');
+        Flash::success("Informatsiya saqlandi!");
 
         return redirect(route('modulMazmunis.index'));
     }
@@ -75,7 +95,7 @@ class ModulMazmuniController extends AppBaseController
         $modulMazmuni = $this->modulMazmuniRepository->find($id);
 
         if (empty($modulMazmuni)) {
-            Flash::error('Modul Mazmuni not found');
+            Flash::error("Modul mazmuni topilmadi!");
 
             return redirect(route('modulMazmunis.index'));
         }
@@ -95,7 +115,7 @@ class ModulMazmuniController extends AppBaseController
         $modulMazmuni = $this->modulMazmuniRepository->find($id);
 
         if (empty($modulMazmuni)) {
-            Flash::error('Modul Mazmuni not found');
+            Flash::error("Modul mazmuni topilmadi!");
 
             return redirect(route('modulMazmunis.index'));
         }
@@ -116,14 +136,14 @@ class ModulMazmuniController extends AppBaseController
         $modulMazmuni = $this->modulMazmuniRepository->find($id);
 
         if (empty($modulMazmuni)) {
-            Flash::error('Modul Mazmuni not found');
+            Flash::error("Modul mazmuni topilmadi!");
 
             return redirect(route('modulMazmunis.index'));
         }
 
         $modulMazmuni = $this->modulMazmuniRepository->update($request->all(), $id);
 
-        Flash::success('Modul Mazmuni updated successfully.');
+        Flash::success("Informatsiya yangilandi!");
 
         return redirect(route('modulMazmunis.index'));
     }
@@ -142,14 +162,14 @@ class ModulMazmuniController extends AppBaseController
         $modulMazmuni = $this->modulMazmuniRepository->find($id);
 
         if (empty($modulMazmuni)) {
-            Flash::error('Modul Mazmuni not found');
+            Flash::error("Modul mazmuni topilmadi!");
 
             return redirect(route('modulMazmunis.index'));
         }
 
         $this->modulMazmuniRepository->delete($id);
 
-        Flash::success('Modul Mazmuni deleted successfully.');
+        Flash::success("Informatsiya bazadan o'chirildi!");
 
         return redirect(route('modulMazmunis.index'));
     }
