@@ -2,7 +2,7 @@
     <table class="table table-striped" id="modulMazmunis-table">
         <thead>
             <tr>
-                <th>Mavzular</th>    
+                <th>Mavzular nomi</th>    
                 <th>Bo'limi</th>
                 <th>Aktivligi</th>
                 <th>Moderatsiya</th>               
@@ -15,9 +15,45 @@
         @foreach($modulMazmunis as $modulMazmuni)
             <tr>
                 <td>{{ $modulMazmuni->title }}</td>
-                <td>{{ $modulMazmuni->category }}</td>
-                <td>{{ $modulMazmuni->is_active }}</td>
-                <td>{{ $modulMazmuni->is_moderate }}</td>              
+                <td>
+                    @if($modulMazmuni->category == "mavular")
+                        Mavzular
+                    @elseif($modulMazmuni->category == "tagdimotlar")
+                        Tag'dimotlar
+                    @elseif($modulMazmuni->category == "video_darslar")
+                        Video darslar
+                    @elseif($modulMazmuni->category == "oqish_uchun_tafsiya")
+                        O'qish uchun tafsiya qilingan manbalar
+                    @elseif($modulMazmuni->category == "maqola_va_tezislar")
+                        Maqola va tezislar
+                    @elseif($modulMazmuni->category == "ilmiy_ishlar")
+                        Ilmiy ishlar
+                    @elseif($modulMazmuni->category == "meyoriy_hujjatlar")
+                        Meyoriy hujjatlar
+                    @elseif($modulMazmuni->category == "shaxsiy_hujjatlar")
+                        Shaxsiy hujjatlar
+                    @else
+                        Bo'lim topilmadi!
+                    @endif
+                    
+                
+                
+                </td>
+                <td>
+                    @if($modulMazmuni->is_active)
+                    <p class="btn btn-success btn-sm">Aktiv</p>
+                   @else
+                    <p class="btn btn-danger btn-sm">No Aktiv</p>
+                   @endif
+                 
+                </td>
+                <td>
+                    @if($modulMazmuni->is_ready)
+                    <p class="btn btn-success btn-sm">Tasdiqlangan</p>
+                   @else
+                    <p class="btn btn-danger btn-sm">Tasdiqlanmagan</p>
+                   @endif
+                </td>              
                 <td>{{ $modulMazmuni->is_private }}</td>   
                 <td>{{ $modulMazmuni->created_at }}</td>
                 <td>
