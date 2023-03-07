@@ -27,15 +27,24 @@ class NewsController extends AppBaseController
     /**
      * Display a listing of the News.
      *
-     * @param Request $request
-     *
-     * @return Response
      */
-    public function index(Request $request)
+    public function index()
     {
         $news = News::orderBy('created_at', 'DESC')->get();
         // dd($news);
         return view('news.index')
+            ->with('news', $news);
+    }
+
+    /**
+     * Men yaratgan yangiliklarni jadvalini ko'rish
+     *
+     */
+
+    public function menYaratgan(Request $request){
+        $news = News::orderBy('created_at', 'DESC')->get()->where('user_id', '=', Auth::user()->id);
+        
+        return view('news.men_yaratgan')
             ->with('news', $news);
     }
 

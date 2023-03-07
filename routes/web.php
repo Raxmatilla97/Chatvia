@@ -17,7 +17,9 @@ Route::group(['middleware'=>'language'],function ()
     Route::get('/home', 'HomeController@index')->name('home');
     
     // CRUDlar resurslari
-    Route::resource('news', 'NewsController');    
+    Route::get('/news/men-yaratgan', 'NewsController@menYaratgan')->name('news.menyaratgan');      
+    Route::resource('news', 'NewsController');
+    
     Route::resource('modulMazmunis', 'ModulMazmuniController');
 
     Route::group(['middleware' => ['user.activated', 'auth']], function () {

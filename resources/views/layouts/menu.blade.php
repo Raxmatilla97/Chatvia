@@ -12,7 +12,7 @@ body{
     }
   
  header{
-    background: linear-gradient(to right, #ec167f, #883ff9);
+    background: linear-gradient(to right, #883ff9, #ec167f);
  }
 .navbar-nav .nav-link {
     color: #f2f2f2;
@@ -20,16 +20,24 @@ body{
 .badge-primary {
     margin-left: 5px;
 }
+
+.sidebar .nav-title {
+    padding: 0.05rem 1rem;
+    font-size: 80%;
+    font-weight: 700;
+    color: #e4e7ea;
+    text-transform: uppercase;
+}
 </style>
 
-<li class="nav-title text-center">MULOQOT</li>
+<li class="nav-title text-center" style="background-color: #ec167f">MULOQOT</li>
 <li class="nav-item {{ Request::is('conversations*') ? 'active' : '' }}">
     <a class="nav-link {{ Request::is('conversations*') ? 'active' : '' }}" href="{{ url('conversations')  }}">
         <i class="nav-icon icon-speech mr-4"></i> {{ __('messages.conversations') }}
     </a>
 </li>
 <li class="nav-title text-center" style="background-color: #ec167f">YANGILIKLAR</li>
-<li class="nav-item {{ Request::is('news*') ? 'active' : '' }}" >
+<li class="nav-item {{ Request::is('news.index') ? 'active' : '' }}" >
     <a class="nav-link" href="{{ route('news.index') }}">
         <i class="nav-icon icon-cursor"></i>
         <span>Yangiliklar</span> 
@@ -37,19 +45,20 @@ body{
       
     </a>
 </li>
-<li class="nav-item {{ Request::is('news*') ? 'active' : '' }}">
+<li class="nav-item {{ Request::is('news.create') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('news.create') }}">
         <i class="nav-icon icon-cursor"></i>
         <span>Yangilik qo'shish</span>
     </a>
 </li>
-<li class="nav-item {{ Request::is('news*') ? 'active' : '' }}">
-    <a class="nav-link" href="{{ route('news.index') }}">
+<li class="nav-item {{ Request::is('news.menyaratgan') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('news.menyaratgan') }}">
         <i class="nav-icon icon-cursor"></i>
         <span>Mening yangiliklarim</span>
     </a>
 </li>
-<li class="nav-title">MODUL MA'ZMUNI</li>
+<li class="nav-title text-center" style="background-color: #ec167f">MODUL MAZMUNI</li>
+
 <li class="nav-item {{ Request::is('modulMazmunis*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('modulMazmunis.index') }}">
         <i class="nav-icon icon-cursor"></i>
