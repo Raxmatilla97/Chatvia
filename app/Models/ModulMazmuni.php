@@ -75,7 +75,7 @@ class ModulMazmuni extends Model
      */
     public static $rules = [
         'title' => 'required',
-        'img' => 'required',
+        // 'img' => 'required',
         'category' => 'required',
         'is_active' => 'required',
         // 'is_moderate' => 'required',

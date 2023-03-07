@@ -128,16 +128,7 @@
              </div>
          </div>
     </div>
-    <style>
-        body{
-            /* Created with https://www.css-gradient.com */
-            background: #23EC55;
-            background: -webkit-radial-gradient(top right, #23EC55, #2D51C1);
-            background: -moz-radial-gradient(top right, #23EC55, #2D51C1);
-            background: radial-gradient(to bottom left, #23EC55, #2D51C1);
-            }
-         
-    </style>
+   
 
 @endsection
 

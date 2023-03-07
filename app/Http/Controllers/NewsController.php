@@ -33,7 +33,7 @@ class NewsController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $news = $this->newsRepository->all();
+        $news = News::orderBy('created_at', 'DESC')->get();
         // dd($news);
         return view('news.index')
             ->with('news', $news);

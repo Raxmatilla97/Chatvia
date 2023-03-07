@@ -59,6 +59,13 @@ class ModulMazmuniController extends AppBaseController
     {
         $request['slug'] = date('His').'-'.Str::slug($request->title);
         $request['user_id'] = Auth::user()->id;
+        if ($request['category'] == 'shaxsiy_hujjatlar') {
+            $is_public = 1;
+        } else {
+            $is_public = 0;
+        }
+
+        $request['is_private'] = $is_public;
         $input = $request->all();
         
         if ($image = $request->file('img')) {
@@ -134,6 +141,13 @@ class ModulMazmuniController extends AppBaseController
     public function update($id, UpdateModulMazmuniRequest $request)
     {
         $modulMazmuni = $this->modulMazmuniRepository->find($id);
+        if ($request['category'] == 'shaxsiy_hujjatlar') {
+            $is_public = 1;
+        } else {
+            $is_public = 0;
+        }
+
+        $request['is_private'] = $is_public;
 
         if (empty($modulMazmuni)) {
             Flash::error("Modul mazmuni topilmadi!");
