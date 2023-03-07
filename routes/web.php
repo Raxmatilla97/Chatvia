@@ -17,9 +17,13 @@ Route::group(['middleware'=>'language'],function ()
     Route::get('/home', 'HomeController@index')->name('home');
     
     // CRUDlar resurslari
-    Route::resource('news', 'NewsController');    
-    Route::resource('modulMazmunis', 'ModulMazmuniController');
+    Route::get('/news/men-yaratgan', 'NewsController@menYaratgan')->name('news.menyaratgan');      
+    Route::resource('news', 'NewsController');
+    
 
+    
+    Route::resource('modulMazmunis', 'ModulMazmuniController');
+    Route::get('/modulMazmunis/category/{category}', 'ModulMazmuniController@category')->where('category', '^[a-zA-Z-_\/]+$')->name('modulMazmunis.category'); 
     Route::group(['middleware' => ['user.activated', 'auth']], function () {
 
         //ko'rish routerlari

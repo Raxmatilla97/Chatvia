@@ -1,5 +1,17 @@
 
-<div class="row">
+<div class="alert alert-success" role="alert" style="margin-bottom: 2.5rem;">
+    <h4 class="alert-heading">Eslatma!</h4>
+    <p>
+        Assalomu alaykum qadirli foydalanuvchi sizga shuni eslatib qo'yishni joiz topdimki agarda siz Elektron resurs qo'shmoqchi bo'lsangiz, 
+        etibor berishingiz kerak bo'lgan hamma formadagi joylarni to'ldirishingiz va imlo hatolariga etibor berishingizni so'rab qolamiz.
+        O'zingiz uchun va boshqa foydalanuvchilar uchun qiziqarli ilmiy elektron resurslarni yuklashingiz mumkin, barcha qo'shilgan resurslar
+        <b>Moderatsiyaga</b> yuboriladi!     
+    </p>
+    <hr>
+    <p class="mb-0">Moderatsiya vaqti 12-24 soat bo'lishi mumkin! Chat orqali Adminga yozishingiz mumkin. <a href="/conversations">Chat</a></p>
+  </div>
+
+<div class="row col-sm-12 col-lg-12">
     <div class="form-group col-sm-8" style="margin-top: 40px;">
         {!! Form::label('title', 'Modul mazmuni nomlanishini qisqa qilib yozing:') !!}
         {!! Form::text('title', null, ['class' => 'form-control']) !!}
@@ -24,7 +36,7 @@
    
 </div>
 
-<div class="row">
+<div class="row col-sm-12 col-lg-12">
     <!-- File Field -->
     <div class="form-group col-sm-3">
         {!! Form::label('file', "Yuklanishi kerak bo'lgan faylni yuklang:") !!}
@@ -65,22 +77,29 @@
 </script>
 
 
-<div class="row">
+<div class="row col-sm-12 col-lg-12">
         <!-- Is Ready Field -->
-    <div class="form-group col-sm-6 switch switch-label switch-pill switch-success">
-        {!! Form::label('is_active', 'Mazmun chop etish uchun tayyormi?:') !!}
-        <label class="checkbox-inline">
+    <div class="form-group col-sm-6 ">
+        {!! Form::label('is_active', "Resurs boshqalar ko'rishi uchun tayyormi?:", ['style' => 'margin-right: 10px;']) !!}
+        <label class="checkbox-inline switch-lg switch-label switch-pill switch-success"  style="margin-right: 10px;">
             {!! Form::hidden('is_active', 0) !!}
-            {!! Form::checkbox('is_active', '1', null) !!}
+            {!! Form::checkbox('is_active', '1', null, ['class' => 'switch-input', 'checked']) !!}
+            <span style=" margin-top: 15px;" class="switch-slider" data-checked="&#x2713;" data-unchecked="&#x2715;"></span>
         </label>
     </div>
+{{-- 
+    <label class="switch switch-label switch-pill switch-success">
+        <input type="checkbox" class="switch-input" checked>
+        <span class="switch-slider" data-checked="&#x2713;" data-unchecked="&#x2715;"></span>
+      </label> --}}
 
     @if(Auth::user()->hasRole('Admin') or Auth::user()->hasRole('Moderator'))
     <div class="form-group col-sm-6">
-        {!! Form::label('is_ready', "Moderatsiyadan o'tdimi?:") !!}
-        <label class="checkbox-inline">
+        {!! Form::label('is_ready', "Moderatsiyadan o'tganligini tasdiqlash:", ['style' => 'margin-right: 10px;']) !!}
+        <label class="checkbox-inline switch-lg switch-label switch-pill switch-success">
             {!! Form::hidden('is_moderate', 0) !!}
-            {!! Form::checkbox('is_moderate', '1', null) !!}
+            {!! Form::checkbox('is_moderate', '1', null, ['class' => 'switch-input', 'checked']) !!}
+            <span style=" margin-top: 15px;" class="switch-slider" data-checked="&#x2713;" data-unchecked="&#x2715;"></span>
         </label>
     </div>    
     @endif

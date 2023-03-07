@@ -38,6 +38,22 @@ class ModulMazmuniController extends AppBaseController
             ->with('modulMazmunis', $modulMazmunis);
     }
 
+    public function category($categories = null)
+    {
+
+       
+        $cats = explode('/', $categories);       
+        $cat_slug = implode('/', $cats);     
+        $mavzular = array_pop($cats);
+
+
+       
+        $modulMazmunis = ModulMazmuni::where('category', '=', $mavzular)->get();
+
+        return view('modul_mazmunis.index')
+            ->with('modulMazmunis', $modulMazmunis);
+    }
+
     /**
      * Show the form for creating a new ModulMazmuni.
      *

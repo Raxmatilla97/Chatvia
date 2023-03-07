@@ -27,15 +27,26 @@ class NewsController extends AppBaseController
     /**
      * Display a listing of the News.
      *
-     * @param Request $request
-     *
-     * @return Response
      */
-    public function index(Request $request)
+    public function index()
     {
         $news = News::orderBy('created_at', 'DESC')->get();
+        $db = \Illuminate\Support\Facades\DB::table('viwer_counter')->first();
         // dd($news);
         return view('news.index')
+            ->with('news', $news)
+            ->with('db', $db);
+    }
+
+    /**
+     * Men yaratgan yangiliklarni jadvalini ko'rish
+     *
+     */
+
+    public function menYaratgan(Request $request){
+        $news = News::orderBy('created_at', 'DESC')->get()->where('user_id', '=', Auth::user()->id);
+        
+        return view('news.men_yaratgan')
             ->with('news', $news);
     }
 
@@ -85,7 +96,7 @@ class NewsController extends AppBaseController
     public function show($id)
     {
         $news = $this->newsRepository->find($id);
-
+        \Illuminate\Support\Facades\DB::table('viwer_counter')->increment('number');
         if (empty($news)) {
             Flash::error('Yangilik topilmadi!');
 
