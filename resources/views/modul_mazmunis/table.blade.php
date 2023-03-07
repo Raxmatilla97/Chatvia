@@ -6,7 +6,7 @@
                 <th>Bo'limi</th>
                 <th>Holati</th>
                 <th>Holati</th>
-                <th>Yaratilgan sana</th>
+                <th>Yaratgan</th>
                 <th colspan="3">Amallar</th>
             </tr>
         </thead>
@@ -65,7 +65,7 @@
                         <p class="btn btn-info btn-sm text-white"><b>Ochiq manba!</b></p>
                     @endif    
                 </td>   
-                <td>{{ $modulMazmuni->created_at }}</td>
+                <td>{{ $modulMazmuni->user->name }}</td>
                 <td>
                     {!! Form::open(['route' => ['modulMazmunis.destroy', $modulMazmuni->id], 'method' => 'delete']) !!}
                     <div class='btn-group'>

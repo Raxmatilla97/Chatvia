@@ -31,9 +31,11 @@ class NewsController extends AppBaseController
     public function index()
     {
         $news = News::orderBy('created_at', 'DESC')->get();
+        $db = \Illuminate\Support\Facades\DB::table('viwer_counter')->first();
         // dd($news);
         return view('news.index')
-            ->with('news', $news);
+            ->with('news', $news)
+            ->with('db', $db);
     }
 
     /**
@@ -94,7 +96,7 @@ class NewsController extends AppBaseController
     public function show($id)
     {
         $news = $this->newsRepository->find($id);
-
+        \Illuminate\Support\Facades\DB::table('viwer_counter')->increment('number');
         if (empty($news)) {
             Flash::error('Yangilik topilmadi!');
 

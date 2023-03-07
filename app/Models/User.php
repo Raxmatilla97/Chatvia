@@ -346,4 +346,9 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Models\News');
     }
+
+    public function modul()
+    {
+        return $this->hasOne('App\Models\ModulMazmuni');
+    }
 }
