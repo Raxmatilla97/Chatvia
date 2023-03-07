@@ -8,7 +8,7 @@
     <!-- Img Field -->
     <div class="form-group col-sm-4">
         <div class="col-md-12 mb-2">
-            @if($modulMazmuni->img)
+            @if( isset($modulMazmuni->img))
                 <img style="width: 80%" id="image_preview_container" src="/image/{{$modulMazmuni->img}}"
                 alt="preview image" style="max-height: 150px;">
             @else
@@ -67,7 +67,7 @@
 
 <div class="row">
         <!-- Is Ready Field -->
-    <div class="form-group col-sm-6">
+    <div class="form-group col-sm-6 switch switch-label switch-pill switch-success">
         {!! Form::label('is_active', 'Mazmun chop etish uchun tayyormi?:') !!}
         <label class="checkbox-inline">
             {!! Form::hidden('is_active', 0) !!}
@@ -79,8 +79,8 @@
     <div class="form-group col-sm-6">
         {!! Form::label('is_ready', "Moderatsiyadan o'tdimi?:") !!}
         <label class="checkbox-inline">
-            {!! Form::hidden('is_ready', 0) !!}
-            {!! Form::checkbox('is_ready', '1', null) !!}
+            {!! Form::hidden('is_moderate', 0) !!}
+            {!! Form::checkbox('is_moderate', '1', null) !!}
         </label>
     </div>    
     @endif
@@ -102,3 +102,51 @@ input[type=checkbox] {
     {!! Form::submit('Saqlash', ['class' => 'btn btn-success']) !!}
     <a href="{{ route('modulMazmunis.index') }}" class="btn btn-secondary">Safidan chiqib ketish</a>
 </div>
+
+
+<script>
+    $(document).ready(function (e) {
+   
+//    $.ajaxSetup({
+//        headers: {
+//            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+//         }
+//    });
+  
+   $('#image').change(function(){
+           
+    let reader = new FileReader();
+
+    reader.onload = (e) => { 
+
+      $('#image_preview_container').attr('src', e.target.result); 
+    }
+
+    reader.readAsDataURL(this.files[0]); 
+  
+   });
+  
+//    $('.upload_image_form').submit(function(e) {
+
+//      e.preventDefault();
+  
+//      var formData = new FormData(this);
+  
+//      $.ajax({
+//         type:'POST',
+//         url: "{{ url('photo')}}",
+//         data: formData,
+//         cache:false,
+//         contentType: false,
+//         processData: false,
+//         success: (data) => {
+//            this.reset();
+//            alert('Surat yuklandi!');
+//         },
+//         error: function(data){
+//            console.log(data);
+//          }
+//        });
+//    });
+});
+</script>

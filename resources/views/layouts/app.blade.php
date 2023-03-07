@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="{{ mix('assets/css/coreui.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/icheck/skins/all.css') }}">
     <link rel="stylesheet" href="{{ mix('assets/css/jquery.toast.min.css') }}">
-
+    {{-- <link rel="stylesheet" href="{{ mix('assets/css/nav.scss') }}"> --}}
     
     <script src="{{ mix('assets/js/jquery.min.js') }}"></script>
     
@@ -117,7 +117,7 @@
              height="30" alt="Infyom Logo">
     </a>
     <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
-        <span class="navbar-toggler-icon"></span>
+        <span class="navbar-toggler-icon" style="color:red"></span>
     </button>
 
     <ul class="nav navbar-nav ml-auto">
@@ -136,20 +136,20 @@
             <div class="dropdown-menu dropdown-menu-right notification__popup">
                 <div class="dropdown-header text-center">
                     <div class="header-heading">
-                        <strong>Notifications</strong>
+                        <strong>Bildirishnomalar</strong>
                         <span class="totalNotificationCount" data-total_count="0" style="display: none"></span>
                     </div>
                     <div class="header-button">
-                        <a href="#" class="read-all-notification">Read All</a>
+                        <a href="#" class="read-all-notification">Barchasini o'qish</a>
                     </div>
                 </div>
                 <a class="dropdown-item read" id="noNewNotification">
-                    No Notifications Yet...
+                    Sizga xabar kelmagan!
                 </a>
             </div>
         </li>
         <li class="nav-item dropdown">
-            <a class="nav-link" style="margin-right: 10px" data-toggle="dropdown" href="#" role="button"
+            <a class="nav-link" style="margin-right: 10px; color: white;" data-toggle="dropdown" href="#" role="button"
                aria-haspopup="true" aria-expanded="false">
                 {{ (htmlspecialchars_decode(Auth::user()->name))??'' }}
                 <img class="img-avatar" src="{{Auth::user()->photo_url}}" alt="InfyOm">

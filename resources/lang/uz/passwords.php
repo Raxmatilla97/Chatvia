@@ -13,9 +13,9 @@ return [
     |
     */
 
-    'reset' => 'Your password has been reset!',
-    'sent'  => 'We have e-mailed your password reset link!',
-    'token' => 'This password reset token is invalid.',
-    'user'  => "We can't find a user with that e-mail address.",
+    'reset' => 'Parolingiz qayta tiklandi!',
+    'sent'  => 'Parolni tiklash havolasini elektron pochta orqali yubordik!',
+    'token' => 'Bu parolni tiklash tokeni yaroqsiz.',
+    'user'  => "Bunday elektron pochta manziliga ega foydalanuvchini topa olmadik.",
 
 ];
