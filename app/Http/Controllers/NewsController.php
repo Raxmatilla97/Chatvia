@@ -43,10 +43,24 @@ class NewsController extends AppBaseController
      *
      */
 
-    public function menYaratgan(Request $request){
+    public function menYaratgan(){
         $news = News::orderBy('created_at', 'DESC')->get()->where('user_id', '=', Auth::user()->id);
         
         return view('news.men_yaratgan')
+            ->with('news', $news);
+    }
+
+
+    
+    /**
+     * Moderatsiya uchun
+     *
+     */
+
+     public function moderatsiya(){
+        $news = News::orderBy('created_at', 'DESC')->get()->where('is_ready', '=', '0');
+        
+        return view('news.moderatsiya')
             ->with('news', $news);
     }
 
