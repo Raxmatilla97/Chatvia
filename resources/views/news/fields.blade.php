@@ -20,13 +20,19 @@
     <!-- Img Field -->
     <div class="form-group col-sm-4">
         <div class="col-md-12 mb-2">
-        @if($news->img == "")            
-            <img style="width: 80%" id="image_preview_container" src="{{ asset('storage/default.jpg') }}"
-            alt="preview image" style="max-height: 150px;">
-        @else
-            <img style="width: 80%" id="image_preview_container" src="/image/{{$news->img}}"
-            alt="preview image" style="max-height: 150px;">
-        @endif
+            @if(isset($news->img))
+                @if($news->img == "")            
+                    <img style="width: 60%" id="image_preview_container" src="{{ asset('storage/default.jpg') }}"
+                    alt="preview image" style="max-height: 150px;">
+                @else
+                    <img style="width: 50%" id="image_preview_container" src="/image/{{$news->img}}"
+                    alt="preview image" style="max-height: 150px;">
+                @endif
+            @else
+                <img style="width: 60%" id="image_preview_container" src="{{ asset('storage/default.jpg') }}"
+                alt="preview image" style="max-height: 150px;"> 
+            @endif
+       
     </div>
         {!! Form::label('img', 'Yangilik suratini yuklang:') !!}
         {!! Form::file('img', ['id' => 'image', 'multiple', 'data-allow-reorder' => 'true', 'data-max-file-size' => '3MB', 'data-max-files' => '1']) !!}
@@ -142,3 +148,4 @@ input[type=checkbox] {
 //    });
 });
 </script>
+

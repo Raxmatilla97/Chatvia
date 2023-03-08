@@ -95,10 +95,10 @@
 
     @if(Auth::user()->hasRole('Admin') or Auth::user()->hasRole('Moderator'))
     <div class="form-group col-sm-6">
-        {!! Form::label('is_ready', "Moderatsiyadan o'tganligini tasdiqlash:", ['style' => 'margin-right: 10px;']) !!}
+        {!! Form::label('is_moderate', "Moderatsiyadan o'tganligini tasdiqlash:", ['style' => 'margin-right: 10px;']) !!}
         <label class="checkbox-inline switch-lg switch-label switch-pill switch-success">
             {!! Form::hidden('is_moderate', 0) !!}
-            {!! Form::checkbox('is_moderate', '1', null, ['class' => 'switch-input', 'checked']) !!}
+            {!! Form::checkbox('is_moderate', '1', null, ['class' => 'switch-input']) !!}
             <span style=" margin-top: 15px;" class="switch-slider" data-checked="&#x2713;" data-unchecked="&#x2715;"></span>
         </label>
     </div>    
