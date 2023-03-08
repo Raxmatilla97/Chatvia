@@ -10,11 +10,14 @@
     <div class="my-3 p-3 bg-white rounded box-shadow">
             <!-- Img Field -->
     <div class="form-group">     
-        <img style="height: 400px; display: block; margin-left: auto; margin-right: auto;" src="@if($news->img)
-            /image/{{ $news->img }}
-            @else
-                {{'frontend/images/a270d270d5ca184422cf980475b99e24.gif'}}
-            @endif" alt="">
+        <img style="height: 400px; display: block; margin-left: auto; margin-right: auto;"
+        
+        @if($news->img)
+          src="/image/{{ $news->img }}"
+        @else
+          src="/frontend/images/a270d270d5ca184422cf980475b99e24.gif"              
+        @endif 
+          alt="">
     </div>
       <h6 class="border-bottom border-gray pb-2 mb-0"> {!! Form::label('content', 'Asosiy yangilik qismi:') !!}</h6>
     

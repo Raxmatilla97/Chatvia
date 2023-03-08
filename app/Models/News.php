@@ -73,7 +73,7 @@ class News extends Model
      */
     public static $rules = [
         'title' => 'required',        
-        'img' => 'required',
+        // 'img' => 'required',
         'content' => 'required',
         'is_active' => 'required'
        

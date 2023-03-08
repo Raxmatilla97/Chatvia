@@ -17,7 +17,8 @@ Route::group(['middleware'=>'language'],function ()
     Route::get('/home', 'HomeController@index')->name('home');
     
     // CRUDlar resurslari
-    Route::get('/news/men-yaratgan', 'NewsController@menYaratgan')->name('news.menyaratgan');      
+    Route::get('/news/men-yaratgan', 'NewsController@menYaratgan')->name('news.menyaratgan');
+    Route::get('/news/moderatsiya', 'NewsController@moderatsiya')->name('news.moderatsiya');  
     Route::resource('news', 'NewsController');
     
 

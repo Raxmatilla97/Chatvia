@@ -58,6 +58,15 @@ body{
       <span>Yangilik qo'shish</span>
   </a>
 </li>
+@if(Auth::user()->hasRole('Admin'))
+<li class="nav-item {{ Request::is('news.moderatsiya') ? 'active' : '' }}">
+  <a class="nav-link" href="{{ route('news.moderatsiya') }}">
+      <i class="nav-icon icon-cursor"></i>
+      <span style="margin-right: 5px;">Moderatsiya</span>
+      <span class="badge badge-warning"> {{ App\Models\News::where('is_ready', '=', 0)->get(['id'])->count()}}</span>
+  </a>
+</li>
+@endif
 <li class="nav-title text-center" style="background-color: #ec167f">MODUL MAZMUNI</li>
 
 <li class="nav-item {{ Request::is('modulMazmunis*') ? 'active' : '' }}">
