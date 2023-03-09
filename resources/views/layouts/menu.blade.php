@@ -116,19 +116,40 @@ body{
         <i class="nav-icon cui-puzzle"></i> Meyoriy hujjatlar
       </a>
     </li>
-    <li class="nav-item {{ Request::is('modulMazmunis.shaxsiy_hujjatlar') ? 'active' : '' }}">
-      <a class="nav-link" href="/modulMazmunis/category/shaxsiy_hujjatlar">
-        <i class="nav-icon cui-puzzle"></i> Shaxsiy hujjatlar
-      </a>
-    </li>
+   
+      <li class="nav-item {{ Request::is('modulMazmunis.shaxsiy_hujjatlar') ? 'active' : '' }}">
+        <a class="nav-link" href="/modulMazmunis/category/shaxsiy_hujjatlar">
+          <i class="nav-icon cui-puzzle"></i> Shaxsiy hujjatlar
+        </a>
+      </li>
+   
+   
   </ul>
 </li>
+
+<li class="nav-item {{ Request::is('modulMazmunis.menyaratgan') ? 'active' : '' }}">
+  <a class="nav-link" href="{{ route('modulMazmunis.menyaratgan') }}">
+      <i class="nav-icon icon-cursor"></i>
+      <span>Men yaratgan resurslar</span>
+  </a>
+</li>
+
 <li class="nav-item {{ Request::is('modulMazmunis.create') ? 'active' : '' }}">
   <a class="nav-link" href="{{ route('modulMazmunis.create') }}">
       <i class="nav-icon icon-cursor"></i>
       <span>Yangi resurs yaratish</span>
   </a>
 </li>
+
+@if(Auth::user()->hasRole('Admin'))
+<li class="nav-item {{ Request::is('modulMazmunis.moderatsiya') ? 'active' : '' }}">
+  <a class="nav-link" href="{{ route('modulMazmunis.moderatsiya') }}">
+      <i class="nav-icon icon-cursor"></i>
+      <span style="margin-right: 5px;">Moderatsiya</span>
+      <span class="badge badge-warning"> {{ App\Models\ModulMazmuni::where('is_moderate', '=', 0)->get(['id'])->count()}}</span>
+  </a>
+</li>
+@endif
 
 @if(Auth::user()->hasRole('Admin'))
 <li class="nav-title"  style="background-color: #ec167f">BOSHQARUV</li>

@@ -38,6 +38,35 @@ class ModulMazmuniController extends AppBaseController
             ->with('modulMazmunis', $modulMazmunis);
     }
 
+    /**
+     * Men yaratgan resurslar sahifasi uchun
+     *
+     */
+
+    public function menYaratgan()
+    {
+        $modulMazmunis = $this->modulMazmuniRepository->all()->where('user_id', '=', Auth::user()->id);;
+
+        return view('modul_mazmunis.men_yaratgan')
+            ->with('modulMazmunis', $modulMazmunis);
+    }
+
+
+  
+    /**
+     * Moderatsiya uchun
+     *
+     */
+
+     public function moderatsiya(){
+        $modulMazmunis = ModulMazmuni::orderBy('created_at', 'DESC')->get()->where('is_moderate', '=', '0');
+        
+        return view('modul_mazmunis.moderatsiya')
+            ->with('modulMazmunis', $modulMazmunis);
+    }
+
+    
+
     public function category($categories = null)
     {
 
@@ -74,6 +103,9 @@ class ModulMazmuniController extends AppBaseController
     public function store(CreateModulMazmuniRequest $request)
     {
         $request['slug'] = date('His').'-'.Str::slug($request->title);
+        if ($request['is_moderate'] == null ) {
+            $request['is_moderate'] = '0';
+        }
         $request['user_id'] = Auth::user()->id;
         if ($request['category'] == 'shaxsiy_hujjatlar') {
             $is_public = 1;

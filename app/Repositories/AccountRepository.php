@@ -50,7 +50,7 @@ class AccountRepository
         // dd(config('mail'));
         try {
             Mail::to($email)
-                ->send(new MarkdownMail('auth.emails.account_verification', 'Activate your account', $data));
+                ->send(new MarkdownMail('auth.emails.account_verification', 'Akountingizni aktivlashtiring', $data));
 
         } catch (Exception $e) {
             throw new Exception("Akkout yaratildi ammo emailingizga tasdiqlash xabarini yuborib bo'lmadi!");

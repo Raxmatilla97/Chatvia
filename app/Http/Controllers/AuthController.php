@@ -37,7 +37,7 @@ class AuthController extends AppBaseController
             list($userId, $activationCode) = $result = explode('|', $token);
 
             if (count($result) < 2) {
-                Session::flash('error', 'token not found');
+                Session::flash('error', 'token topilmadi!');
 
                 return redirect('login');
             }
@@ -46,12 +46,12 @@ class AuthController extends AppBaseController
             $user = User::whereActivationCode($activationCode)->findOrFail($userId);
 
             if (empty($user)) {
-                Session::flash('msg', 'This account activation token is invalid');
+                Session::flash('msg', "Bu akountni faollashtirish tokeni noto‘g‘ri");
 
                 return redirect('login');
             }
             if ($user->is_active) {
-                Session::flash('success', 'Your account already activated. Please do a login');
+                Session::flash('success', 'Akountingiz allaqachon faollashtirilgan. Iltimos, tizimga kiring');
 
                 return redirect('login');
             }
@@ -60,12 +60,12 @@ class AuthController extends AppBaseController
             $user->email_verified_at = Carbon::now();
             $user->save();
 
-            Session::flash('success', 'Your account is successfully activated. Please do a login');
+            Session::flash('success', 'Akountingiz muvaffaqiyatli faollashtirildi. Iltimos, tizimga kiring');
 
             return redirect('login');
 
         } catch (Exception $e) {
-            Session::flash('msg', 'Something went wrong');
+            Session::flash('msg', "Nimadir noto'g'ri bajarildi");
 
             return redirect('login');
         }

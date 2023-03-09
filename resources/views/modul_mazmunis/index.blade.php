@@ -65,23 +65,45 @@
                                     <div class="content">
                                          <div class="row row-cols-1 row-cols-2 g-4 " >    
                                             @foreach ($modulMazmunis as $modul )
-                                            @if($modul->is_active and $modul->is_moderate)   
-                                            <div class="col">
-                                                <div class="card" style="width: 20rem;">
-                                                    <img src="@if($modul->img)
-                                                    /image/{{ $modul->img }}
-                                                    @else
-                                                        {{'frontend/images/a270d270d5ca184422cf980475b99e24.gif'}}
-                                                    @endif" class="card-img-top" alt="...">
-                                                    <hr>
-                                                    <div class="card-body">
-                                                    <h5 class="card-title">{{ $modul->title }}</h5>
-                                                    <p class="card-text">{{ $modul->user->name }}</p>
-                                                    <a href="{{ route('modulMazmunis.show', [$modul->id]) }}" class="btn btn-primary">O'qish</a>
+                                                @if(str_contains(url()->current(), '/modulMazmunis/category/shaxsiy_hujjatlar'))    
+                                                    @if($modul->is_active and $modul->is_moderate and $modul->is_private == 1 )   
+                                                    <div class="col">
+                                                        <div class="card" style="width: 20rem;">
+                                                            <img src="@if($modul->img)
+                                                            /image/{{ $modul->img }}
+                                                            @else
+                                                                {{'frontend/images/a270d270d5ca184422cf980475b99e24.gif'}}
+                                                            @endif" class="card-img-top" alt="...">
+                                                            <hr>
+                                                            <div class="card-body">
+                                                            <h5 class="card-title">{{ $modul->title }}</h5>
+                                                            <p class="card-text">{{ $modul->user->name }}</p>
+                                                            <a href="{{ route('modulMazmunis.show', [$modul->id]) }}" class="btn btn-primary">O'qish</a>
+                                                            </div>
+                                                        </div> 
                                                     </div>
-                                                </div> 
-                                            </div>
-                                            @endif
+                                                    @endif
+                                                @else
+                                                    @if($modul->is_active and $modul->is_moderate and $modul->is_private == 0 )   
+                                                    <div class="col">
+                                                        <div class="card" style="width: 20rem;">
+                                                            <img src="@if($modul->img)
+                                                            /image/{{ $modul->img }}
+                                                            @else
+                                                                {{'frontend/images/a270d270d5ca184422cf980475b99e24.gif'}}
+                                                            @endif" class="card-img-top" alt="...">
+                                                            <hr>
+                                                            <div class="card-body">
+                                                            <h5 class="card-title">{{ $modul->title }}</h5>
+                                                            <p class="card-text">{{ $modul->user->name }}</p>
+                                                            <a href="{{ route('modulMazmunis.show', [$modul->id]) }}" class="btn btn-primary">O'qish</a>
+                                                            </div>
+                                                        </div> 
+                                                    </div>
+                                                    @endif
+                                                @endif
+                                           
+                                          
                                             @endforeach
                                         </div> 
                                     </div>

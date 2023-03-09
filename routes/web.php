@@ -22,9 +22,11 @@ Route::group(['middleware'=>'language'],function ()
     Route::resource('news', 'NewsController');
     
 
-    
+    Route::get('/modulMazmunis/men-yaratgan', 'ModulMazmuniController@menYaratgan')->name('modulMazmunis.menyaratgan');
+    Route::get('/modulMazmunis/moderatsiya', 'ModulMazmuniController@moderatsiya')->name('modulMazmunis.moderatsiya');
     Route::resource('modulMazmunis', 'ModulMazmuniController');
     Route::get('/modulMazmunis/category/{category}', 'ModulMazmuniController@category')->where('category', '^[a-zA-Z-_\/]+$')->name('modulMazmunis.category'); 
+
     Route::group(['middleware' => ['user.activated', 'auth']], function () {
 
         //ko'rish routerlari

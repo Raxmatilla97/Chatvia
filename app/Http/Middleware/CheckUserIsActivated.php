@@ -28,7 +28,7 @@ class CheckUserIsActivated
         $user = Auth::user();
         if (!$user->is_active) {
             $user->update(['is_online' => 0, 'last_seen' => Carbon::now()]);
-            Session::flash('error', 'Please check your email inbox to confirm your account. Do not forget to check your spam folder as well.');
+            Session::flash('error', 'Hisobingizni tasdiqlash uchun elektron pochta qutingizni tekshiring. Spam jildini ham tekshirishni unutmang.');
 
             if ($request->ajax()) {
                 $userTokens = $user->tokens;
@@ -37,7 +37,7 @@ class CheckUserIsActivated
                     $token->revoke();
                 }
 
-                return JsonResponse::fromJsonString(ResponseUtil::makeError('Please check your email inbox to confirm your account. Do not forget to check your spam folder as well.'), Response::HTTP_UNAUTHORIZED);
+                return JsonResponse::fromJsonString(ResponseUtil::makeError('Hisobingizni tasdiqlash uchun elektron pochta qutingizni tekshiring. Spam jildini ham tekshirishni unutmang.'), Response::HTTP_UNAUTHORIZED);
             } else {
                 \Auth::logout();
             }
