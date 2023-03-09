@@ -1,9 +1,10 @@
 <?php
 
-// Route::get('setlocale/{locale}',function($lang){
-//     \Session::put('locale',$lang);
-//     return redirect()->back();   
-// });
+Route::get('setlocale/{locale}',function($lang = null){
+    \Session::put('locale',$lang);
+    return redirect()->back();   
+});
+
 
 Route::group(['middleware'=>'language'],function ()
 {

@@ -92,6 +92,15 @@ class Handler extends ExceptionHandler
             ], $code);
         }
 
+        // if($request->hasCookie('language')) {
+        //     app()->setLocale(decrypt($request->cookie('language')));
+        // }
+        
+        // if($exception instanceof NotFoundHttpException) {
+        //     return response()->view('errors.404', [], 404);
+        // }
+        
+
         return parent::render($request, $exception);
     }
 }
