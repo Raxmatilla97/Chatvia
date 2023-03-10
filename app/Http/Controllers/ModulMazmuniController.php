@@ -32,7 +32,7 @@ class ModulMazmuniController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $modulMazmunis = $this->modulMazmuniRepository->all();
+        $modulMazmunis = $this->modulMazmuniRepository->paginate(15);
 
         return view('modul_mazmunis.index')
             ->with('modulMazmunis', $modulMazmunis);
@@ -45,10 +45,29 @@ class ModulMazmuniController extends AppBaseController
 
     public function menYaratgan()
     {
-        $modulMazmunis = $this->modulMazmuniRepository->all()->where('user_id', '=', Auth::user()->id);;
+        $modulMazmunis =  ModulMazmuni::orderBy('created_at', 'DESC')->where('user_id', '=', Auth::user()->id)->paginate(15);
 
         return view('modul_mazmunis.men_yaratgan')
             ->with('modulMazmunis', $modulMazmunis);
+    }
+
+    
+    /**
+     * Qidirish funksiyasi
+     *
+     */
+    public function search(Request $request){
+        // Get the search value from the request
+        $search = $request->input('search');
+    
+        // Search in the title and body columns from the posts table
+        $modulMazmunis = ModulMazmuni::query()
+            ->where('title', 'LIKE', "%{$search}%")
+            ->orWhere('content', 'LIKE', "%{$search}%")
+            ->paginate(15);
+    
+        // Return the search view with the resluts compacted
+        return view('modul_mazmunis.search', compact('modulMazmunis'));
     }
 
 
@@ -59,7 +78,7 @@ class ModulMazmuniController extends AppBaseController
      */
 
      public function moderatsiya(){
-        $modulMazmunis = ModulMazmuni::orderBy('created_at', 'DESC')->get()->where('is_moderate', '=', '0');
+        $modulMazmunis = ModulMazmuni::orderBy('created_at', 'DESC')->where('is_moderate', '=', '0')->paginate(15);
         
         return view('modul_mazmunis.moderatsiya')
             ->with('modulMazmunis', $modulMazmunis);
@@ -77,7 +96,7 @@ class ModulMazmuniController extends AppBaseController
 
 
        
-        $modulMazmunis = ModulMazmuni::where('category', '=', $mavzular)->get();
+        $modulMazmunis = ModulMazmuni::where('category', '=', $mavzular)->paginate(15);
 
         return view('modul_mazmunis.index')
             ->with('modulMazmunis', $modulMazmunis);

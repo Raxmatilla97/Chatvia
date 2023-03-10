@@ -30,7 +30,7 @@ class NewsController extends AppBaseController
      */
     public function index()
     {
-        $news = News::orderBy('created_at', 'DESC')->get();
+        $news = News::orderBy('created_at', 'DESC')->paginate(15);
         $db = \Illuminate\Support\Facades\DB::table('viwer_counter')->first();
         // dd($news);
         return view('news.index')
@@ -44,10 +44,29 @@ class NewsController extends AppBaseController
      */
 
     public function menYaratgan(){
-        $news = News::orderBy('created_at', 'DESC')->get()->where('user_id', '=', Auth::user()->id);
-        
+        $news = News::orderBy('created_at', 'DESC')->where('user_id', '=', Auth::user()->id)->paginate(15);
+        $db = \Illuminate\Support\Facades\DB::table('viwer_counter')->first();
         return view('news.men_yaratgan')
-            ->with('news', $news);
+            ->with('news', $news)
+            ->with('db', $db);
+    }
+
+    /**
+     * Qidirish funksiyasi
+     *
+     */
+    public function search(Request $request){
+        // Get the search value from the request
+        $search = $request->input('search');
+        $db = \Illuminate\Support\Facades\DB::table('viwer_counter')->first();
+        // Search in the title and body columns from the posts table
+        $news = News::query()
+            ->where('title', 'LIKE', "%{$search}%")
+            ->orWhere('content', 'LIKE', "%{$search}%")
+            ->paginate(15);
+    
+        // Return the search view with the resluts compacted
+        return view('news.search', compact('news', 'db'));
     }
 
 
@@ -58,10 +77,11 @@ class NewsController extends AppBaseController
      */
 
      public function moderatsiya(){
-        $news = News::orderBy('created_at', 'DESC')->get()->where('is_ready', '=', '0');
-        
+        $news = News::orderBy('created_at', 'DESC')->where('is_ready', '=', '0')->paginate(15);
+        $db = \Illuminate\Support\Facades\DB::table('viwer_counter')->first();
         return view('news.moderatsiya')
-            ->with('news', $news);
+            ->with('news', $news)
+            ->with('db', $db);
     }
 
     /**

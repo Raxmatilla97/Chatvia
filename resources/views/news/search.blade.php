@@ -48,23 +48,25 @@
                              Yangiliklar qismi
                              {{-- <a class="pull-right" href="{{ route('news.create') }}"><i class="fa fa-plus-square fa-lg"></i></a> --}}
                          </div>
+                         
                          @include('news.statistika')
+                    
                         <div class="row">
                             <div class="col-lg-8" style="margin: auto; margin-bottom: 10px">
-                                <form action="{{ route('news.search') }}" method="GET" role="search">
-                                
-                                    <div class="input-group">
-                                        <input type="text" class="form-control form-control-lg" name="search"
-                                            placeholder="Yangiliklarni qidirish formasi">                              
-                                            <span class="input-group-btn">
-                                            <button type="submit" class="btn btn-default">
-                                                <span class="glyphicon glyphicon-search"></span>
-                                            </button>
-                                        </span>
-                                    </div>
-                                </form>
+                        <form action="{{ route('news.search') }}" method="GET" role="search">
+                         
+                            <div class="input-group">
+                                <input type="text" class="form-control form-control-lg" name="search"
+                                    placeholder="Yangiliklarni qidirish formasi">                              
+                                    <span class="input-group-btn">
+                                    <button type="submit" class="btn btn-default">
+                                        <span class="glyphicon glyphicon-search"></span>
+                                    </button>
+                                </span>
                             </div>
-                        </div>
+                        </form>
+                    </div>
+                </div>
                        
                          <div class="tab-content rounded-bottom">
                             <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-1154">
@@ -81,37 +83,33 @@
                                 <div class="tab-pane fade active show" id="grid" role="tabpanel" aria-labelledby="grid-tab">
                                   
                                     <div class="content">
-                                         <div class="row row-cols-1 row-cols-2 g-4 " >
-                                            <div class="col ">
-                                                <div class="card border border-primary" style="width: 25rem; border-width: 6px;">
-                                                    <img src="{{'/frontend/images/a270d270d5ca184422cf980475b99e24.gif'}}" class="card-img-top" alt="...">
-                                                    <div class="card-body">
-                                                    <h5 class="card-title">Yangilik yaratish</h5>
-                                                    <p class="card-text">Ilim fanga oid qiziqarli yangiliklarni yozib fodyalanuvchilar bilan bo'lishing</p>
-                                                    <a href="{{ route('news.create') }}" class="btn btn-primary">Yangilik yozish</a>
-                                                    </div>
-                                                </div>
-                                            </div> 
-                                           
-                                            @foreach ($news as $news2 )
-                                            @if($news2->is_active and $news2->is_ready)   
-                                            <div class="col">
-                                                <div class="card" style="width: 20rem;">
-                                                    <img src="@if($news2->img)
-                                                    /image/{{ $news2->img }}
-                                                    @else
-                                                        {{'frontend/images/a270d270d5ca184422cf980475b99e24.gif'}}
-                                                    @endif" class="card-img-top" alt="...">
-                                                    <hr>
-                                                    <div class="card-body">
-                                                    <h5 class="card-title">{{ $news2->title }}</h5>
-                                                    <p class="card-text">{{ $news2->user->name }}</p>
-                                                    <a href="{{ route('news.show', [$news2->id]) }}" class="btn btn-primary">O'qish</a>
-                                                    </div>
-                                                </div> 
-                                            </div>
+                                         <div class="row row-cols-1 row-cols-2 g-4 " style="background-color: #fafbfc;">                                            
+                                            @if($news->isNotEmpty())
+                                                @foreach ($news as $news2 )
+                                                    @if($news2->is_active and $news2->is_ready)   
+                                                        <div class="col">
+                                                            <div class="card" style="width: 20rem;">
+                                                                <img src="@if($news2->img)
+                                                                /image/{{ $news2->img }}
+                                                                @else
+                                                                    {{'frontend/images/a270d270d5ca184422cf980475b99e24.gif'}}
+                                                                @endif" class="card-img-top" alt="...">
+                                                                <hr>
+                                                                <div class="card-body">
+                                                                    <h5 class="card-title">{{ $news2->title }}</h5>
+                                                                    <p class="card-text">{{ $news2->user->name }}</p>
+                                                                    <a href="{{ route('news.show', [$news2->id]) }}" class="btn btn-primary">O'qish</a>
+                                                                </div>
+                                                            </div> 
+                                                        </div>
+                                                    @endif
+                                                @endforeach
+                                            @else 
+                                                <div style="width: 50%; margin: auto;">
+                                                    <img style="width: 70%; display:block; margin:auto;" src="{{asset('/image/notfound.gif')}}" alt="">
+                                                    <h2 class="text-center p-5" style="margin-top: 20px;">Qidirilayotgan ma'lumotlar topilmadi!</h2>
+                                                </div>     
                                             @endif
-                                            @endforeach
                                         </div> 
                                     </div>
 
@@ -125,14 +123,11 @@
                                          </div>
                                     </div>
                                 </div>
-                                <div style="margin: auto; width: 50%; margin-top: 10px; margin-bottom: 70px">
-                                    {!! $news->links() !!}
-                                </div>
-                                
+                              
                               </div>
                             </div>
                           </div>
-                        
+                       
                      </div>
                   </div>
              </div>

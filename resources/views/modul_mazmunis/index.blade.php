@@ -47,6 +47,8 @@
                             Modul mazmuni
                              <a class="pull-right" href="{{ route('modulMazmunis.create') }}"><i class="fa fa-plus-square fa-lg"></i></a>
                          </div>
+
+                         @include('modul_mazmunis.search_form')
                         
                          <div class="tab-content rounded-bottom">
                             <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-1154">
@@ -119,6 +121,10 @@
                                     </div>
                                 </div>
                               
+                                <div style="margin: auto; width: 50%; margin-top: 10px; margin-bottom: 70px">
+                                    {!! $modulMazmunis->links() !!}
+                                </div>
+
                               </div>
                             </div>
                           </div>

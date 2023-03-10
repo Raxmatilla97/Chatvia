@@ -1,28 +1,33 @@
 <?php
 
-Route::get('setlocale/{locale}',function($lang = null){
-    \Session::put('locale',$lang);
-    return redirect()->back();   
-});
+use Symfony\Component\Console\Input\Input;
+
 
 
 Route::group(['middleware'=>'language'],function ()
 {
+    // Route::get('setlocale/{locale}',function($lang = null){
+    //     \Session::put('locale',$lang);
+    //     return redirect()->back();   
+    // });
+    
     Route::get('/', 'FrontendController@index');
     
     Auth::routes();
+
 
     // Route::prefix('profile')->group(function () {
        
     Route::get('activate', 'AuthController@verifyAccount');
     Route::get('/home', 'HomeController@index')->name('home');
     
-    // CRUDlar resurslari
+    // CRUDlar resurslari    
+    Route::get('/news/search/', 'NewsController@search')->name('news.search');
     Route::get('/news/men-yaratgan', 'NewsController@menYaratgan')->name('news.menyaratgan');
     Route::get('/news/moderatsiya', 'NewsController@moderatsiya')->name('news.moderatsiya');  
     Route::resource('news', 'NewsController');
     
-
+    Route::get('/modulMazmunis/search/', 'ModulMazmuniController@search')->name('modulMazmunis.search');
     Route::get('/modulMazmunis/men-yaratgan', 'ModulMazmuniController@menYaratgan')->name('modulMazmunis.menyaratgan');
     Route::get('/modulMazmunis/moderatsiya', 'ModulMazmuniController@moderatsiya')->name('modulMazmunis.moderatsiya');
     Route::resource('modulMazmunis', 'ModulMazmuniController');
