@@ -3,7 +3,7 @@
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title group-modal-title">{{ __('messages.group.create_group') }}</h4>
+                <h4 class="modal-title group-modal-title">Guruh</h4>
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
             </div>
             {!! Form::open(['id'=>'createGroupForm']) !!}
@@ -20,8 +20,8 @@
                     </div>
                     <div class="col-sm-6 d-flex">
                         <div class="col-sm-6 pl-0">
-                            {!! Form::label('photo', 'Group Icon') !!}
-                            <label class="edit-profile__file-upload"> Choose your file
+                            {!! Form::label('photo', 'Guruh surati') !!}
+                            <label class="edit-profile__file-upload"> {{ __('messages.file_belgilang') }}
                                 {!! Form::file('photo',['id'=>'groupImage','class' => 'd-none']) !!}
                             </label>
                         </div>
@@ -44,13 +44,13 @@
                                     {!! Form::radio('group_type', 1, true, ['class' => 'group-type', 'id' => 'groupTypeOpen']) !!} {{ __('messages.group.open') }}
                                     <i class="fa fa-question-circle ml-2 question-type-open cursor-pointer"
                                        data-toggle="tooltip" data-placement="top"
-                                       title="All group members can send messages into the group."></i>
+                                       title="__('messages.xabar_yozish_mumkin')"></i>
                                 </div>
                                 <div>
                                     {!! Form::radio('group_type', 2, false, ['class' => 'group-type', 'id' => 'groupTypeClose']) !!} {{ __('messages.group.close') }}
                                     <i class="fa fa-question-circle ml-2 question-type-close cursor-pointer"
                                        data-toggle="tooltip" data-placement="top"
-                                       title="The admin only can send messages into the group."></i></div>
+                                       title="@lang('messages.admin_xabar_yoza_oladi')"></i></div>
                             </div>
                         </div>
                         <div class="div-group-privacy mt-4 d-flex">
@@ -63,13 +63,13 @@
                                     {!! Form::radio('privacy', 1, true, ['class' => 'group-privacy', 'id' => 'groupPublic']) !!} {{ __('messages.group.public') }}
                                     <i class="fa fa-question-circle ml-2 question-type-public cursor-pointer"
                                        data-toggle="tooltip" data-placement="top"
-                                       title="All group members can add or remove members from the group."></i>
+                                       title="__('messages.xabar_yozish_mumkin')"></i>
                                 </div>
                                 <div>
                                     {!! Form::radio('privacy', 2, false, ['class' => 'group-privacy', 'id' => 'groupPrivate']) !!} {{ __('messages.group.private') }}
                                     <i class="fa fa-question-circle ml-2  question-type-private cursor-pointer"
                                        data-toggle="tooltip" data-placement="top"
-                                       title="The admin only can add or remove members from the group."></i>
+                                       title="@lang('messages.admin_xabar_yoza_oladi')"></i>
                                 </div>
                             </div>
                         </div>

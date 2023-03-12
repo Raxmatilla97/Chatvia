@@ -15,7 +15,7 @@
         {{ __('messages.online') }}
     </div>
     <div class="chat-profile__person-last-seen">
-        {{ __('messages.last_seen_today') }}
+        Bugun
     </div>
     <div class="user-profile-data">
         <div class="chat-profile__divider"></div>

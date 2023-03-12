@@ -219,7 +219,7 @@ return [
     'enable_group_chat' => 'Guruh suhbatini yoqing',
 
     'report'        => 'Hisobot',
-    'report_user'   => 'Foydalanuvchi hisoboti',
+    'report_user'   => 'Shikoyat qilish',
     'notes'         => 'Eslatmalar:',
     'reported_by'   => 'Xabar bergan',
     'reported_to'   => 'Kimga xabar berildi',
@@ -227,5 +227,18 @@ return [
     'reported_user' => 'Xabar qilingan foydalanuvchilar',
     'yashash_hududi' => "Yashash hududingiz",
     'yashash_hududi_placeholder' => "Yashash hududingizni to'liq yozing",
-    'ish_joyi_yok_oqishi_placeholder' => "Ish joyingiz, talaba bo'lsangiz OTM nomini yozing"
+    'ish_joyi_yok_oqishi_placeholder' => "Ish joyingiz, talaba bo'lsangiz OTM nomini yozing",
+    'aktive_chat' => "Aktiv Chat",
+    'arxive' => "Arxiv",
+    'surat_yuklash' => "Surat yuklash",
+    'yopish' => "Yopish",
+    'users_add' => "Foydalanuvchi qo'shish",
+    'add_to_group' => "Guruhga qo'shilish",
+    'guruh_iconi' => "Guruh iconi",
+    'file_belgilang' => "Fayl belgilang",
+    'xabar_yozish_mumkin' => "Guruhning barcha a'zolari guruhga xabar yuborishlari mumkin.",
+    'admin_xabar_yoza_oladi' => "Guruhga faqat admin xabar yuborishi mumkin.",
+    '' => "",
+    '' => "",
+    '' => "",
 ];

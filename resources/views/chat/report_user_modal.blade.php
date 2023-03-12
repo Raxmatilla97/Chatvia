@@ -22,7 +22,7 @@
                         {{__('messages.cancel')}}
                     </button>
                     <button class="btn btn-success mr-1 pull-right" data-group-id="" id="reportUser"
-                            data-loading-text="<span class='spinner-border spinner-border-sm'></span> Processing...">
+                            data-loading-text="<span class='spinner-border spinner-border-sm'></span> Bajarilmoqda...">
                         {{__('messages.report')}}
                     </button>
                 </div>

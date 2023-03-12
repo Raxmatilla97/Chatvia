@@ -46,12 +46,10 @@
                     </div>
                     <ul class="nav nav-tabs chat__tab-nav" id="chatTabs">
                         <li class="nav-item">
-                            <a data-toggle="tab" id="activeChatTab" class="nav-link active" href="#chatPeopleBody">Active
-                                Chat</a>
+                            <a data-toggle="tab" id="activeChatTab" class="nav-link active" href="#chatPeopleBody">@lang('messages.aktive_chat')</a>
                         </li>
                         <li class="nav-item">
-                            <a data-toggle="tab" id="archiveChatTab" class="nav-link" href="#archivePeopleBody">Archive
-                                Chat</a>
+                            <a data-toggle="tab" id="archiveChatTab" class="nav-link" href="#archivePeopleBody">@lang('messages.arxive')</a>
                         </li>
                     </ul>
                     <div class="tab-content chat__tab-content">
@@ -98,7 +96,7 @@
                 <div class="modal-content">
                     <div class="modal-header border-0 pb-0">
                         <h5 class="modal-title">
-                            <i class="ti-user"></i>New Conversations @if($enableGroupSetting == 1) / Groups @endif</h5>
+                            <i class="ti-user"></i>Yangi chatlar @if($enableGroupSetting == 1) / Guruhlar @endif</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             &times;
                         </button>

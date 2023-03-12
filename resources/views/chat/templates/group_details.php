@@ -7,11 +7,11 @@
         <div class="chat-profile__avatar text-center chat-profile__img-wrapper group-profile-image">
          {{if group_type === 2}}
           <i class="fa fa-lock closed-group-badge" data-toggle="tooltip" data-placement="top"
-                               title="The admin only can send messages into the group."> </i>
+                               title="Guruhga faqat admin xabar yuborishi mumkin."> </i>
           {{/if}}
           {{if privacy === 2}}
           <i class="fa fa-shield private-group-badge" data-toggle="tooltip" data-placement="top"
-                               title="The admin only can add or remove members from the group."> </i>
+                               title="Faqat administrator guruhga a'zolarni qo'shishi yoki olib tashlashi mumkin."> </i>
         {{/if}}
             <img src="{{:photo_url}}" alt="" class="img-fluid user-about-image img-circle" id="groupDetailsImage-{{:id}}">
         </div>
@@ -26,7 +26,7 @@
                     <i class="fa fa-edit edit-group pointer text-center" data-id={{:id}}></i>
                 </div>   
             {{/if}}
-            <span class="mt-2">Created By {{:group_created_by}}, {{:~getLocalDate(created_at, 'DD/MM/YYYY')}} </span>
+            <span class="mt-2">Guruhni yaratilgan vaqti: {{:group_created_by}}, {{:~getLocalDate(created_at, 'DD/MM/YYYY')}} </span>
     </div>
     </div>
    
@@ -83,11 +83,11 @@
                                       <i class="fa fa-ellipsis-v group-details-bar" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                       </i>
                                       <div class="dropdown-menu member-options-{{:id}}">
-                                        <a class="dropdown-item remove-member-from-group" href="#" data-member-id="{{:id}}" data-group-id="{{:~root.id}}" id="removeMember-{{:id}}">Remove Member</a>
+                                        <a class="dropdown-item remove-member-from-group" href="#" data-member-id="{{:id}}" data-group-id="{{:~root.id}}" id="removeMember-{{:id}}">O'chirish</a>
                                        {{if pivot.role === 2}}
-                                        <a class="dropdown-item dismiss-admin-member" href="#" data-member-id="{{:id}}" data-group-id="{{:~root.id}}" id="dismissAdmin-{{:id}}">Dismiss As Admin</a>                  
+                                        <a class="dropdown-item dismiss-admin-member" href="#" data-member-id="{{:id}}" data-group-id="{{:~root.id}}" id="dismissAdmin-{{:id}}">Adminlikni olib tashlash</a>                  
                                         {{else}}
-                                             <a class="dropdown-item make-member-to-group-admin" href="#" data-member-id="{{:id}}" data-group-id="{{:~root.id}}" id="makeAdmin-{{:id}}">Make Admin</a>                 
+                                             <a class="dropdown-item make-member-to-group-admin" href="#" data-member-id="{{:id}}" data-group-id="{{:~root.id}}" id="makeAdmin-{{:id}}">Admin qilish</a>                 
                                         {{/if}}
                                       </div>
                                     </div>                           
@@ -120,11 +120,11 @@
     <div class="chat-profile__divider"></div>
     {{if privacy === 2 && my_role === 2 && !removed_from_group}}
     <div class="chat-profile__column pb-0">
-        <a href="#" class='btn btn-success btn-add-members' data-group-id="{{:id}}">Add Members</a>
+        <a href="#" class='btn btn-success btn-add-members' data-group-id="{{:id}}">Odam qo'shish</a>
     </div> 
     {{else privacy === 1 && !removed_from_group}}
     <div class="chat-profile__column pb-0">
-        <a href="#" class='btn btn-success btn-add-members' data-group-id="{{:id}}">Add Members</a>
+        <a href="#" class='btn btn-success btn-add-members' data-group-id="{{:id}}">Odam qo'shish</a>
    </div>     
     {{/if}}
     {{if !group_deleted_by_owner && removed_from_group || (created_by === logged_in_user_id)}}

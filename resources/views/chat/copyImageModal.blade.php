@@ -3,7 +3,7 @@
         <!-- Modal content-->
         <div class="modal-content">
             <div class="modal-header border-0 pb-0">
-                <h5 class="modal-title">Upload Image</h5>
+                <h5 class="modal-title"> {{__('messages.surat_yuklash')}}</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     &times;
                 </button>
@@ -12,7 +12,7 @@
                 <div id="imageCanvas" class="image-canvas"></div>
                 <button type="button" class="btn btn-secondary mr-1 pull-right mt-3" data-dismiss="modal"
                         aria-label="Close">
-                    Cancel
+                   {{__('messages.yopish')}}
                 </button>
                 <button class="btn btn-success mr-1 pull-right mt-3" data-group-id="" id="sendImages"
                         data-loading-text="<span class='spinner-border spinner-border-sm'></span> Processing...">

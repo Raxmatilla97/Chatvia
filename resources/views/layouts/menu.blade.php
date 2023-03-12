@@ -186,3 +186,9 @@ body{
         </a>
     </li>
 @endif
+<li class="nav-item {{ Request::is('onlineVideoDars*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('onlineVideoDars.index') }}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>Online Video Dars</span>
+    </a>
+</li>

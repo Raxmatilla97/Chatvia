@@ -11,11 +11,11 @@
   </style>
  <!-- section begin -->
  <section id="section-register" >
-    <div class="wm wm-border dark wow fadeInDown">Kirish uchun</div> 
+    <div class="wm wm-border dark wow fadeInDown">@lang('asosiy-sahifa.kirish_uchun')</div> 
     <div class="container">
       <div class="row">       
         <div class="col-md-6 offset-md-3 text-center wow fadeInUp">
-          <h1>Ro'yxatdan o'tish</h1>
+          <h1>@lang('asosiy-sahifa.royxatdan_otish')</h1>
           <div class="separator"><span><i class="fa fa-square"></i></span></div>
           <div class="spacer-single"></div>
         </div>
@@ -60,8 +60,8 @@
     
                           <div class="input-group mb-3">                           
                             <select style="background-color: #0d0d0d; border-color: #0d0d0d; color: #eee;" name="ticher_or_student" class=" form-control  {{ $errors->has('ish_joyi_yok_oqishi')?'is-invalid':'' }}" aria-label="Default select example">                          
-                              <option value="ticher">O'qituvchiman</option>
-                              <option value="student">Talabaman</option>                        
+                              <option value="ticher">@lang('asosiy-sahifa.okituvchiman')</option>
+                              <option value="student">@lang('asosiy-sahifa.talabaman')</option>                        
                             </select>
                             @if ($errors->has('ticher_or_student'))
                                 <span class="invalid-feedback">
@@ -134,8 +134,8 @@
                 
                   <a href="{{ url('/login') }}" class="text-center btn btn-line">{{ __('messages.already_have_membership') }}</a>
                 </p>
-                <div id='mail_success' class='success'>Ваша регистрация принята.</div>
-                <div id='mail_fail' class='error'>Произошла ошибка при отправке.</div>
+                {{-- <div id='mail_success' class='success'>Ваша регистрация принята.</div>
+                <div id='mail_fail' class='error'>Произошла ошибка при отправке.</div> --}}
               </div>
             </div>
          

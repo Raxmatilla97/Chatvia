@@ -9,22 +9,22 @@
             <span class="countdown-row countdown-show4">
               <span class="countdown-section" style="display: flex; justify-content: center; flex-direction: column; align-items: center;">
                 <span class="countdown-amount">12</span>
-                <span class="countdown-period" style="margin: 0; margin-top: 20px; width: 100%">O'qituvchi</span>
+                <span class="countdown-period" style="margin: 0; margin-top: 20px; width: 100%">@lang('asosiy-sahifa.ticher')</span>
               </span>
 
               <span class="countdown-section" style="display: flex; justify-content: center; flex-direction: column; align-items: center;">
                 <span class="countdown-amount">311</span>
-                <span class="countdown-period" style="margin: 0; margin-top: 20px; width: 100%">Talaba</span>
+                <span class="countdown-period" style="margin: 0; margin-top: 20px; width: 100%">@lang('asosiy-sahifa.talaba')</span>
               </span>
 
               <span class="countdown-section" style="display: flex; justify-content: center; flex-direction: column; align-items: center;">
                 <span class="countdown-amount">11</span>
-                <span class="countdown-period" style="margin: 0; margin-top: 20px; width: 100%">Spiker</span>
+                <span class="countdown-period" style="margin: 0; margin-top: 20px; width: 100%">@lang('asosiy-sahifa.spiker')</span>
               </span>
 
               <span class="countdown-section" style="display: flex; justify-content: center; flex-direction: column; align-items: center;">
                 <span class="countdown-amount">6</span>
-                <span class="countdown-period" style="margin: 0; margin-top: 20px; width: 100%">Modul</span>
+                <span class="countdown-period" style="margin: 0; margin-top: 20px; width: 100%">@lang('asosiy-sahifa.modul')</span>
               </span>
 
 

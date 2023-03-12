@@ -95,11 +95,12 @@ class RegisterController extends Controller
             'yashash_hududi' => $data['yashash_hududi'],
             'ish_joyi_yok_oqishi' => $data['ish_joyi_yok_oqishi'],
             'ticher_or_student' => $data['ticher_or_student'],
+            'is_active' => '1',
             'password' => Hash::make($data['password']),
         ]);
         
         $this->userRepository->assignRoles($user, ['role_id' => Role::MEMBER_ROLE]);
-        $activateCode = $this->accountRepo->generateUserActivationToken($user->id);
+        $activateCode = $this->accountRepo->generateUserActivationToken($user->id);       
         $this->accountRepo->sendConfirmEmail($user->name, $user->email, $activateCode);
 
         return $user;

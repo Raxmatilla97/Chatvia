@@ -2,14 +2,14 @@
 
 use Symfony\Component\Console\Input\Input;
 
-
+Route::get('/setlocale/{locale}',function($lang = null){
+    \Session::put('locale',$lang);
+    return redirect()->back();   
+});
 
 Route::group(['middleware'=>'language'],function ()
 {
-    // Route::get('setlocale/{locale}',function($lang = null){
-    //     \Session::put('locale',$lang);
-    //     return redirect()->back();   
-    // });
+   
     
     Route::get('/', 'FrontendController@index');
     
@@ -138,3 +138,5 @@ Route::group(['middleware'=>'language'],function ()
 
 
 Route::resource('spikerlars', 'SpikerlarController');
+
+Route::resource('onlineVideoDars', 'OnlineVideoDarsController');

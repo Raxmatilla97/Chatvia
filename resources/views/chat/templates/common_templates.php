@@ -1,7 +1,7 @@
 <script id="tmplChatSendArea" type="text/x-jsrender">
 <div class="chat__area-text">
     <div class="w-100 flex-1 chat__area-form ">
-        <input type="text" id="textMessage" class="txtMessage" placeholder="Type message...">
+        <input type="text" id="textMessage" class="txtMessage" placeholder="Xabar yozing...">
     </div>
     <div class="flex-1 d-flex chat__area-btn-group">
         <button class="chat__area-media-btn mr-2 btn"
@@ -27,20 +27,20 @@
 
 <script id="tmplNewMsgIndicator" type="text/x-jsrender">
 <div class="chat__msg-day-divider position-relative">
-    <span class="chat__msg-day-new-msg position-absolute">new messages</span>
+    <span class="chat__msg-day-new-msg position-absolute">Yangi xabar</span>
 </div>
 
 </script>
 
 <script id="tmplBlockMsgText" type="text/x-jsrender">
 <div class="d-flex justify-content-center blocked-message-text">
-    <span class="chat__msg-day-title">You have blocked this user.</span>
+    <span class="chat__msg-day-title">Siz bu foydalanuvchini blokladingiz.</span>
 </div>
 </script>
 
 <script id="tmplBlockByMsgText" type="text/x-jsrender">
 <div class="d-flex justify-content-center blocked-message-text">
-    <span class="chat__msg-day-title">You are blocked by this user.</span>
+    <span class="chat__msg-day-title">Siz bu foydalanuvchi tomonidan bloklangansiz.</span>
 </div>
 </script>
 
@@ -49,11 +49,11 @@
 </script>
 
 <script id="tmplCloseGroupIcon" type="text/x-jsrender">
-<i class="fa fa-lock closed-group-badge" data-toggle="tooltip" data-placement="top" title="The admin only can send messages into the group."></i>
+<i class="fa fa-lock closed-group-badge" data-toggle="tooltip" data-placement="top" title="Guruhga faqat admin xabar yuborishi mumkin."></i>
 </script>
 
 <script id="tmplPrivateGroupIcon" type="text/x-jsrender">
-<i class="fa fa-shield private-group-badge" data-toggle="tooltip" data-placement="top" title="The admin only can add or remove members from the group."> </i>
+<i class="fa fa-shield private-group-badge" data-toggle="tooltip" data-placement="top" title="Faqat administrator guruhga a'zolarni qo'shishi yoki olib tashlashi mumkin."> </i>
 </script>
 
 <script id="tmplReplayBox" type="text/x-jsrender">
@@ -84,7 +84,7 @@
 
 <script id="tmplToday" type="text/x-jsrender">
 <div class="chat__msg-day-divider d-flex justify-content-center">
-    <span class="chat__msg-day-title">Today</span>
+    <span class="chat__msg-day-title">Bugun</span>
 </div>
 
 

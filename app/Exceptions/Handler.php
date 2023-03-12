@@ -2,13 +2,14 @@
 
 namespace App\Exceptions;
 
+use Response;
 use Exception;
 use Illuminate\Auth\AuthenticationException;
+use Illuminate\Validation\ValidationException;
+use Illuminate\Http\Exceptions\PostTooLargeException;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-use Illuminate\Http\Exceptions\PostTooLargeException;
-use Illuminate\Validation\ValidationException;
-use Response;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 use Symfony\Component\HttpKernel\Exception\UnauthorizedHttpException;
 
 class Handler extends ExceptionHandler
@@ -92,12 +93,21 @@ class Handler extends ExceptionHandler
             ], $code);
         }
 
-        // if($request->hasCookie('language')) {
-        //     app()->setLocale(decrypt($request->cookie('language')));
-        // }
+        if($request->hasCookie('language')) {
+            app()->setLocale(decrypt($request->cookie('language')));
+        }
         
-        // if($exception instanceof NotFoundHttpException) {
-        //     return response()->view('errors.404', [], 404);
+        if($exception instanceof NotFoundHttpException) {
+            return response()->view('errors.404', [], 404);
+        }
+
+        // if($request->hasCookie('locale')) {
+        //     // Get cookie
+        //     $cookie = $request->cookie('locale');
+        //     // Check if cookie is already decrypted if not decrypt
+        //     $cookie = strlen($cookie) > 2 ? decrypt($cookie) : $cookie;
+        //     // Set locale
+        //     app()->setLocale($cookie);
         // }
         
 

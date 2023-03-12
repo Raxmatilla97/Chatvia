@@ -1,6 +1,6 @@
- <div class="wm wm-border dark wow fadeInDown" style="    margin-top: 60px;">Biz haqimizda</div>
+ <div class="wm wm-border dark wow fadeInDown" style="    margin-top: 60px;">@lang('asosiy-sahifa.biz_haqimizda')</div>
  <div class="col-md-6 offset-md-3 text-center wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp; background-size: cover;">
-  <h1>Qisqacha ma'lumotlar </h1>
+  <h1>@lang('asosiy-sahifa.kiskacha_malumotlar') </h1>
   <div class="separator" style="background-size: cover;"><span><i class="fa fa-square"></i></span></div>
   <div class="spacer-single" style="background-size: cover;"></div>
 </div>
@@ -11,15 +11,14 @@
           <div class="row align-items-center">
 
             <div class="col-lg-6 wow fadeInLeft" data-wow-delay="0s">
-              <h2>Personal imkoniyatlar</h2>
+              <h2>@lang('asosiy-sahifa.personal_imkoniyatlar')</h2>
               <p>
-                Yagona tizim - Har bir talaba uchun shaxsiy kabinet mavjud bo’lib, bunda o’quv jarayonidagi barcha ma’lumotlarni ushbu yagona tizim orqali kuzatishlari mumkin.
+               @lang('asosiy-sahifa.about_text')
               </p>
 
               <div class="spacer10"></div>
 
-              <a href="#section-register" class="btn-custom font-weight-bold text-white sm-mb-30 scroll-to" style="margin-bottom: 45px;">Читать
-                далее</a>
+              <a href="#section-register" class="btn-custom font-weight-bold text-white sm-mb-30 scroll-to" style="margin-bottom: 45px;"> @lang('asosiy-sahifa.koproq_okish')</a>
             </div>
 
             <div class="col-lg-6 mb-sm-30 text-center wow fadeInRight">

@@ -87,18 +87,7 @@
                                     </div>
                                 </div>
                         </form>
-                            <div class="row mt-2">
-                                <div class="col-12">
-                                    <button class="form-control loginBtn loginBtn--google align-items-center">
-                                        <a href="{{ url('/login/google') }}"
-                                           style="color: white; text-decoration: none">Login with Google</a>
-                                    </button>
-                                    <button class="form-control loginBtn loginBtn--facebook mt-2">
-                                        <a href="{{ url('/login/facebook') }}"
-                                           style="color: white; text-decoration: none">Login with Facebook</a>
-                                    </button>
-                                </div>
-                            </div>
+                            
                         </div>
                     </div>
 

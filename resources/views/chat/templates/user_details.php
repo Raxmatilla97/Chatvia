@@ -20,9 +20,9 @@
         {{if (!is_online && !is_blocked) && (is_my_contact || !is_private_account) }}
         <div class="chat-profile__person-last-seen">
             {{if last_seen !== '' && last_seen !== null}}
-                last seen at {{:~getCalenderFormatForLastSeen(last_seen)}}
+                Ohirgi marta kirgan: {{:~getCalenderFormatForLastSeen(last_seen)}}
             {{else}}
-                last seen at: Never
+               Anchadan beri kirmagan saytga.
             {{/if}}
         </div>
         {{/if}}
@@ -37,7 +37,7 @@
                  {{if about}}
                     {{:about}}
                 {{else}}
-                    No bio added yet...
+                   Biografiyasi yozilmagan ...
                 {{/if}}
             </p>
         </div>
@@ -49,7 +49,7 @@
                     {{if phone}}
                         {{:phone}}
                     {{else}}
-                        No phone added yet...
+                       Telefon raqami yozilmagan
                     {{/if}}
                 </p>
             </div>
@@ -74,7 +74,7 @@
                       {{:~prepareMedia(#data)}}
                 {{/for}}
         {{else}}
-            <span class="no-photo-found">No media shared yet...</span>
+            <span class="no-photo-found">Mediya fayllar topilmadi...</span>
         {{/if}}
         </div>
     </div>
@@ -83,12 +83,12 @@
         {{if is_blocked_by_auth_user}}
         <div class="switch-checkbox chat-profile__switch-checkbox">
             <input type="checkbox" id="switch" class="block-unblock-user-switch" checked/><label for="switch" class="mb-0 mr-2">Toggle</label>
-            <span class="chat-profile__column-title-detail text-muted mb-0 block-unblock-span">Unblock</span>
+            <span class="chat-profile__column-title-detail text-muted mb-0 block-unblock-span">Blokdan chiqarish</span>
         </div>
         {{else}}
               <div class="switch-checkbox chat-profile__switch-checkbox">
             <input type="checkbox" id="switch" class="block-unblock-user-switch"/><label for="switch" class="mb-0 mr-2">Toggle</label>
-            <span class="chat-profile__column-title-detail text-muted mb-0 block-unblock-span">Block</span>
+            <span class="chat-profile__column-title-detail text-muted mb-0 block-unblock-span">Bloklash</span>
         </div>
         {{/if}}
     </div>

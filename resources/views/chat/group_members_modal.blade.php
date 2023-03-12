@@ -4,7 +4,7 @@
         <div class="modal-content">
             <div class="modal-header border-0 pb-0">
                 <h5 class="modal-title">
-                    <i class="ti-user"></i>Add Members
+                    <i class="ti-user"></i>{{ __('messages.users_add') }}
                 </h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     &times;
@@ -26,8 +26,8 @@
                     </div>
                 </div>
                 <button class="btn btn-success mt-1 btn-add-members-to-group pull-right mt-3" data-group-id=""
-                        data-loading-text="<span class='spinner-border spinner-border-sm'></span> Processing...">Add
-                    To Group
+                        data-loading-text="<span class='spinner-border spinner-border-sm'></span> Bajarilmoqda....">
+                        {{ __('messages.add_to_group') }}
                 </button>
             </div>
         </div>

@@ -7,9 +7,9 @@
             </i>
             <div class="dropdown-menu member-options-{{:member_id}}">
                 <a class="dropdown-item remove-member-from-group" href="#" data-member-id="{{:member_id}}"
-                   data-group-id="{{:group_id}}" id="removeMember-{{:member_id}}">Remove Member</a>
+                   data-group-id="{{:group_id}}" id="removeMember-{{:member_id}}">Guruhdan chiqarish</a>
                 <a class="dropdown-item make-member-to-group-admin" href="#" data-member-id="{{:member_id}}"
-                   data-group-id="{{:group_id}}" id="makeAdmin-{{:member_id}}">Make Admin</a>
+                   data-group-id="{{:group_id}}" id="makeAdmin-{{:member_id}}">Admin qilib tayinlash/a>
             </div>
         </div>
     </div>
