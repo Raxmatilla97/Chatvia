@@ -217,7 +217,7 @@ var swalDelete = Swal.mixin({
 $('.remove-profile-img').on('click', function (e) {
   e.preventDefault();
   swalDelete.fire({
-    title: 'Are you sure?',
+    title: 'Qaroringiz qatiymi?',
     html: 'Your profile image removed by clicking on YES.',
     icon: 'warning',
     showCancelButton: true,

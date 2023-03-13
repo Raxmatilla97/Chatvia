@@ -101,7 +101,7 @@ $(document).ready(function () {
 
     function deleteItem (url, tableId, header, callFunction = null) {
         swalDelete.fire({
-            title: 'Are you sure?',
+            title: 'Qaroringiz qatiymi?',
             html: 'you want to delete this record ?',
             icon: 'warning',
             showCancelButton: true,

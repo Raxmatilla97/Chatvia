@@ -473,7 +473,7 @@ $(document).ready(function () {
 
         archivePeopleBodyEle.append(archiveConversations.map(prepareContacts).join(''));
         archivePeopleBodyEle.find('.chat__person-box-archive').each(function () {
-          $(this).text('Unarchive Chat');
+          $(this).text('Chatni arxivdan chiqarish');
         });
         searchUsers();
       }
@@ -3155,11 +3155,11 @@ $(document).ready(function () {
     var userId = chatDelEle.parents('.chat__person-box').data('id');
     var contactName = $('#user-' + userId).find('.contact-name').text().toString().trim();
     swalDelete.fire({
-      title: 'Are you sure?',
-      html: 'Delete chat with <b>' + contactName + '</b>?',
+      title: 'Qaroringiz qatiymi?',
+      html: '<b>' + contactName + "</b> nomli chatni o'chirishni istaysizmi?",
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Yes, delete it!'
+      confirmButtonText: "Ha, uni o'chir!"
     }).then(function (result) {
       if (result.value) {
         deleteConversation(userId);
@@ -3173,13 +3173,13 @@ $(document).ready(function () {
     var userId = chatArchiveEle.parents('.chat__person-box').data('id');
     var isArchiveChat = $(this).parents('#archivePeopleBody').length;
     var contactName = $('#user-' + userId).find('.contact-name').text();
-    var ArchiveUnarchive = isArchiveChat ? 'Unarchive' : 'Archive';
+    var ArchiveUnarchive = isArchiveChat ? 'Arxiv chatdan chiqarish' : 'Arxivlash';
     swalDelete.fire({
-      title: 'Are you sure?',
-      html: ArchiveUnarchive + ' chat with <b>' + contactName + '</b>?',
+      title: 'Qaroringiz qatiymi?',
+      html: '<b>' + contactName + '</b>ni ' + ArchiveUnarchive + "ni istaysizmi?",
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Yes'
+      confirmButtonText: 'Ha'
     }).then(function (result) {
       if (result.value) {
         archiveConversation(userId);
@@ -3196,9 +3196,9 @@ $(document).ready(function () {
       success: function success(data) {
         if (data.success === true) {
           if (data.data.archived) {
-            fireSwal('success', 'Archived!', 'Conversation has been archived!');
+            fireSwal('success', 'Archived!', 'Chat arxivlangan!');
           } else {
-            fireSwal('success', 'Unarchived!', 'Conversation has been unarchived!');
+            fireSwal('success', 'Unarchived!', 'Chat arxivdan chiqarilgan!');
           }
 
           var _archiveConversation = $('#user-' + userId);
@@ -3206,7 +3206,7 @@ $(document).ready(function () {
           $('#user-' + userId).remove();
 
           if (data.data.archived) {
-            _archiveConversation.find('.chat__person-box-archive').text('Unarchive Chat');
+            _archiveConversation.find('.chat__person-box-archive').text('Chatni arxivdan chiqarish');
 
             archivePeopleBodyEle.append(_archiveConversation);
             makeArchiveChatTabActive();
@@ -3721,11 +3721,11 @@ $(document).ready(function () {
     }
 
     swalDelete.fire({
-      title: 'Are you sure?',
-      html: 'Delete this message?',
+      title: 'Qaroringiz qatiymi?',
+      html: "Bu xabarni o'chirishni istaysizmi?",
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Yes, delete it!'
+      confirmButtonText: "Ha, uni o'chir"
     }).then(function (result) {
       if (result.value) {
         deleteMsgForEveryone(messageId, previousMessageId);
@@ -3749,11 +3749,11 @@ $(document).ready(function () {
     }
 
     swalDelete.fire({
-      title: 'Are you sure?',
-      html: 'Delete this message?',
+      title: 'Qaroringiz qatiymi?',
+      html: "Bu xabarni o'chirishni istaysizmi?",
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Yes, delete it!'
+      confirmButtonText: "Ha, uni o'chir"
     }).then(function (result) {
       if (result.value) {
         deleteMessage(messageId, previousMessageId);
@@ -3770,7 +3770,7 @@ $(document).ready(function () {
 
     if ($('#blockedUsersList').length <= 1) {
       $('.no-blocked-user').show();
-      $('.no-blocked-user').find('span').text('No users blocked yet...');
+      $('.no-blocked-user').find('span').text('Hech qanday foydalanuvchilar hali bloklanmagan ...');
     }
 
     $('.typing').show();
@@ -3794,7 +3794,7 @@ $(document).ready(function () {
   function performActionAfterBlock(user) {
     $('.chat__area-text').remove();
     $('.blocked-message-text').remove();
-    $('.block-unblock-span').text('Unblock');
+    $('.block-unblock-span').text('Blokdan chiqarish');
     $('.chat__area-wrapper').append(blockedMessageText);
     $('.chat-user-' + user.id).remove();
     $('.typing').hide();
@@ -3836,11 +3836,11 @@ $(document).ready(function () {
 
     e.preventDefault();
     swalDelete.fire({
-      title: 'Are you sure?',
-      html: 'Unblock this user?',
+      title: 'Qaroringiz qatiymi?',
+      html: 'Bu foydalanuvchini blockdan chiqarasizmi?',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Yes'
+      confirmButtonText: 'Ha'
     }).then(function (result) {
       if (result.value) {
         placeCaret = false;
@@ -3862,11 +3862,11 @@ $(document).ready(function () {
     data.blocked_to = blockedTo;
     var blockUserText = isBlocked ? 'block' : 'unblock';
     swalDelete.fire({
-      title: 'Are you sure?',
+      title: 'Qaroringiz qatiymi?',
       html: 'You want to ' + blockUserText + ' this user?',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Yes'
+      confirmButtonText: 'Ha'
     }).then(function (result) {
       if (!result.value) {
         $('.block-unblock-user-switch').prop('checked', isBlocked ? false : true);
@@ -4158,11 +4158,11 @@ $(document).ready(function () {
   $(document).on('click', '.remove-member-from-group', function (e) {
     e.preventDefault();
     swalDelete.fire({
-      title: 'Are you sure?',
-      html: 'Remove member from this group ?',
+      title: 'Qaroringiz qatiymi?',
+      html: "Ushbu guruhdan a'zoni olib tashlaysizmi?",
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Yes, remove it!'
+      confirmButtonText: "Ha, uni o'chir!"
     }).then(function (result) {
       if (result.value) {
         var id = $(e.currentTarget).data('member-id');
@@ -4191,11 +4191,11 @@ $(document).ready(function () {
   $(document).on('click', '.make-member-to-group-admin', function (e) {
     e.preventDefault();
     swalDelete.fire({
-      title: 'Are you sure?',
+      title: 'Qaroringiz qatiymi?',
       html: 'Make this member to Admin?',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Yes'
+      confirmButtonText: 'Ha'
     }).then(function (result) {
       if (result.value) {
         var id = $(e.currentTarget).data('member-id');
@@ -4224,11 +4224,11 @@ $(document).ready(function () {
   $(document).on('click', '.dismiss-admin-member', function (e) {
     e.preventDefault();
     swalDelete.fire({
-      title: 'Are you sure?',
-      html: 'Dismiss this member from Admin?',
+      title: 'Qaroringiz qatiymi?',
+      html: "Ushbu a'zodan adminlikni olib tashlaysizmi?",
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Yes'
+      confirmButtonText: 'Ha'
     }).then(function (result) {
       if (result.value) {
         var id = $(e.currentTarget).data('member-id');
@@ -4257,11 +4257,11 @@ $(document).ready(function () {
   $(document).on('click', '.btn-leave-from-group', function (e) {
     e.preventDefault();
     swalDelete.fire({
-      title: 'Are you sure?',
-      html: 'You want to leave this group?',
+      title: 'Qaroringiz qatiymi?',
+      html: 'Siz bu guruhni tark etmoqchimisiz?',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Yes!'
+      confirmButtonText: 'Ha!'
     }).then(function (result) {
       if (result.value) {
         var groupId = $(e.currentTarget).data('group-id');
@@ -4297,11 +4297,11 @@ $(document).ready(function () {
   $(document).on('click', '.btn-delete-group', function (e) {
     e.preventDefault();
     swalDelete.fire({
-      title: 'Are you sure?',
-      html: 'You want to remove this Group ?',
+      title: 'Qaroringiz qatiymi?',
+      html: "Siz bu guruhni o'chirishni istaysizmi?",
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonText: 'Yes!'
+      confirmButtonText: 'Ha!'
     }).then(function (result) {
       if (result.value) {
         var groupId = $(e.currentTarget).data('group-id');
@@ -4338,7 +4338,7 @@ $(document).ready(function () {
   }
 
   function prepareDeleteGroupButton(groupId) {
-    return '<div class="chat-profile__column pt-1"> <a href="#" class="btn btn-danger btn-delete-group" data-group-id="' + groupId + '">Delete Group</a></div>';
+    return '<div class="chat-profile__column pt-1"> <a href="#" class="btn btn-danger btn-delete-group" data-group-id="' + groupId + '">Guruhni o\'chirish</a></div>';
   }
 
   window.updateUnreadMessageCount = function (countOfConversationRead) {

@@ -208,7 +208,7 @@ $(document).ready(function () {
 
     function deleteItem (url, tableId, header, callFunction = null) {
         swalDelete.fire({
-            title: 'Are you sure?',
+            title: 'Qaroringiz qatiymi?',
             html: 'Are you sure you want to delete this "' + header + '" ?',
             icon: 'warning',
             showCancelButton: true,
@@ -234,7 +234,7 @@ $(document).ready(function () {
 
     function archiveItem (url, tableId, header, callFunction = null) {
         swalDelete.fire({
-            title: 'Are you sure?',
+            title: 'Qaroringiz qatiymi?',
             input: 'text',
             inputPlaceholder: 'Write "archive" to archive this user',
             html: 'want to archive this "' + header + '" ? After archive all its conversations will be archive.',
@@ -277,7 +277,7 @@ $(document).ready(function () {
 
     function restoreItem (url, tableId, header, userId) {
         swal.fire({
-            title: 'Are you sure?',
+            title: 'Qaroringiz qatiymi?',
             html: 'want to restore this "' + header + '" ?',
             icon: 'warning',
             showCancelButton: true,

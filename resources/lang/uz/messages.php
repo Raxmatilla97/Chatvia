@@ -238,7 +238,7 @@ return [
     'file_belgilang' => "Fayl belgilang",
     'xabar_yozish_mumkin' => "Guruhning barcha a'zolari guruhga xabar yuborishlari mumkin.",
     'admin_xabar_yoza_oladi' => "Guruhga faqat admin xabar yuborishi mumkin.",
-    '' => "",
+    'cancel' => "Yopish",
     '' => "",
     '' => "",
 ];

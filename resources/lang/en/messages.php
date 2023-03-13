@@ -184,7 +184,7 @@ return [
     //roles
     'new_role'     => 'New Role',
     'edit_role'    => 'Edit Role',
-    'are_you_sure' => 'Are you sure?',
+    'are_you_sure' => 'Qaroringiz qatiymi?',
 
     //profile.blade
     'edit_profile' => 'Edit Profile',

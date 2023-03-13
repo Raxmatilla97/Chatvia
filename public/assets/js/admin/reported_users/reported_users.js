@@ -190,7 +190,7 @@ $(document).ready(function () {
   function deleteItem(url, tableId, header) {
     var callFunction = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : null;
     swalDelete.fire({
-      title: 'Are you sure?',
+      title: 'Qaroringiz qatiymi?',
       html: 'you want to delete this record ?',
       icon: 'warning',
       showCancelButton: true,

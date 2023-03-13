@@ -90,7 +90,7 @@ class GroupRepository extends BaseRepository
 
             $msgInput = [
                 'to_id'        => $group->id,
-                'message'      => Auth::user()->name.' created group "'.$group->name.'"',
+                'message'      => Auth::user()->name.' "'.$group->name.'" Nomli guruh yaratdi',
                 'is_group'     => true,
                 'message_type' => Conversation::MESSAGE_TYPE_BADGES,
             ];
@@ -125,7 +125,7 @@ class GroupRepository extends BaseRepository
             if (! empty($changes)) {
                 $msgInput = [
                     'to_id'        => $group->id,
-                    'message'      => 'Group details updated by '.Auth::user()->name,
+                    'message'      => "Guruh ma'lumotlari ". Auth::user()->name." tomonidan yangilandi ",
                     'is_group'     => true,
                     'message_type' => Conversation::MESSAGE_TYPE_BADGES,
                 ];
@@ -197,7 +197,7 @@ class GroupRepository extends BaseRepository
         $newUserNames = substr($newUserNames, 0, strlen($newUserNames) - 2);
         $msgInput = [
             'to_id'        => $group->id,
-            'message'      => Auth::user()->name." added : $newUserNames",
+            'message'      => Auth::user()->name." qo'shilgan : $newUserNames",
             'is_group'     => true,
             'message_type' => Conversation::MESSAGE_TYPE_BADGES,
             'add_members'  => true,
@@ -244,10 +244,10 @@ class GroupRepository extends BaseRepository
         $groupUser = GroupUser::whereGroupId($group->id)->whereUserId($user->id);
 
         if (getLoggedInUserId() != $group->created_by && $user->id == $group->created_by) {
-            throw new UnprocessableEntityHttpException('You can not remove group owner.');
+            throw new UnprocessableEntityHttpException('Siz guruh egasini olib tashlay olmaysiz.');
         }
 
-        $message = $authUser->name." removed $user->name.";
+        $message = $authUser->name." olib tashlangan $user->name.";
 
         $msgInput = [
             'to_id'        => $group->id,
@@ -313,7 +313,7 @@ class GroupRepository extends BaseRepository
     {
         $msgInput = [
             'to_id'        => $group->id,
-            'message'      => Auth::user()->name." left the group",
+            'message'      => Auth::user()->name." guruhni tark etdi",
             'is_group'     => true,
             'message_type' => Conversation::MESSAGE_TYPE_BADGES,
         ];
@@ -357,7 +357,7 @@ class GroupRepository extends BaseRepository
 
         $msgInput = [
             'to_id'        => $group->id,
-            'message'      => Auth::user()->name." deleted this group",
+            'message'      => Auth::user()->name." Ushbu guruhni o'chirib tashladi",
             'is_group'     => true,
             'message_type' => Conversation::MESSAGE_TYPE_BADGES,
         ];
@@ -413,7 +413,7 @@ class GroupRepository extends BaseRepository
 
         $msgInput = [
             'to_id'        => $group->id,
-            'message'      => Auth::user()->name." assigned admin role to ".$member->name,
+            'message'      => Auth::user()->name." Ma'ruza roliga tayinlangan ".$member->name,
             'is_group'     => true,
             'message_type' => Conversation::MESSAGE_TYPE_BADGES,
         ];
@@ -430,7 +430,7 @@ class GroupRepository extends BaseRepository
     public function dismissAsAdmin($group, $member)
     {
         if ($group->created_by == $member->id) {
-            throw new UnprocessableEntityHttpException('You can not change group owner role.');
+            throw new UnprocessableEntityHttpException("Siz guruh egasi rolini o'zgartira olmaysiz.");
         }
 
         $memberIds = $group->users->pluck('id', 'id')->except($group->created_by)->toArray();
@@ -445,7 +445,7 @@ class GroupRepository extends BaseRepository
 
         $msgInput = [
             'to_id'        => $group->id,
-            'message'      => Auth::user()->name." dismissed $member->name from admin",
+            'message'      => Auth::user()->name." rad etilgan $member->name admindan",
             'is_group'     => true,
             'message_type' => Conversation::MESSAGE_TYPE_BADGES,
         ];

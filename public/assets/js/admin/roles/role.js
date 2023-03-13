@@ -220,7 +220,7 @@ $(document).ready(function () {
   $(document).on('click', '.delete-btn', function (event) {
     var roleId = $(this).data('id');
     swalDelete.fire({
-      title: 'Are you sure?',
+      title: 'Qaroringiz qatiymi?',
       html: 'Are you sure you want to delete this role ?',
       icon: 'warning',
       showCancelButton: true,

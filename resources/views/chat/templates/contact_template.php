@@ -22,10 +22,10 @@
                     </div>
                    <div class="dropdown-menu dropdown-menu-right more-btn-conversation-item">
                        <a class="dropdown-item text-center chat__person-box-delete more-delete-option">
-                            Delete
+                            O'chirish
                         </a>
                         <a class="dropdown-item text-center chat__person-box-archive">
-                            Archive Chat
+                           Chatni arxivlash
                         </a>
                    </div>
                 </div>
