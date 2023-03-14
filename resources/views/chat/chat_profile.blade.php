@@ -85,7 +85,7 @@
     <div class="chat-profile__column chat-profile__column--media">
         <h6 class="chat-profile__column-title">{{ __('messages.media') }}</h6>
         <div class="chat-profile__media-container">
-            <span class="no-photo-found">No media shared yet...</span>
+            <span class="no-photo-found">Hali hech qanday media ulashilmagan...</span>
 {{--            <img src="{{asset('assets/images/women_avatar1.jpg')}}" alt="">--}}
         </div>
     </div>

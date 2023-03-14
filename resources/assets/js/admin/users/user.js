@@ -300,7 +300,7 @@ $(document).ready(function () {
                     $(tableId).DataTable().ajax.reload(null, false);
                 }
                 displayToastr('Success', 'success',
-                    header + ' has been restored.');
+                    header + ' qayta tiklandi!');
             },
             error: function (data) {
                 displayToastr('Error', 'error', data.responseJSON.message);

@@ -19,7 +19,7 @@
                         <span class="h3 mb-0">{{ __('messages.conversations') }}</span>
                         <div class="d-flex chat__people-wrapper-btn-group">
                             <i class="nav-icon fa fa-bars align-top chat__people-wrapper-bar"></i>
-                            @if($enableGroupSetting == 1)
+                            @if($enableGroupSetting == 1 and Auth::user()->hasRole('Admin'))
                             <div class="chat__people-wrapper-button btn-create-group mr-2" data-toggle="modal"
                                  data-target="#createNewGroup">
                                 <i class="nav-icon group-icon color-green" data-toggle="tooltip"

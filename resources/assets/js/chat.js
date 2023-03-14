@@ -2965,8 +2965,8 @@ $(document).ready(function () {
             utc(dateTime).
             local() : moment(dateTime);
         return date.calendar(null, {
-            sameDay: '[Today], ' + format,
-            lastDay: '[Yesterday], ' + format,
+            sameDay: '[Bugun], ' + format,
+            lastDay: '[Kecha], ' + format,
             lastWeek: 'dddd, ' + format,
             sameElse: function () {
                 if (moment().year() === moment(dateTime).year()) {
@@ -2980,8 +2980,8 @@ $(document).ready(function () {
 
     window.getCalenderFormatForTimeLine = function (dateTime) {
         return moment(dateTime).utc(dateTime).local().calendar(null, {
-            sameDay: '[Today]',
-            lastDay: '[Yesterday]',
+            sameDay: '[Bugun]',
+            lastDay: '[Kecha]',
             lastWeek: 'dddd, MMM Do',
             sameElse: function () {
                 if (moment().year() === moment(dateTime).year()) {
@@ -3014,8 +3014,8 @@ $(document).ready(function () {
     };
 
     window.fireSwal = function (
-        icon = 'success', title = 'Deleted!',
-        text = 'Message has been deleted!', confirmButtonColor = '#20a8d8',
+        icon = 'success', title = "O'chirildi!",
+        text = "Xabar o'chirildi!", confirmButtonColor = '#20a8d8',
         timer = 2000) {
         Swal.fire({
             icon: icon,
@@ -3034,7 +3034,7 @@ $(document).ready(function () {
                 if (data.success !== true) {
                     return false;
                 }
-                fireSwal('success', 'Deleted!', 'Conversation has been deleted!');
+                fireSwal('success', "O'chirildi!", "Chat o'chirildi");
                 if (latestSelectedUser === userId) {
                     let selectedUserEle = $('#user-' + latestSelectedUser).parents('.contact-area');
                     if (selectedUserEle.length === 0) {
@@ -3138,11 +3138,11 @@ $(document).ready(function () {
             success: function (data) {
                 if (data.success === true) {
                     if (data.data.archived) {
-                        fireSwal('success', 'Archived!',
-                            'Conversation has been archived!');
+                        fireSwal('success', 'Arxivlandi!',
+                            "Chat arxivlandi!");
                     } else {
-                        fireSwal('success', 'Unarchived!',
-                            'Conversation has been unarchived!');
+                        fireSwal('success', 'Arxivdan chiqarildi!',
+                            "Chat arxiv chatdan chiqarildi!");
                     }
 
                     let archiveConversation = $('#user-' + userId);
@@ -3228,8 +3228,8 @@ $(document).ready(function () {
             success: function (data) {
                 if (data.success === true) {
                     let previousMessage = data.data.previousMessage;
-                    fireSwal('success', 'Deleted!',
-                        'Message has been deleted!');
+                    fireSwal('success', "O'chirildi!",
+                        "Xabar o'chirildi!");
                     let messageEle = $('.message-' + messageId);
                     removeTimeline(messageEle);
 
@@ -3267,8 +3267,8 @@ $(document).ready(function () {
             success: function (data) {
                 if (data.success === true) {
                     let previousMessage = data.data.previousMessage;
-                    fireSwal('success', 'Deleted!',
-                        'Message has been deleted!');
+                    fireSwal('success', "O'chirildi!",
+                        "Xabar o'chirildi!");
                     let messageEle = $('.message-' + messageId);
                     removeTimeline(messageEle);
 
@@ -3536,7 +3536,7 @@ $(document).ready(function () {
 
     function prepareButtonAddMembers (groupId) {
         return '<div class="chat-profile__column pb-0"><a href="#" class="btn btn-success btn-add-members" data-group-id="' +
-            groupId + '">Add Members</a></div>';
+            groupId + '">A\'zolarni qo\'shish</a></div>';
     }
 
     function updateGroupDetails (group) {
@@ -3544,7 +3544,7 @@ $(document).ready(function () {
         $('#groupDetailsDescription-' + group.id).text(group.description);
         if (!group.description) {
             $('#groupDetailsDescription-' + group.id).
-                text('No description added yet...');
+                text("Hozircha tavsif qo'shilmagan...");
         }
         $('#groupDetailsName-' + group.id).text(group.name);
         $('#groupDetailsImage-' + group.id).attr('src', group.photo_url);

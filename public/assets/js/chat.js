@@ -3066,7 +3066,7 @@ $(document).ready(function () {
   window.fireSwal = function () {
     var icon = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'success';
     var title = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'Deleted!';
-    var text = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'Message has been deleted!';
+    var text = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : "Xabar o'chirildi!";
     var confirmButtonColor = arguments.length > 3 && arguments[3] !== undefined ? arguments[3] : '#20a8d8';
     var timer = arguments.length > 4 && arguments[4] !== undefined ? arguments[4] : 2000;
     Swal.fire({
@@ -3087,7 +3087,7 @@ $(document).ready(function () {
           return false;
         }
 
-        fireSwal('success', 'Deleted!', 'Conversation has been deleted!');
+        fireSwal('success', "O'chirildi!", "Chat o'chirildi!");
 
         if (latestSelectedUser === userId) {
           var selectedUserEle = $('#user-' + latestSelectedUser).parents('.contact-area');
@@ -3196,9 +3196,9 @@ $(document).ready(function () {
       success: function success(data) {
         if (data.success === true) {
           if (data.data.archived) {
-            fireSwal('success', 'Archived!', 'Chat arxivlangan!');
+            fireSwal('success', 'Arxivlandi!', 'Chat arxivlandi!');
           } else {
-            fireSwal('success', 'Unarchived!', 'Chat arxivdan chiqarilgan!');
+            fireSwal('success', 'Arxivdan chiqarildi!', 'Chat arxivdan chiqarilgan!');
           }
 
           var _archiveConversation = $('#user-' + userId);
@@ -3319,7 +3319,7 @@ $(document).ready(function () {
       success: function success(data) {
         if (data.success === true) {
           var previousMessage = data.data.previousMessage;
-          fireSwal('success', 'Deleted!', 'Message has been deleted!');
+          fireSwal('success', "O'chirildi!", "Xabar o'chirildi!");
           var messageEle = $('.message-' + messageId);
           removeTimeline(messageEle);
           /** UPDATE MEDIA IN PROFILE BAR*/
@@ -3545,7 +3545,7 @@ $(document).ready(function () {
 
   function groupDeletedByOwner(groupId) {
     $('.members-count').hide();
-    $('.div-group-members-nav').empty().append('<p class="no-group-members-found text-center">No group members found...</p>');
+    $('.div-group-members-nav').empty().append('<p class="no-group-members-found text-center">Hech qanday guruh a\'zosi topilmadi...</p>');
     $('.btn-add-members').parent().remove();
     $('.btn-leave-from-group').parent().remove();
     $('.chat__area-text').remove();
@@ -3565,7 +3565,7 @@ $(document).ready(function () {
     $('#groupDetailsDescription-' + group.id).text(group.description);
 
     if (!group.description) {
-      $('#groupDetailsDescription-' + group.id).text('No description added yet...');
+      $('#groupDetailsDescription-' + group.id).text("Hech qanday tavsif qo'shilmagan..");
     }
 
     $('#groupDetailsName-' + group.id).text(group.name);
@@ -3962,7 +3962,7 @@ $(document).ready(function () {
     $('#groupDetailsDescription-' + groupId).text(group.description);
 
     if (!group.description) {
-      $('#groupDetailsDescription-' + groupId).text('No description added yet...');
+      $('#groupDetailsDescription-' + groupId).text("Hozircha tavsif qo'shilmagan...");
     }
 
     $('#groupDetailsName-' + groupId).text(group.name);

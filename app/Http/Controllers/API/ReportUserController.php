@@ -36,6 +36,6 @@ class ReportUserController extends AppBaseController
     {
         $this->reportedUserRepo->createReportedUser($request->all());
 
-        return $this->sendSuccess('User reported successfully.');
+        return $this->sendSuccess("Shikoyat xatingiz yuborildi!");
     }
 }

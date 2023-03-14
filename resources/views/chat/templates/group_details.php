@@ -38,7 +38,7 @@
                 {{if description}}
                     {{:description}}
                 {{else}}
-                    No description added yet...
+                Hozircha tavsif qo'shilmagan...
                 {{/if}}
             </p>
         </div>  
@@ -73,7 +73,7 @@
                             </span>
                             </h5>
                              {{if pivot.role === 2}}
-                                <span class="badge badge-pill badge-success">{{if ~root.created_by === id}} Owner {{else}} Admin{{/if}}</span>
+                                <span class="badge badge-pill badge-success">{{if ~root.created_by === id}} Egasi {{else}} Admin{{/if}}</span>
                             {{/if}}
                         </div>
                          {{if ~root.created_by !== id && ~root.my_role === 2 && ~root.logged_in_user_id != id && !~root.removed_from_group}}
@@ -110,7 +110,7 @@
                                     {{:~prepareMedia(#data)}}
                                 {{/for}}
                             {{else}}
-                                <span class="no-photo-found">No media shared yet...</span>
+                                <span class="no-photo-found">Hali hech qanday media ulashilmagan...</span>
                             {{/if}}
                         </div>       
                     </div>  

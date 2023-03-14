@@ -34,7 +34,7 @@ class NotificationController extends AppBaseController
     {
         $this->notificationRepo->readNotification($notification->id);
 
-        return $this->sendResponse($notification, 'Notification read successfully.');
+        return $this->sendResponse($notification, 'Bildirishnoma oʻqildi.');
     }
 
     /**
@@ -44,6 +44,6 @@ class NotificationController extends AppBaseController
     {
         $messageSenderIds = $this->notificationRepo->readAllNotification();
 
-        return $this->sendResponse(['sender_ids' => $messageSenderIds], 'Read all notifications successfully.');
+        return $this->sendResponse(['sender_ids' => $messageSenderIds], "Barcha bildirishnomalarni o'qildi.");
     }
 }

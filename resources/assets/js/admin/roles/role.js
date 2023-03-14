@@ -151,7 +151,7 @@ $(document).ready(function () {
                     dataType: 'json',
                     success: function (obj) {
                         displayToastr(
-                            'Success', 'success', 'Role deleted successfully.',
+                            'Success', 'success', "Rolni o'chirdingiz",
                         );
                         roleTable.ajax.reload(null, false);
                     },

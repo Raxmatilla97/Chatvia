@@ -176,7 +176,7 @@ window.deleteItemAjax = function (url, tableId, header) {
         $(tableId).DataTable().ajax.reload(null, false);
       }
 
-      displayToastr('Success', 'success', header + ' has been deleted.');
+      displayToastr('Success', 'success', header + " o'chirildi!");
     },
     error: function error(data) {
       displayToastr('Error', 'error', data.responseJSON.message);

@@ -15,12 +15,12 @@
                         <i class="fa fa-ellipsis-v " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></i>
                         <div class="dropdown-menu">
                             {{if allowToDelete}}
-                                <a class="dropdown-item msg-delete-icon" href="#">Delete Message</a>
+                                <a class="dropdown-item msg-delete-icon" href="#">Xabarni o'chirish</a>
                             {{/if}}
                             {{if deleteMsgForEveryone}}
-                                <a class="dropdown-item msg-delete-for-everyone" href="#">Delete For Everyone</a>
+                                <a class="dropdown-item msg-delete-for-everyone" href="#">Xammadan o'chirish</a>
                             {{/if}}
-                             <a class="dropdown-item msg-replay" href="#" data-self-reply="1" data-message-id="{{:data.id}}" data-message='{{:data.message}}' data-message-type='{{:data.message_type}}'>Reply</a>
+                             <a class="dropdown-item msg-replay" href="#" data-self-reply="1" data-message-id="{{:data.id}}" data-message='{{:data.message}}' data-message-type='{{:data.message_type}}'>Javob berish</a>
                              <a class="dropdown-item open-msg-info" data-message-id="{{:data.id}}" data-is_group="{{:data.is_group}}">
                                 Info
                              </a>
@@ -52,7 +52,7 @@
                 <i class="fa fa-ellipsis-v " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 </i>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item msg-replay" href="#" data-self-reply="0" data-message-id="{{:data.id}}" data-message='{{:data.message}}' data-sender="{{:data.sender.name}}" data-user-id="{{:data.sender.id}}" data-message-type='{{:data.message_type}}'>Reply</a>
+                    <a class="dropdown-item msg-replay" href="#" data-self-reply="0" data-message-id="{{:data.id}}" data-message='{{:data.message}}' data-sender="{{:data.sender.name}}" data-user-id="{{:data.sender.id}}" data-message-type='{{:data.message_type}}'>Javob berish</a>
                 </div>
             </div>
         </div>

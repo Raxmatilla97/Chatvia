@@ -45,7 +45,7 @@ class GroupAPIController extends AppBaseController
             ];
         });
 
-        return $this->sendResponse($groups->toArray(), 'Groups retrieved successfully.');
+        return $this->sendResponse($groups->toArray(), 'Guruhlar muvaffaqiyatli topildi.');
     }
 
     /**
@@ -60,7 +60,7 @@ class GroupAPIController extends AppBaseController
         $group = $group->toArray();
         $group['users'] = $users;
 
-        return $this->sendResponse($group, 'Group retrieved successfully.');
+        return $this->sendResponse($group, 'Guruh muvaffaqiyatli olindi.');
     }
 
     /**
@@ -78,7 +78,7 @@ class GroupAPIController extends AppBaseController
         $group = $this->groupRepository->store($input);
         $group->append('group_created_by');
 
-        return $this->sendResponse($group, 'Group has been created successfully.');
+        return $this->sendResponse($group, 'Guruh muvaffaqiyatli yaratildi.');
     }
 
     /**
@@ -103,7 +103,7 @@ class GroupAPIController extends AppBaseController
         list($group, $conversation) = $this->groupRepository->update($input, $group->id);
 
         return $this->sendResponse(
-            ['group' => $group->toArray(), 'conversation' => $conversation], 'Group details updated successfully.'
+            ['group' => $group->toArray(), 'conversation' => $conversation], 'Guruh tafsilotlari muvaffaqiyatli yangilandi.'
         );
     }
 
@@ -118,7 +118,7 @@ class GroupAPIController extends AppBaseController
     public function addMembers(Group $group, Request $request)
     {
         if ($group->privacy == Group::PRIVACY_PRIVATE && !$this->groupRepository->isAuthUserGroupAdmin($group->id)) {
-            return $this->sendError('Only admin user can add members to the group');
+            return $this->sendError('Guruhga faqat administrator foydalanuvchi qoʻshishi mumkin');
         }
         $users = $request->get('members');
 
@@ -127,7 +127,7 @@ class GroupAPIController extends AppBaseController
         $group = $group->toArray();
         $group['users'] = $addedMembers;
 
-        return $this->sendResponse(['group' => $group, 'conversation' => $conversation], 'Members added successfully.');
+        return $this->sendResponse(['group' => $group, 'conversation' => $conversation], 'A’zolar muvaffaqiyatli qo‘shildi.');
     }
 
     /**
@@ -142,7 +142,7 @@ class GroupAPIController extends AppBaseController
     {
         $conversation = $this->groupRepository->removeMemberFromGroup($group, $user);
 
-        return $this->sendResponse($conversation, 'Member removed successfully.');
+        return $this->sendResponse($conversation, 'Aʼzo olib tashlandi.');
     }
 
     /**
@@ -157,7 +157,7 @@ class GroupAPIController extends AppBaseController
         $group->users;
         $conversation = $this->groupRepository->leaveGroup($group, Auth::id());
 
-        return $this->sendResponse($conversation, 'You are successfully leave this group.');
+        return $this->sendResponse($conversation, 'Siz bu guruhni tark etdingiz.');
     }
 
     /**
@@ -171,7 +171,7 @@ class GroupAPIController extends AppBaseController
     {
         $this->groupRepository->removeGroup($group, Auth::id());
 
-        return $this->sendSuccess('You are successfully deleted this group.');
+        return $this->sendSuccess('Siz bu guruhni oʻchirib tashladingiz');
     }
 
     /**
@@ -184,7 +184,7 @@ class GroupAPIController extends AppBaseController
     {
         $conversation = $this->groupRepository->makeMemberToGroupAdmin($group, $user);
 
-        return $this->sendResponse($conversation, $user->name.' is now new admin.');
+        return $this->sendResponse($conversation, $user->name.' endi yangi admin.');
     }
 
     /**
@@ -197,6 +197,6 @@ class GroupAPIController extends AppBaseController
     {
         $conversation = $this->groupRepository->dismissAsAdmin($group, $user);
 
-        return $this->sendResponse($conversation, $user->name.' is dismissed from admin role successfully.');
+        return $this->sendResponse($conversation, $user->name.' administrator rolidan muvaffaqiyatli ozod qilindi.');
     }
 }

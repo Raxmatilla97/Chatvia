@@ -13,8 +13,8 @@
                 <i class="fa fa-ellipsis-v " data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 </i>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item msg-delete-icon" href="#">Delete Message</a>
-                    <a class="dropdown-item msg-delete-for-everyone" href="#">Delete For Everyone</a>
+                    <a class="dropdown-item msg-delete-icon" href="#">Xabarni o'chirish</a>
+                    <a class="dropdown-item msg-delete-for-everyone" href="#">Xammadan o'chirish</a>
                     <a class="dropdown-item msg-replay" href="#" data-self-reply="1" data-message-id="{{:randomMsgId}}"  data-message='{{:message}}' data-message-type='{{:randomMsgId}}'>Reply</a>
                      <a class="dropdown-item open-msg-info" data-message-id="{{:randomMsgId}}" data-is_group="{{:is_group}}">
                         Info

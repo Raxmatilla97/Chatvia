@@ -1,6 +1,6 @@
 <div class="msg-info">
     <div class="msg-info__header">
-        <span class="chat-profile__about">Message info</span>
+        <span class="chat-profile__about">Xabar infosi</span>
         <i class="fa fa-times msg-info__close-btn"></i>
     </div>
     <div class="group-profile-data">
@@ -35,11 +35,11 @@
         </div>
         <div class="msg-info__divider" id="single-msg-divider"></div>
         <div class="msg-info__column" id="single-msg-section">
-            <h6 class="msg-info__column-title"><span class="group-users-count"></span>&nbsp;Read</h6>
-            <div class="pl-1">yesterday at 11:17 PM</div>
+            <h6 class="msg-info__column-title"><span class="group-users-count"></span>&nbsp;O'qish</h6>
+            <div class="pl-1">Kecha at 11:17 PM</div>
             <div class="msg-info__divider my-2" id="single-msg-divider"></div>
-            <h6 class="msg-info__column-title"><span class="group-users-count"></span>&nbsp;Delivered</h6>
-            <div class="pl-1">yesterday at 11:17 PM</div>
+            <h6 class="msg-info__column-title"><span class="group-users-count"></span>&nbsp;Yozilgan</h6>
+            <div class="pl-1">Kecha at 11:17 PM</div>
         </div>
     </div>
 </div>

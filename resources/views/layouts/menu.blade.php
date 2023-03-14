@@ -28,6 +28,31 @@ body{
     color: #e4e7ea;
     text-transform: uppercase;
 }
+.modal-backdrop {
+    position: inherit !important;
+    top: 0;
+    left: 0;
+    z-index: 1040;
+    width: 100vw;
+    height: 100vh;
+    background-color: #000;
+}
+
+.modal-content {
+    position: relative;
+    display: -webkit-box;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    flex-direction: column;
+    width: 100%;
+    pointer-events: auto;
+    background-color: #f0f3f5;
+    background-clip: padding-box;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 0.3rem;
+    outline: 0;
+}
 
 </style>
 

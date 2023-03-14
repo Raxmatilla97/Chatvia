@@ -76,7 +76,7 @@ window.deleteItemAjax = function (url, tableId, header, callFunction = null) {
                 $(tableId).DataTable().ajax.reload(null, false);
             }
             displayToastr('Success', 'success',
-                header + ' has been deleted.');
+                header + " siz uni o'chirdingiz!");
         },
         error: function (data) {
             displayToastr('Error', 'error', data.responseJSON.message);
