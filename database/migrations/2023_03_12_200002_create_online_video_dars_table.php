@@ -18,6 +18,7 @@ class CreateOnlineVideoDarsTable extends Migration
             $table->increments('id');
             $table->string('title')->nullable();
             $table->string('slug')->nullable();
+            $table->string('jit_meet_url')->nullable();           
             $table->string('img')->nullable();
             $table->text('content')->nullable();
             $table->string('url')->nullable();

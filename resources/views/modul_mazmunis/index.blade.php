@@ -39,99 +39,99 @@
     <div class="container-fluid">
         <div class="animated fadeIn">
              @include('flash::message')
-             <div class="row">
-                 <div class="col-lg-12">
-                     <div class="card">
-                         <div class="card-header">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="card">
+                        <div class="card-header">
                              <i class="fa fa-align-justify"></i>
                             Modul mazmuni
                              <a class="pull-right" href="{{ route('modulMazmunis.create') }}"><i class="fa fa-plus-square fa-lg"></i></a>
-                         </div>
+                        </div>
 
                          @include('modul_mazmunis.search_form')
                         
-                         <div class="tab-content rounded-bottom">
+                        <div class="tab-content rounded-bottom">
                             <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-1154">
-                              <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
-                                <li class="nav-item" role="presentation">
-                                  <button class="nav-link active" id="grid-tab" data-coreui-toggle="tab" data-coreui-target="#grid" type="button" role="tab" aria-controls="grid" aria-selected="true">Grid usulida ko'rish</button>
-                                </li>
-                                <li class="nav-item" role="presentation">
-                                  <button class="nav-link" id="jadval-tab" data-coreui-toggle="tab" data-coreui-target="#jadval" type="button" role="tab" aria-controls="jadval" aria-selected="false" tabindex="-1">Jadval orqali ko'rish</button>
-                                </li>
-                               
-                              </ul>
-                              <div class="tab-content" id="myTabContent">
-                                <div class="tab-pane fade active show" id="grid" role="tabpanel" aria-labelledby="grid-tab">
-                                  
-                                    <div class="content">
-                                         <div class="row row-cols-1 row-cols-2 g-4 " >    
-                                            @foreach ($modulMazmunis as $modul )
-                                                @if(str_contains(url()->current(), '/modulMazmunis/category/shaxsiy_hujjatlar'))    
-                                                    @if($modul->is_active and $modul->is_moderate and $modul->is_private == 1 )   
-                                                    <div class="col">
-                                                        <div class="card" style="width: 20rem;">
-                                                            <img src="@if($modul->img)
-                                                            /image/{{ $modul->img }}
-                                                            @else
-                                                                {{'frontend/images/a270d270d5ca184422cf980475b99e24.gif'}}
-                                                            @endif" class="card-img-top" alt="...">
-                                                            <hr>
-                                                            <div class="card-body">
-                                                            <h5 class="card-title">{{ $modul->title }}</h5>
-                                                            <p class="card-text">{{ $modul->user->name }}</p>
-                                                            <a href="{{ route('modulMazmunis.show', [$modul->id]) }}" class="btn btn-primary">O'qish</a>
-                                                            </div>
-                                                        </div> 
-                                                    </div>
+                                <ul class="nav nav-tabs mb-3" id="myTab" role="tablist">
+                                    <li class="nav-item" role="presentation">
+                                    <button class="nav-link active" id="grid-tab" data-coreui-toggle="tab" data-coreui-target="#grid" type="button" role="tab" aria-controls="grid" aria-selected="true">Grid usulida ko'rish</button>
+                                    </li>
+                                    <li class="nav-item" role="presentation">
+                                    <button class="nav-link" id="jadval-tab" data-coreui-toggle="tab" data-coreui-target="#jadval" type="button" role="tab" aria-controls="jadval" aria-selected="false" tabindex="-1">Jadval orqali ko'rish</button>
+                                    </li>
+                                
+                                </ul>
+                                <div class="tab-content" id="myTabContent">
+                                    <div class="tab-pane fade active show" id="grid" role="tabpanel" aria-labelledby="grid-tab">
+                                    
+                                        <div class="content">
+                                            <div class="row row-cols-1 row-cols-2 g-4 " >    
+                                                @foreach ($modulMazmunis as $modul )
+                                                    @if(str_contains(url()->current(), '/modulMazmunis/category/shaxsiy_hujjatlar'))    
+                                                        @if($modul->is_active and $modul->is_moderate and $modul->is_private == 1 )   
+                                                        <div class="col">
+                                                            <div class="card" style="width: 20rem;">
+                                                                <img src="@if($modul->img)
+                                                                /image/{{ $modul->img }}
+                                                                @else
+                                                                    {{'frontend/images/a270d270d5ca184422cf980475b99e24.gif'}}
+                                                                @endif" class="card-img-top" alt="...">
+                                                                <hr>
+                                                                <div class="card-body">
+                                                                <h5 class="card-title">{{ $modul->title }}</h5>
+                                                                <p class="card-text">{{ $modul->user->name }}</p>
+                                                                <a href="{{ route('modulMazmunis.show', [$modul->id]) }}" class="btn btn-primary">O'qish</a>
+                                                                </div>
+                                                            </div> 
+                                                        </div>
+                                                        @endif
+                                                    @else
+                                                        @if($modul->is_active and $modul->is_moderate and $modul->is_private == 0 )   
+                                                        <div class="col">
+                                                            <div class="card" style="width: 20rem;">
+                                                                <img src="@if($modul->img)
+                                                                /image/{{ $modul->img }}
+                                                                @else
+                                                                    {{'frontend/images/a270d270d5ca184422cf980475b99e24.gif'}}
+                                                                @endif" class="card-img-top" alt="...">
+                                                                <hr>
+                                                                <div class="card-body">
+                                                                <h5 class="card-title">{{ $modul->title }}</h5>
+                                                                <p class="card-text">{{ $modul->user->name }}</p>
+                                                                <a href="{{ route('modulMazmunis.show', [$modul->id]) }}" class="btn btn-primary">O'qish</a>
+                                                                </div>
+                                                            </div> 
+                                                        </div>
+                                                        @endif
                                                     @endif
-                                                @else
-                                                    @if($modul->is_active and $modul->is_moderate and $modul->is_private == 0 )   
-                                                    <div class="col">
-                                                        <div class="card" style="width: 20rem;">
-                                                            <img src="@if($modul->img)
-                                                            /image/{{ $modul->img }}
-                                                            @else
-                                                                {{'frontend/images/a270d270d5ca184422cf980475b99e24.gif'}}
-                                                            @endif" class="card-img-top" alt="...">
-                                                            <hr>
-                                                            <div class="card-body">
-                                                            <h5 class="card-title">{{ $modul->title }}</h5>
-                                                            <p class="card-text">{{ $modul->user->name }}</p>
-                                                            <a href="{{ route('modulMazmunis.show', [$modul->id]) }}" class="btn btn-primary">O'qish</a>
-                                                            </div>
-                                                        </div> 
-                                                    </div>
-                                                    @endif
-                                                @endif
-                                           
-                                          
-                                            @endforeach
-                                        </div> 
+                                            
+                                            
+                                                @endforeach
+                                            </div> 
+                                        </div>
+
+
+                                    </div>
+                                    <div class="tab-pane fade" id="jadval" role="tabpanel" aria-labelledby="jadval-tab">
+                                        <div class="card-body">                         
+                                            @include('modul_mazmunis.table')
+                                            <div class="pull-right mr-3">
+                                                    
+                                            </div>
+                                        </div>
+                                    </div>
+                                
+                                    <div style="margin: auto; width: 50%; margin-top: 10px; margin-bottom: 70px">
+                                        {!! $modulMazmunis->links() !!}
                                     </div>
 
-
                                 </div>
-                                <div class="tab-pane fade" id="jadval" role="tabpanel" aria-labelledby="jadval-tab">
-                                    <div class="card-body">                         
-                                        @include('modul_mazmunis.table')
-                                         <div class="pull-right mr-3">
-                                                
-                                         </div>
-                                    </div>
-                                </div>
-                              
-                                <div style="margin: auto; width: 50%; margin-top: 10px; margin-bottom: 70px">
-                                    {!! $modulMazmunis->links() !!}
-                                </div>
-
-                              </div>
                             </div>
-                          </div>
-                     </div>
-                  </div>
-             </div>
-         </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 @endsection
 

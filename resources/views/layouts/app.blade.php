@@ -188,12 +188,12 @@
 @include('partials.set_custom_status_modal')
 <footer class="app-footer">
     <div>
-        <a href="https://chat.infyom.com/">{{ getAppName() }}</a>
-        <span>&copy; 2019 - {{date('Y')}} {{ getCompanyName() }}.</span>
+        <a href="https://raxi-dev.uz/">{{ getAppName() }}</a>
+        <span>&copy; 2023 - {{date('Y')}} {{ getCompanyName() }}.</span>
     </div>
     <div class="ml-auto">
         <span>Powered by</span>
-        <a href="https://coreui.io">CoreUI</a>
+        <a href="https://raxi-dev.uz">RAXI-DEV</a>
     </div>
 </footer>
 </body>

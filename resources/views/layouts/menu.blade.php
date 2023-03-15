@@ -65,7 +65,7 @@ body{
 <li class="nav-title text-center" style="background-color: #ec167f">YANGILIKLAR</li>
 <li class="nav-item {{ Request::is('news.index') ? 'active' : '' }}" >
     <a class="nav-link" href="{{ route('news.index') }}">
-        <i class="nav-icon icon-cursor"></i>
+        <i class="fa fa-newspaper-o nav-icon mr-4"></i>
         <span>Yangiliklar</span> 
         <span class="badge badge-primary"> {{ App\Models\News::get(['id'])->count()}}</span>
       
@@ -73,20 +73,20 @@ body{
 </li>
 <li class="nav-item {{ Request::is('news.menyaratgan') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('news.menyaratgan') }}">
-        <i class="nav-icon icon-cursor"></i>
+      <i class="fa fa-user-plus nav-icon mr-4"></i>
         <span>Mening yangiliklarim</span>
     </a>
 </li>
 <li class="nav-item {{ Request::is('news.create') ? 'active' : '' }}">
   <a class="nav-link" href="{{ route('news.create') }}">
-      <i class="nav-icon icon-cursor"></i>
+    <i class="fa fa-plus-square nav-icon mr-4"></i>
       <span>Yangilik qo'shish</span>
   </a>
 </li>
 @if(Auth::user()->hasRole('Admin'))
 <li class="nav-item {{ Request::is('news.moderatsiya') ? 'active' : '' }}">
   <a class="nav-link" href="{{ route('news.moderatsiya') }}">
-      <i class="nav-icon icon-cursor"></i>
+    <i class="fa fa-check-circle nav-icon mr-4"></i>
       <span style="margin-right: 5px;">Moderatsiya</span>
       <span class="badge badge-warning"> {{ App\Models\News::where('is_ready', '=', 0)->get(['id'])->count()}}</span>
   </a>
@@ -96,14 +96,14 @@ body{
 
 <li class="nav-item {{ Request::is('modulMazmunis*') ? 'active' : '' }}">
     <a class="nav-link" href="{{ route('modulMazmunis.index') }}">
-        <i class="nav-icon icon-cursor"></i>
+        <i class="fa fa-university nav-icon mr-4"></i>
         <span>Modul Mazmuni</span>
     </a>
 </li>
 
 <li class="nav-item nav-dropdown {{ Request::is('modulMazmunis*') ? 'active' : '' }}">
   <a class="nav-link nav-dropdown-toggle" href="#">
-    <i class="nav-icon cui-puzzle"></i> Yo'nalishlar
+    <i class="fa fa-th-list nav-icon mr-4"></i> Yo'nalishlar
   </a>
   <ul class="nav-dropdown-items">
     <li class="nav-item {{ Request::is('modulMazmunis.mavular') ? 'active' : '' }}">
@@ -142,34 +142,42 @@ body{
       </a>
     </li>
    
-      <li class="nav-item {{ Request::is('modulMazmunis.shaxsiy_hujjatlar') ? 'active' : '' }}">
-        <a class="nav-link" href="/modulMazmunis/category/shaxsiy_hujjatlar">
-          <i class="nav-icon cui-puzzle"></i> Shaxsiy hujjatlar
-        </a>
-      </li>
-   
-   
+    <li class="nav-item {{ Request::is('modulMazmunis.shaxsiy_hujjatlar') ? 'active' : '' }}">
+      <a class="nav-link" href="/modulMazmunis/category/shaxsiy_hujjatlar">
+        <i class="nav-icon cui-puzzle"></i> Shaxsiy hujjatlar
+      </a>
+    </li>
+
   </ul>
 </li>
 
 <li class="nav-item {{ Request::is('modulMazmunis.menyaratgan') ? 'active' : '' }}">
   <a class="nav-link" href="{{ route('modulMazmunis.menyaratgan') }}">
-      <i class="nav-icon icon-cursor"></i>
+      <i class="fa fa-user-plus nav-icon mr-4"></i>
       <span>Men yaratgan resurslar</span>
   </a>
 </li>
 
 <li class="nav-item {{ Request::is('modulMazmunis.create') ? 'active' : '' }}">
   <a class="nav-link" href="{{ route('modulMazmunis.create') }}">
-      <i class="nav-icon icon-cursor"></i>
+      <i class="fa fa-plus-square nav-icon mr-4"></i>
       <span>Yangi resurs yaratish</span>
   </a>
 </li>
 
 @if(Auth::user()->hasRole('Admin'))
+<li class="nav-item {{ Request::is('onlineVideoDars*') ? 'active' : '' }}">
+  <a class="nav-link" href="{{ route('onlineVideoDars.index') }}">
+      <i class="fa fa-youtube-play nav-icon mr-4"></i>
+      <span>Online Video Darslar</span>
+  </a>
+</li>
+@endif
+
+@if(Auth::user()->hasRole('Admin'))
 <li class="nav-item {{ Request::is('modulMazmunis.moderatsiya') ? 'active' : '' }}">
   <a class="nav-link" href="{{ route('modulMazmunis.moderatsiya') }}">
-      <i class="nav-icon icon-cursor"></i>
+      <i class="fa fa-check-circle nav-icon mr-4"></i>
       <span style="margin-right: 5px;">Moderatsiya</span>
       <span class="badge badge-warning"> {{ App\Models\ModulMazmuni::where('is_moderate', '=', 0)->get(['id'])->count()}}</span>
   </a>
@@ -180,7 +188,7 @@ body{
 <li class="nav-title"  style="background-color: #ec167f">BOSHQARUV</li>
     <li class="nav-item {{ Request::is('spikerlars*') ? 'active' : '' }}">
         <a class="nav-link" href="{{ route('spikerlars.index') }}">
-            <i class="nav-icon icon-cursor"></i>
+            <i class="fa fa-graduation-cap nav-icon mr-4  "></i>
             <span>Spikerlar</span>
         </a>
     </li>
@@ -211,9 +219,3 @@ body{
         </a>
     </li>
 @endif
-<li class="nav-item {{ Request::is('onlineVideoDars*') ? 'active' : '' }}">
-    <a class="nav-link" href="{{ route('onlineVideoDars.index') }}">
-        <i class="nav-icon icon-cursor"></i>
-        <span>Online Video Dars</span>
-    </a>
-</li>
