@@ -25,10 +25,31 @@
 </div>
 
 <div class="row col-sm-12 col-lg-12">
-  
+   
+
+    <div class="form-group col-sm-4">
+        {{-- <input name="qachon_boladi" data-date-format="dd/mm/yyyy" id="datepicker"> --}}
+        {!! Form::label('qachon_boladi', "Online dars qachon bo'lishini belgilang:") !!}
+        {!! Form::text('qachon_boladi', null, ['class' => 'form-control', 'id' => 'datepicker', 'data-date-format' => 'dd/mm/yyyy']) !!}
+
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css" rel="stylesheet"/>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script><script type="text/javascript">
+            $('#datepicker').datepicker({
+                weekStart: 1,
+                daysOfWeekHighlighted: "6,0",
+                autoclose: true,
+                todayHighlight: true,
+            });
+            
+            $('#datepicker').datepicker("setDate", new Date());
+        </script>
+    </div>
+       
    
    <!-- Url Content Field -->
-<div class="form-group col-sm-12">
+<div class="form-group col-sm-8">
     {!! Form::label('yutube_video_url', "Faylni boshqa manzildan ko'rsatish:") !!}
     {!! Form::text('yutube_video_url', null, ['class' => 'form-control', 'placeholder' => "https://youtube.com/ yoki boshqa sayt"]) !!}
 </div>

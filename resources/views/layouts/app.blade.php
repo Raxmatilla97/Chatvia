@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="{{ asset('assets/icheck/skins/all.css') }}">
     <link rel="stylesheet" href="{{ mix('assets/css/jquery.toast.min.css') }}">
     {{-- <link rel="stylesheet" href="{{ mix('assets/css/nav.scss') }}"> --}}
-    
+    <script src='https://meet.jit.si/external_api.js'></script>  
     <script src="{{ mix('assets/js/jquery.min.js') }}"></script>
     
     <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
@@ -243,6 +243,7 @@
         };
     }(jQuery));
 </script>
+
 <script src="{{ mix('assets/js/app.js') }}"></script>
 <script src="{{ mix('assets/js/custom.js') }}"></script>
 <script src="{{ mix('assets/js/notification.js') }}"></script>

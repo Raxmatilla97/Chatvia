@@ -15,7 +15,7 @@ Route::group(['middleware'=>'language'],function ()
     
     Auth::routes();
 
-
+    Route::resource('onlineVideoDars', 'OnlineVideoDarsController');
     // Route::prefix('profile')->group(function () {
        
     Route::get('activate', 'AuthController@verifyAccount');
@@ -107,7 +107,7 @@ Route::group(['middleware'=>'language'],function ()
     Route::group(['middleware' => ['role:Admin', 'auth', 'user.activated']], function () {       
 
         Route::resource('spikerlars', 'SpikerlarController');
-        Route::resource('onlineVideoDars', 'OnlineVideoDarsController');
+     
         
         Route::resource('users', 'UserController');
         Route::post('users/{user}/active-de-active', 'UserController@activeDeActiveUser')

@@ -4,6 +4,7 @@
             <tr>
                 <th>Video dars nomlanishi</th>    
                 <th>Dars turi</th>
+                <th>Bo'lish vaqti (kun/oy/yil)</th>
                 <th>Holati</th>               
                 <th>Yaratgan</th>
                 <th colspan="3">Amallar</th>
@@ -27,7 +28,10 @@
                                         <p class="btn btn-info btn-sm text-white"><b>Youtubedan video yo'q!</b></p>
                                     @endif   
                                 @endif                      
-                            </td>                       
+                            </td>
+                            <td>
+                                <b style="color: blue;">{{ $onlineVideoDars->qachon_boladi}}</b>
+                            </td>                    
                             <td>
                                 @if($onlineVideoDars->is_active == 1)
                                     <p class="btn btn-success btn-sm">Aktiv</p>

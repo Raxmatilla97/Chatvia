@@ -40,7 +40,8 @@ class OnlineVideoDars extends Model
         'is_active',
         'jit_meet_url',
         'created_at',
-        'yutube_video_url'
+        'yutube_video_url',
+        'qachon_boladi'
     ];
 
     /**
@@ -54,7 +55,8 @@ class OnlineVideoDars extends Model
         'slug' => 'string',
         'url' => 'string',
         'yutube_video_url' => 'string',
-        'jit_meet_url' => 'string'
+        'jit_meet_url' => 'string',
+        'qachon_boladi' => 'string'
     ];
 
     /**
