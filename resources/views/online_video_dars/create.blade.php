@@ -3,9 +3,9 @@
 @section('content')
     <ol class="breadcrumb">
       <li class="breadcrumb-item">
-         <a href="{!! route('onlineVideoDars.index') !!}">Online Video Dars</a>
+         <a href="{!! route('onlineVideoDars.index') !!}">Online Video Darslar</a>
       </li>
-      <li class="breadcrumb-item active">Create</li>
+      <li class="breadcrumb-item active">Yangi dars yaratish</li>
     </ol>
      <div class="container-fluid">
           <div class="animated fadeIn">
@@ -15,10 +15,10 @@
                         <div class="card">
                             <div class="card-header">
                                 <i class="fa fa-plus-square-o fa-lg"></i>
-                                <strong>Create Online Video Dars</strong>
+                                <strong>O'zingizni online darsingizni yarating</strong>
                             </div>
                             <div class="card-body">
-                                {!! Form::open(['route' => 'onlineVideoDars.store']) !!}
+                                {!! Form::open(['route' => 'onlineVideoDars.store', 'id' => 'addForm', 'files' => true]) !!}
 
                                    @include('online_video_dars.fields')
 

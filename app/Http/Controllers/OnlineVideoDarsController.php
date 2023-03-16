@@ -2,13 +2,16 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateOnlineVideoDarsRequest;
-use App\Http\Requests\UpdateOnlineVideoDarsRequest;
-use App\Repositories\OnlineVideoDarsRepository;
-use App\Http\Controllers\AppBaseController;
-use Illuminate\Http\Request;
 use Flash;
 use Response;
+use Illuminate\Support\Str;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\AppBaseController;
+use App\Repositories\OnlineVideoDarsRepository;
+use App\Http\Requests\CreateOnlineVideoDarsRequest;
+use App\Http\Requests\UpdateOnlineVideoDarsRequest;
+use App\Models\OnlineVideoDars;
 
 class OnlineVideoDarsController extends AppBaseController
 {
@@ -54,9 +57,24 @@ class OnlineVideoDarsController extends AppBaseController
      */
     public function store(CreateOnlineVideoDarsRequest $request)
     {
+        $request['slug'] = date('His').'-'.Str::slug($request->title);       
+        $request['user_id'] = Auth::user()->id;
+        $jit = "https://meet.jit.si/". $request['slug'];
+        $request['jit_meet_url'] = $jit;  
+        
         $input = $request->all();
+        
+        if ($image = $request->file('img')) {
+            $destinationPath = 'image/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $input['img'] = "$profileImage";
+        }  
 
-        $onlineVideoDars = $this->onlineVideoDarsRepository->create($input);
+       
+        
+        OnlineVideoDars::create($input);
+
 
         Flash::success('Online Video Dars saved successfully.');
 

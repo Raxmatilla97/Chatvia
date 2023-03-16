@@ -168,6 +168,14 @@ class ModulMazmuniController extends AppBaseController
     {
         $modulMazmuni = $this->modulMazmuniRepository->find($id);
 
+       preg_match(
+            '/[\\?\\&]v=([^\\?\\&]+)/',
+            $modulMazmuni['url_content'],
+            $matches
+        );
+
+        $modulMazmuni['url_content'] = $matches['1'];
+     
         if (empty($modulMazmuni)) {
             Flash::error("Modul mazmuni topilmadi!");
 

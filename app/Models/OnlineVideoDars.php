@@ -35,8 +35,10 @@ class OnlineVideoDars extends Model
         'slug',
         'img',
         'content',
+        'user_id',
         'url',
         'is_active',
+        'jit_meet_url',
         'created_at',
         'yutube_video_url'
     ];
@@ -51,7 +53,8 @@ class OnlineVideoDars extends Model
         'title' => 'string',
         'slug' => 'string',
         'url' => 'string',
-        'yutube_video_url' => 'string'
+        'yutube_video_url' => 'string',
+        'jit_meet_url' => 'string'
     ];
 
     /**
@@ -62,8 +65,13 @@ class OnlineVideoDars extends Model
     public static $rules = [
         'title' => 'required',
         'is_active' => 'required',
-        'created_at' => 'required'
+        // 'created_at' => 'required'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo('App\Models\User');
+    }
 
     
 }

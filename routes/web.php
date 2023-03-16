@@ -104,7 +104,11 @@ Route::group(['middleware'=>'language'],function ()
         });
     });
 
-    Route::group(['middleware' => ['role:Admin', 'auth', 'user.activated']], function () {
+    Route::group(['middleware' => ['role:Admin', 'auth', 'user.activated']], function () {       
+
+        Route::resource('spikerlars', 'SpikerlarController');
+        Route::resource('onlineVideoDars', 'OnlineVideoDarsController');
+        
         Route::resource('users', 'UserController');
         Route::post('users/{user}/active-de-active', 'UserController@activeDeActiveUser')
             ->name('active-de-active-user');
@@ -135,8 +139,3 @@ Route::group(['middleware'=>'language'],function ()
 
 
 
-
-
-Route::resource('spikerlars', 'SpikerlarController');
-
-Route::resource('onlineVideoDars', 'OnlineVideoDarsController');

@@ -351,4 +351,9 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Models\ModulMazmuni');
     }
+
+    public function online()
+    {
+        return $this->hasOne('App\Models\OnlineVideoDars');
+    }
 }
