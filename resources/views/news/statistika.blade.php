@@ -27,7 +27,7 @@
                             <div class="col-sm-2">
                                 <div class="callout">
                                 <small class="text-muted">Umumiy ko'rishlar soni</small><br>
-                                <strong class="h4">{{ $db->number }} martda</strong>
+                                <strong class="h4">{{ isset($db->number) }} martda</strong>
                                 </div>
                             </div><!--/.col-->
                             <div class="col-sm-2">
