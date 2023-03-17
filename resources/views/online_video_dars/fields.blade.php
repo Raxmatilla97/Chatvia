@@ -26,17 +26,19 @@
 
 <div class="row col-sm-12 col-lg-12">
    
-
-    <div class="form-group col-sm-4">
+    {{-- style="top: -100px;" --}}
+    <div class="form-group col-sm-4" >
         {{-- <input name="qachon_boladi" data-date-format="dd/mm/yyyy" id="datepicker"> --}}
         {!! Form::label('qachon_boladi', "Online dars qachon bo'lishini belgilang:") !!}
-        {!! Form::text('qachon_boladi', null, ['class' => 'form-control', 'id' => 'datepicker', 'data-date-format' => 'dd/mm/yyyy']) !!}
+        {!! Form::text('qachon_boladi', null, ['class' => 'form-control', 'id' => 'datetimepicker3']) !!}
 
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css" rel="stylesheet"/>
+        {{-- <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css" rel="stylesheet"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script><script type="text/javascript">
             $('#datepicker').datepicker({
+                dateFormat: "yy-mm-dd",
+            timeFormat:  "hh:mm:ss",
                 weekStart: 1,
                 daysOfWeekHighlighted: "6,0",
                 autoclose: true,
@@ -44,7 +46,55 @@
             });
             
             $('#datepicker').datepicker("setDate", new Date());
-        </script>
+        </script> --}}
+        <link rel="stylesheet" type="text/css" href="https://www.jqueryscript.net/demo/Clean-jQuery-Date-Time-Picker-Plugin-datetimepicker/jquery.datetimepicker.css"/>
+        
+        {{-- <input type="text" id="datetimepicker3"/> --}}
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+        <script src="https://www.jqueryscript.net/demo/Clean-jQuery-Date-Time-Picker-Plugin-datetimepicker/jquery.datetimepicker.js"></script>
+        <script>$('#datetimepicker_mask').datetimepicker({
+            mask:'9999/19/39 29:59',
+        });
+        $('#datetimepicker').datetimepicker();
+        $('#datetimepicker').datetimepicker({value:'2015/04/15 05:06'});
+        $('#datetimepicker1').datetimepicker({
+            datepicker:false,
+            format:'H:i',
+            step:5
+        });
+        $('#datetimepicker2').datetimepicker({
+            timepicker:false,
+            format:'d/m/Y',
+            formatDate:'Y/m/d',
+            minDate:'-1970/01/02', // yesterday is minimum date
+            maxDate:'+1970/01/02' // and tommorow is maximum date calendar
+        });
+        $('#datetimepicker3').datetimepicker({
+            inline:true
+        });
+        $('#datetimepicker4').datetimepicker();
+        $('#open').click(function(){
+            $('#datetimepicker4').datetimepicker('show');
+        });
+        $('#close').click(function(){
+            $('#datetimepicker4').datetimepicker('hide');
+        });
+        $('#datetimepicker5').datetimepicker({
+            datepicker:false,
+            allowTimes:['12:00','13:00','15:00','17:00','17:05','17:20','19:00','20:00']
+        });
+        $('#datetimepicker6').datetimepicker();
+        $('#destroy').click(function(){
+            if( $('#datetimepicker6').data('xdsoft_datetimepicker') ){
+                $('#datetimepicker6').datetimepicker('destroy');
+                this.value = 'create';
+            }else{
+                $('#datetimepicker6').datetimepicker();
+                this.value = 'destroy';
+            }
+        });
+            </script>
     </div>
        
    

@@ -22,7 +22,7 @@ class CreateOnlineVideoDarsTable extends Migration
             $table->string('img')->nullable();
             $table->text('content')->nullable();
             $table->string('url')->nullable();
-            $table->string('qachon_boladi')->nullable();
+            $table->date('qachon_boladi')->nullable();
             $table->boolean('is_active')->default('1');
             $table->string('yutube_video_url')->nullable();
             $table->integer('user_id')->unsigned();

@@ -3,15 +3,16 @@
 namespace App\Http\Controllers;
 
 use Flash;
+use Illuminate\Support\Carbon;
 use Response;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\OnlineVideoDars;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\AppBaseController;
 use App\Repositories\OnlineVideoDarsRepository;
 use App\Http\Requests\CreateOnlineVideoDarsRequest;
 use App\Http\Requests\UpdateOnlineVideoDarsRequest;
-use App\Models\OnlineVideoDars;
 
 class OnlineVideoDarsController extends AppBaseController
 {
@@ -57,6 +58,40 @@ class OnlineVideoDarsController extends AppBaseController
      */
     public function store(CreateOnlineVideoDarsRequest $request)
     {
+        $test = "2023-03-17 17:00";
+        $test = Carbon::parse($test);
+        $formattedDate = $test;
+
+        // The specified time
+        $specifiedTime = "$formattedDate";
+
+        // Parse the specified time using Carbon
+        $specifiedTime = Carbon::parse($specifiedTime);
+
+        // The current time
+        $currentTime = Carbon::now();
+
+        // Find the difference in hours between the specified time and the current time, with a 3-hour grace period before the start time
+        $diffInHours = $currentTime->diffInHours($specifiedTime, false) + 3;
+        
+        // Check if the specified time has passed, with a 3-hour grace period before the start time
+        // if ($diffInHours >= 0) {
+        //     echo "Bu vebinar tugagan!";
+        // } else if ($diffInHours > -3) {
+        //     echo "Vebinar boshlangan!";
+        // } else {
+        //     echo "Hali vebinar boshlanmagan!";
+        // }
+
+        if($currentTime < $test){
+            echo "true";
+        }
+        else{
+            echo  "false";
+        }
+
+        dd($currentTime );
+
         $request['slug'] = date('His').'-'.Str::slug($request->title);       
         $request['user_id'] = Auth::user()->id;
         $jit = "https://meet.jit.si/". $request['slug'];

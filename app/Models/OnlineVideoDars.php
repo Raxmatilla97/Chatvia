@@ -56,7 +56,7 @@ class OnlineVideoDars extends Model
         'url' => 'string',
         'yutube_video_url' => 'string',
         'jit_meet_url' => 'string',
-        'qachon_boladi' => 'string'
+        // 'qachon_boladi' => 'datetime'
     ];
 
     /**
