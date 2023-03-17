@@ -26,8 +26,8 @@
 
 <div class="row col-sm-12 col-lg-12">
    
-    {{-- style="top: -100px;" --}}
-    <div class="form-group col-sm-4" >
+
+    <div class="form-group col-sm-4" style="top: -100px;">
         {{-- <input name="qachon_boladi" data-date-format="dd/mm/yyyy" id="datepicker"> --}}
         {!! Form::label('qachon_boladi', "Online dars qachon bo'lishini belgilang:") !!}
         {!! Form::text('qachon_boladi', null, ['class' => 'form-control', 'id' => 'datetimepicker3']) !!}
