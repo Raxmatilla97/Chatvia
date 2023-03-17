@@ -28,8 +28,10 @@
         </div>
 
         <hr>
-     {{   \Carbon\Carbon::parse($onlineVideoDars->qachon_boladi)}} 
-        {{   \Carbon\Carbon::now()}}
+     {{-- {{   \Carbon\Carbon::parse($onlineVideoDars->qachon_boladi)}} 
+        {{   \Carbon\Carbon::now()}} --}}
+
+        <h2 class="text-center"> Jonli darsni boshlanish kuni {{$onlineVideoDars->qachon_boladi}}</h2>
 
         @if($onlineVideoDars->yutube_video_url == "")
             @if($onlineVideoDars->jit_meet_url != "")
