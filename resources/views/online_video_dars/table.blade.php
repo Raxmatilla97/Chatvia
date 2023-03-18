@@ -20,7 +20,13 @@
                             </td>                       
                             <td>
                                 @if($onlineVideoDars->jit_meet_url != "")
-                                    <p class="btn btn-success btn-sm text-white"><b>Online dars!</b></p>
+                                    @if($onlineVideoDars->online_dars_holati == "hali_boshlanmagan")
+                                        <p class="btn btn-warning btn-sm text-white"><b>Dars boshlanmagan!</b></p>
+                                    @elseif($onlineVideoDars->online_dars_holati == "dars_boshlangan")
+                                        <p class="btn btn-success btn-sm text-white"><b>Dars boshlangan!</b></p>
+                                    @elseif($onlineVideoDars->online_dars_holati == "dars_tugagan")
+                                        <p class="btn btn-danger btn-sm text-white"><b>Dars tugagan!</b></p>
+                                    @endif                                   
                                 @else
                                     @if($onlineVideoDars->yutube_video_url != "")
                                         <p class="btn btn-success btn-sm text-white"><b>Yutubedan video dars!</b></p>
@@ -30,7 +36,7 @@
                                 @endif                      
                             </td>
                             <td>
-                                <b style="color: blue;">{{ $onlineVideoDars->qachon_boladi}}</b>
+                                <b style="color: blue;">{{ $onlineVideoDars->qachon_boladi}} {{ $onlineVideoDars->qachon_boladi_soat}}</b>
                             </td>                    
                             <td>
                                 @if($onlineVideoDars->is_active == 1)

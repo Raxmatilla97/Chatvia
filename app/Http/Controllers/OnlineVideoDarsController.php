@@ -58,40 +58,9 @@ class OnlineVideoDarsController extends AppBaseController
      */
     public function store(CreateOnlineVideoDarsRequest $request)
     {
-        $test = "2023-03-17 17:00";
-        $test = Carbon::parse($test);
-        $formattedDate = $test;
-
-        // The specified time
-        $specifiedTime = "$formattedDate";
-
-        // Parse the specified time using Carbon
-        $specifiedTime = Carbon::parse($specifiedTime);
-
-        // The current time
-        $currentTime = Carbon::now();
-
-        // Find the difference in hours between the specified time and the current time, with a 3-hour grace period before the start time
-        $diffInHours = $currentTime->diffInHours($specifiedTime, false) + 3;
-        
-        // Check if the specified time has passed, with a 3-hour grace period before the start time
-        // if ($diffInHours >= 0) {
-        //     echo "Bu vebinar tugagan!";
-        // } else if ($diffInHours > -3) {
-        //     echo "Vebinar boshlangan!";
-        // } else {
-        //     echo "Hali vebinar boshlanmagan!";
-        // }
-
-        if($currentTime < $test){
-            echo "true";
-        }
-        else{
-            echo  "false";
-        }
-
-        dd($currentTime );
-
+        $test = $request['qachon_boladi'];
+        $time = Carbon::parse($test);
+        $request['qachon_boladi'] = $time;
         $request['slug'] = date('His').'-'.Str::slug($request->title);       
         $request['user_id'] = Auth::user()->id;
         $jit = "https://meet.jit.si/". $request['slug'];
@@ -166,15 +135,31 @@ class OnlineVideoDarsController extends AppBaseController
      */
     public function update($id, UpdateOnlineVideoDarsRequest $request)
     {
-        $onlineVideoDars = $this->onlineVideoDarsRepository->find($id);
+        $test = $request['qachon_boladi'];
+        $time = Carbon::parse($test);
+        $request['qachon_boladi'] = $time;
+        $request['slug'] = date('His').'-'.Str::slug($request->title);       
+        $request['user_id'] = Auth::user()->id;
+        $jit = "https://meet.jit.si/". $request['slug'];
+        $request['jit_meet_url'] = $jit;  
+        $input = request()->except(['_token']);
+        $input = request()->except(['_method']);
+        $input = $request->all();
+        
+        if ($image = $request->file('img')) {
+            $destinationPath = 'image/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $input['img'] = "$profileImage";
+        }  
 
-        if (empty($onlineVideoDars)) {
+        if (empty($input)) {
             Flash::error('Online Video Dars not found');
 
             return redirect(route('onlineVideoDars.index'));
         }
 
-        $onlineVideoDars = $this->onlineVideoDarsRepository->update($request->all(), $id);
+        OnlineVideoDars::where('id',$id)->update($input);
 
         Flash::success('Online Video Dars updated successfully.');
 

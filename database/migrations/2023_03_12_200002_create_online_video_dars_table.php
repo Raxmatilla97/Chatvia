@@ -20,12 +20,15 @@ class CreateOnlineVideoDarsTable extends Migration
             $table->string('slug')->nullable();
             $table->string('jit_meet_url')->nullable();           
             $table->string('img')->nullable();
-            $table->text('content')->nullable();
-            $table->string('url')->nullable();
+            $table->text('content')->nullable();            
             $table->date('qachon_boladi')->nullable();
+            $table->string('qachon_boladi_soat')->nullable();
+            $table->string('online_dars_holati')->nullable();
             $table->boolean('is_active')->default('1');
             $table->string('yutube_video_url')->nullable();
             $table->integer('user_id')->unsigned();
+            $table->string('_token')->nullable();
+            $table->string('_method')->nullable();
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();
             $table->softDeletes();

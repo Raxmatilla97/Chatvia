@@ -10,8 +10,11 @@
 
     <div class="my-3 p-3 bg-white rounded box-shadow">
             <!-- Img Field -->
-    <div class="form-group">     
-        <img style="height: 400px; display: block; margin-left: auto; margin-right: auto;"
+    <div class="form-group d-flex align-items-center justify-content-center h-100 w-80   ">   
+        <img style="height: 400px; display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;"
         
         @if($onlineVideoDars->img)
           src="{{ asset('image')}}/{{$onlineVideoDars->img}}"
@@ -31,7 +34,7 @@
      {{-- {{   \Carbon\Carbon::parse($onlineVideoDars->qachon_boladi)}} 
         {{   \Carbon\Carbon::now()}} --}}
 
-        <h2 class="text-center"> Jonli darsni boshlanish kuni {{$onlineVideoDars->qachon_boladi}}</h2>
+      
 
         @if($onlineVideoDars->yutube_video_url == "")
             @if($onlineVideoDars->jit_meet_url != "")
@@ -41,10 +44,30 @@
                             <h4 class="alert-heading">Onlayn video dars</h4>
                             <p>Siz bu yerdan onlayn jonli video darslarni ko'rishingiz mumkin.</p>
                             <hr>
-                        
-                        <iframe width="100%" height="750px" allow="camera; microphone; display-capture; autoplay; clipboard-write"
-                            src="{{$onlineVideoDars->jit_meet_url}}">
-                            </iframe>
+                            @if($onlineVideoDars->online_dars_holati == "hali_boshlanmagan" or $onlineVideoDars->online_dars_holati == "dars_boshlangan")       
+                            <h2 class="text-center mb-4"> Online darsning bo'lish vaqti: ({{$onlineVideoDars->qachon_boladi}} - {{$onlineVideoDars->qachon_boladi_soat}})</h2>
+                            @endif 
+                            <div>
+                              @if($onlineVideoDars->online_dars_holati == "hali_boshlanmagan")                             
+                                <div class="alert alert-primary d-flex align-items-center justify-content-center h-100"  role="alert">
+                                  <b>Online dars hali boshlanmagan!</b>
+                                </div>
+                              @elseif($onlineVideoDars->online_dars_holati == "dars_boshlangan")
+                                <div class="alert alert-light d-flex align-items-center justify-content-center h-100" role="alert">
+                                  <b>Online dars ayni damda bo'lmoqda!</b>
+                                </div>                              
+                                <iframe width="100%" height="750px" allow="camera; microphone; display-capture; autoplay; clipboard-write" sandbox="allow-scripts allow-same-origin allow-popups allow-forms allow-downloads" allowfullscreen="true"
+                                src="{{$onlineVideoDars->jit_meet_url}}">
+                                </iframe>
+                              @elseif($onlineVideoDars->online_dars_holati == "dars_tugagan")
+                                <div class="alert alert-danger d-flex align-items-center justify-content-center h-100" role="alert">
+                                  <b>Online dars tugagan!</b>
+                                </div>
+                              @endif   
+
+                            </div>
+                           
+                      
 
                         </div>
                     </div>  

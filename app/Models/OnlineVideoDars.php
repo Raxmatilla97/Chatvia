@@ -35,13 +35,16 @@ class OnlineVideoDars extends Model
         'slug',
         'img',
         'content',
-        'user_id',
-        'url',
+        'user_id',        
         'is_active',
         'jit_meet_url',
         'created_at',
         'yutube_video_url',
-        'qachon_boladi'
+        'qachon_boladi',
+        'qachon_boladi_soat',
+        'online_dars_holati',
+        '_method', 
+        '_token'
     ];
 
     /**
@@ -52,8 +55,7 @@ class OnlineVideoDars extends Model
     protected $casts = [
         'id' => 'integer',
         'title' => 'string',
-        'slug' => 'string',
-        'url' => 'string',
+        'slug' => 'string',       
         'yutube_video_url' => 'string',
         'jit_meet_url' => 'string',
         // 'qachon_boladi' => 'datetime'
