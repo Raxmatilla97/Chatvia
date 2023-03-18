@@ -21,7 +21,7 @@
     <div class="form-group col-sm-4">
         <div class="col-md-12 mb-2">
             @if( isset($modulMazmuni->img))
-                <img style="width: 80%" id="image_preview_container" src="/image/{{$modulMazmuni->img}}"
+                <img style="width: 80%" id="image_preview_container" src="{{asset('/image')}}/{{$modulMazmuni->img}}"
                 alt="preview image" style="max-height: 150px;">
             @else
                 <img style="width: 80%" id="image_preview_container" src="{{ asset('storage/default.jpg') }}"

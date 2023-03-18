@@ -133,6 +133,8 @@ class ModulMazmuniController extends AppBaseController
         }
 
         $request['is_private'] = $is_public;
+        $input = request()->except(['_token']);
+        $input = request()->except(['_method']);
         $input = $request->all();
         
         if ($image = $request->file('img')) {
@@ -168,13 +170,13 @@ class ModulMazmuniController extends AppBaseController
     {
         $modulMazmuni = $this->modulMazmuniRepository->find($id);
 
-       preg_match(
-            '/[\\?\\&]v=([^\\?\\&]+)/',
-            $modulMazmuni['url_content'],
-            $matches
-        );
+    //    preg_match(
+    //         '/[\\?\\&]v=([^\\?\\&]+)/',
+    //         $modulMazmuni['url_content'],
+    //         $matches
+    //     );
 
-        $modulMazmuni['url_content'] = $matches['1'];
+    //     $modulMazmuni['url_content'] = $matches['1'];
      
         if (empty($modulMazmuni)) {
             Flash::error("Modul mazmuni topilmadi!");
@@ -215,22 +217,43 @@ class ModulMazmuniController extends AppBaseController
      */
     public function update($id, UpdateModulMazmuniRequest $request)
     {
-        $modulMazmuni = $this->modulMazmuniRepository->find($id);
+           
+        $request['slug'] = date('His').'-'.Str::slug($request->title);
+        if ($request['is_moderate'] == null ) {
+            $request['is_moderate'] = '0';
+        }
+        $request['user_id'] = Auth::user()->id;
         if ($request['category'] == 'shaxsiy_hujjatlar') {
             $is_public = 1;
         } else {
             $is_public = 0;
         }
+        $input = request()->except(['_token']);
+        $input = request()->except(['_method']); 
+        $request['is_private'] = $is_public;   
+        $input = $request->all();
+        
+        if ($image = $request->file('img')) {
+            $destinationPath = 'image/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $input['img'] = "$profileImage";
+        }
 
-        $request['is_private'] = $is_public;
-
-        if (empty($modulMazmuni)) {
+        if ($file = $request->file('file')) {
+            $destinationPath = 'files/';
+            $profileFile = date('YmdHis') . "." . $file->getClientOriginalExtension();
+            $file->move($destinationPath, $profileFile);
+            $input['file'] = "$profileFile";
+        }
+        
+        if (empty($input)) {
             Flash::error("Modul mazmuni topilmadi!");
 
             return redirect(route('modulMazmunis.index'));
         }
-
-        $modulMazmuni = $this->modulMazmuniRepository->update($request->all(), $id);
+        ModulMazmuni::where('id',$id)->update($input);
+        // $modulMazmuni = $this->modulMazmuniRepository->update($request->all(), $id);
 
         Flash::success("Informatsiya yangilandi!");
 

@@ -45,7 +45,9 @@ class ModulMazmuni extends Model
         'file',
         'url_content',
         'created_at',
-        'user_id'
+        'user_id',
+        '_method', 
+        '_token'
     ];
 
     /**

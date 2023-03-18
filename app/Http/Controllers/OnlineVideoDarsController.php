@@ -33,7 +33,7 @@ class OnlineVideoDarsController extends AppBaseController
      */
     public function index(Request $request)
     {
-        $onlineVideoDars = $this->onlineVideoDarsRepository->all();
+        $onlineVideoDars = $this->onlineVideoDarsRepository->paginate(15);
 
         return view('online_video_dars.index')
             ->with('onlineVideoDars', $onlineVideoDars);
@@ -59,7 +59,7 @@ class OnlineVideoDarsController extends AppBaseController
     public function store(CreateOnlineVideoDarsRequest $request)
     {
         $test = $request['qachon_boladi'];
-        $time = Carbon::parse($test);
+        $time = Carbon::parse($test)->format('d-m-y');
         $request['qachon_boladi'] = $time;
         $request['slug'] = date('His').'-'.Str::slug($request->title);       
         $request['user_id'] = Auth::user()->id;
@@ -80,7 +80,7 @@ class OnlineVideoDarsController extends AppBaseController
         OnlineVideoDars::create($input);
 
 
-        Flash::success('Online Video Dars saved successfully.');
+        Flash::success('Online video darslar saytga joylandi!');
 
         return redirect(route('onlineVideoDars.index'));
     }
@@ -97,7 +97,7 @@ class OnlineVideoDarsController extends AppBaseController
         $onlineVideoDars = $this->onlineVideoDarsRepository->find($id);
 
         if (empty($onlineVideoDars)) {
-            Flash::error('Online Video Dars not found');
+            Flash::error('Online video darslar topilmadi');
 
             return redirect(route('onlineVideoDars.index'));
         }
@@ -117,7 +117,7 @@ class OnlineVideoDarsController extends AppBaseController
         $onlineVideoDars = $this->onlineVideoDarsRepository->find($id);
 
         if (empty($onlineVideoDars)) {
-            Flash::error('Online Video Dars not found');
+            Flash::error('Online video darslar topilmadi');
 
             return redirect(route('onlineVideoDars.index'));
         }
@@ -136,7 +136,7 @@ class OnlineVideoDarsController extends AppBaseController
     public function update($id, UpdateOnlineVideoDarsRequest $request)
     {
         $test = $request['qachon_boladi'];
-        $time = Carbon::parse($test);
+        $time = Carbon::parse($test)->format('d-m-y');
         $request['qachon_boladi'] = $time;
         $request['slug'] = date('His').'-'.Str::slug($request->title);       
         $request['user_id'] = Auth::user()->id;
@@ -154,14 +154,14 @@ class OnlineVideoDarsController extends AppBaseController
         }  
 
         if (empty($input)) {
-            Flash::error('Online Video Dars not found');
+            Flash::error('Online video darslar topilmadi');
 
             return redirect(route('onlineVideoDars.index'));
         }
 
         OnlineVideoDars::where('id',$id)->update($input);
 
-        Flash::success('Online Video Dars updated successfully.');
+        Flash::success('Onlayn video darslar yangilandi!');
 
         return redirect(route('onlineVideoDars.index'));
     }
@@ -180,14 +180,14 @@ class OnlineVideoDarsController extends AppBaseController
         $onlineVideoDars = $this->onlineVideoDarsRepository->find($id);
 
         if (empty($onlineVideoDars)) {
-            Flash::error('Online Video Dars not found');
+            Flash::error('Online video darslar topilmadi');
 
             return redirect(route('onlineVideoDars.index'));
         }
 
         $this->onlineVideoDarsRepository->delete($id);
 
-        Flash::success('Online Video Dars deleted successfully.');
+        Flash::success("Video dars o'chiriladi");
 
         return redirect(route('onlineVideoDars.index'));
     }

@@ -3,9 +3,9 @@
 @section('content')
     <ol class="breadcrumb">
           <li class="breadcrumb-item">
-             <a href="{!! route('modulMazmunis.index') !!}">Modul Mazmuni</a>
+             <a href="{!! route('modulMazmunis.index') !!}">Modul Ma'zmuni ro'yxati</a>
           </li>
-          <li class="breadcrumb-item active">Edit</li>
+          <li class="breadcrumb-item active">O'zgartirish</li>
         </ol>
     <div class="container-fluid">
          <div class="animated fadeIn">
@@ -15,7 +15,7 @@
                       <div class="card">
                           <div class="card-header">
                               <i class="fa fa-edit fa-lg"></i>
-                              <strong>Edit Modul Mazmuni</strong>
+                              <strong>Resursni tahrirlash sahifasi</strong>
                           </div>
                           <div class="card-body">
                               {!! Form::model($modulMazmuni, ['route' => ['modulMazmunis.update', $modulMazmuni->id], 'method' => 'patch', 'files' => true]) !!}

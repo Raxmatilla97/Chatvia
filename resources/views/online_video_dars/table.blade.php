@@ -4,7 +4,7 @@
             <tr>
                 <th>Video dars nomlanishi</th>    
                 <th>Dars turi</th>
-                <th>Bo'lish vaqti (kun/oy/yil)</th>
+                <th>Bo'lish vaqti (yil/oy/kun)</th>
                 <th>Holati</th>               
                 <th>Yaratgan</th>
                 <th colspan="3">Amallar</th>

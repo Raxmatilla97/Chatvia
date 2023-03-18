@@ -40,7 +40,7 @@
                         <iframe width="100%" height="440" src="https://www.youtube.com/embed/{{$modulMazmuni->url_content }}" title="{{ $modulMazmuni->title }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     @else
                         <div class="alert alert-warning" role="alert">
-                            Hech qanday fayl biriktirilmagan!
+                            Hech qanday video biriktirilmagan!
                         </div>
                     @endif
                 </div>

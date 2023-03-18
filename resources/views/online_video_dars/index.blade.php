@@ -23,6 +23,10 @@
                                      
                               </div>
                          </div>
+
+                         <div style="margin: auto; width: 50%; margin-top: 10px; margin-bottom: 70px">
+                            {!! $onlineVideoDars->links() !!}
+                        </div>
                      </div>
                   </div>
              </div>
