@@ -53,7 +53,7 @@ class UserAPIController extends AppBaseController
 
         $users = User::whereNotIn('id', $userIds)->orderBy('name', 'asc')->get()->except(getLoggedInUserId());
 
-        return $this->sendResponse(['users' => $users], 'Users retrieved successfully.');
+        return $this->sendResponse(['users' => $users], 'Foydalanuvchilar muvaffaqiyatli topildi.');
     }
 
     /**
@@ -63,7 +63,7 @@ class UserAPIController extends AppBaseController
     {
         $users = User::orderBy('name', 'asc')->get()->except(getLoggedInUserId());
 
-        return $this->sendResponse(['users' => $users], 'Users retrieved successfully.');
+        return $this->sendResponse(['users' => $users], 'Foydalanuvchilar muvaffaqiyatli topildi.');
     }
 
     /**
@@ -76,7 +76,7 @@ class UserAPIController extends AppBaseController
         $authUser->roles;
         $authUser = $authUser->apiObj();
 
-        return $this->sendResponse(['user' => $authUser], 'Users retrieved successfully.');
+        return $this->sendResponse(['user' => $authUser], 'Foydalanuvchilar muvaffaqiyatli topildi.');
     }
 
     /**
@@ -89,7 +89,7 @@ class UserAPIController extends AppBaseController
         try {
             $this->userRepository->updateProfile($request->all());
 
-            return $this->sendSuccess('Profile updated successfully.');
+            return $this->sendSuccess('Profil muvaffaqiyatli yangilandi.');
         } catch (Exception $e) {
             return $this->sendError($e->getMessage());
         }
@@ -109,7 +109,7 @@ class UserAPIController extends AppBaseController
 
         $user->update(['last_seen' => $lastSeen, 'is_online' => $request->get('status')]);
 
-        return $this->sendResponse(['user' => $user], 'Last seen updated successfully.');
+        return $this->sendResponse(['user' => $user], 'Oxirgi marta koʻrish muvaffaqiyatli yangilandi.');
     }
 
     /**
@@ -123,7 +123,7 @@ class UserAPIController extends AppBaseController
         $input = $request->all();
         $data = $this->userRepository->getConversation($id, $input);
 
-        return $this->sendResponse($data, 'Conversation retrieved successfully.');
+        return $this->sendResponse($data, 'Suhbat muvaffaqiyatli olindi.');
     }
 
     /**
@@ -141,7 +141,7 @@ class UserAPIController extends AppBaseController
 
         $user->update(['password' => $input['password']]);
 
-        return $this->sendSuccess('Password updated successfully.');
+        return $this->sendSuccess('Parol muvaffaqiyatli yangilandi.');
     }
 
     /**
@@ -156,7 +156,7 @@ class UserAPIController extends AppBaseController
 
         $this->userRepository->storeAndUpdateNotification($input);
 
-        return $this->sendSuccess('Notification updated successfully.');
+        return $this->sendSuccess('Bildirishnoma muvaffaqiyatli yangilandi.');
     }
 
     /**
@@ -169,7 +169,7 @@ class UserAPIController extends AppBaseController
 
         $user->deleteImage();
 
-        return $this->sendSuccess('Profile image deleted successfully.');
+        return $this->sendSuccess('Profil rasmi muvaffaqiyatli oʻchirildi.');
     }
 
     /**
@@ -197,10 +197,10 @@ class UserAPIController extends AppBaseController
         } else {
             $archivedUser->delete();
 
-            return $this->sendResponse(['archived' => false], 'Chat unarchived successfully.');
+            return $this->sendResponse(['archived' => false], 'Chat muvaffaqiyatli arxivdan chiqarildi.');
         }
 
-        return $this->sendResponse(['archived' => true], 'Chat archived successfully.');
+        return $this->sendResponse(['archived' => true], 'Chat arxivlandi.');
     }
 
     /**
@@ -214,7 +214,7 @@ class UserAPIController extends AppBaseController
 
         $userStatus = $this->userRepository->setUserCustomStatus($input);
 
-        return $this->sendResponse($userStatus, 'Your status set successfully.');
+        return $this->sendResponse($userStatus, "Sizning statusingiz muvaffaqiyatli o'rnatildi.");
     }
 
     /**
@@ -226,7 +226,7 @@ class UserAPIController extends AppBaseController
     {
         $this->userRepository->clearUserCustomStatus();
 
-        return $this->sendSuccess('Your status cleared successfully.');
+        return $this->sendSuccess('Statusingiz muvaffaqiyatli tozalandi.');
     }
     
      /*
@@ -239,6 +239,6 @@ class UserAPIController extends AppBaseController
         $users = User::with('userStatus')->whereIn('id', $myContactIds)->orderBy('name', 'asc')->get();
 
         return $this->sendResponse(['users' => $users, 'myContactIds' => $myContactIds],
-            'Users retrieved successfully.');
+            'Foydalanuvchilar muvaffaqiyatli topildi.');
     }
 }
