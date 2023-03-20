@@ -11,7 +11,7 @@
   </style>
  <!-- section begin -->
  <section id="section-register" >
-    <div class="wm wm-border dark wow fadeInDown">@lang('asosiy-sahifa.kirish_uchun')</div> 
+    <div class="wm wm-border dark wow fadeInDown d-none d-sm-block d-sm-none d-md-none d-lg-block d-lg-none d-xl-block">@lang('asosiy-sahifa.kirish_uchun')</div> 
     <div class="container">
       <div class="row">       
         <div class="col-md-6 offset-md-3 text-center wow fadeInUp">

@@ -1,6 +1,6 @@
  <!-- section begin -->
  <section id="section-testimonials" class="text-light" aria-label="section">
-    <div class="wm wm-border dark wow fadeInDown">@lang('asosiy-sahifa.izohlar')</div>
+    <div class="wm wm-border dark wow fadeInDown d-none d-sm-block d-sm-none d-md-none d-lg-block d-lg-none d-xl-block">@lang('asosiy-sahifa.izohlar')</div>
     <div class="container">
       <div class="row">
 

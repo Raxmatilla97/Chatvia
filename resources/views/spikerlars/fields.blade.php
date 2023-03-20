@@ -18,7 +18,7 @@
     <!-- Img Field -->
     <div class="form-group col-sm-4">
         <div class="col-md-4 mb-2">
-        @if($spikerlar->img)
+        @if(isset($spikerlar->img))
             <img style="width: 80%" id="image_preview_container" src="/image/{{$spikerlar->img}}"
             alt="preview image" style="max-height: 150px;">
         @else

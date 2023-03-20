@@ -119,7 +119,7 @@ $(document).ready(function () {
           return '';
         }
 
-        return '<button title="Edit" class="index__btn btn btn-ghost-success btn-sm edit-btn" data-id="' + row.id + '">' + '<i class="cui-pencil action-icon"></i>' + '</button>' + '<button title="Delete" class="index__btn btn btn-ghost-danger btn-sm delete-btn" data-id="' + row.id + '">' + '<i class="cui-trash action-icon"></i></button>';
+        return '<button title="Tahrirlash" class="index__btn btn btn-ghost-success btn-sm edit-btn" data-id="' + row.id + '">' + '<i class="cui-pencil action-icon"></i>' + '</button>' + '<button title="Delete" class="index__btn btn btn-ghost-danger btn-sm delete-btn" data-id="' + row.id + '">' + '<i class="cui-trash action-icon"></i></button>';
       },
       name: 'id'
     }]
@@ -221,7 +221,7 @@ $(document).ready(function () {
     var roleId = $(this).data('id');
     swalDelete.fire({
       title: 'Qaroringiz qatiymi?',
-      html: 'Are you sure you want to delete this role ?',
+      html: 'Haqiqatan ham bu rolni oʻchirib tashlamoqchimisiz?',
       icon: 'warning',
       showCancelButton: true,
       confirmButtonText: 'Delete'
@@ -232,7 +232,7 @@ $(document).ready(function () {
           type: 'DELETE',
           dataType: 'json',
           success: function success(obj) {
-            displayToastr('Success', 'success', 'Role deleted successfully.');
+            displayToastr('Success', 'success', 'Rol muvaffaqiyatli oʻchirildi.');
             roleTable.ajax.reload(null, false);
           },
           error: function error(data) {

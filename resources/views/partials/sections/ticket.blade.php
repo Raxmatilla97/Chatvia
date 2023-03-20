@@ -1,6 +1,6 @@
 <!-- section begin -->
     <section id="section-ticket" class="text-light" data-bgimage="url(public/images-event/bg/2.jpg'}}) fixed top">
-                <div class="wm wm-border dark wow fadeInDown">@lang('asosiy-sahifa.faoliyat')</div>
+                <div class="wm wm-border dark wow fadeInDown d-none d-sm-block d-sm-none d-md-none d-lg-block d-lg-none d-xl-block">@lang('asosiy-sahifa.faoliyat')</div>
 				          <div class="container">
                     <div class="row">
 					            	<div class="col-md-6 offset-md-3 text-center wow fadeInUp">

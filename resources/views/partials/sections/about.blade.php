@@ -1,5 +1,5 @@
- <div class="wm wm-border dark wow fadeInDown" style="    margin-top: 60px;">@lang('asosiy-sahifa.biz_haqimizda')</div>
- <div class="col-md-6 offset-md-3 text-center wow fadeInUp animated" style="visibility: visible; animation-name: fadeInUp; background-size: cover;">
+ <div class="wm wm-border dark wow fadeInDown d-none d-sm-block d-sm-none d-md-none d-lg-block d-lg-none d-xl-block" style="    margin-top: 60px;">>@lang('asosiy-sahifa.modul_haqida')</div>
+ <div class="col-md-6 offset-md-3 text-center wow fadeInUp animated" style="padding-top: 50px; visibility: visible; animation-name: fadeInUp; background-size: cover;">
   <h1>@lang('asosiy-sahifa.kiskacha_malumotlar') </h1>
   <div class="separator" style="background-size: cover;"><span><i class="fa fa-square"></i></span></div>
   <div class="spacer-single" style="background-size: cover;"></div>

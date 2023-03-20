@@ -40,7 +40,7 @@ class ForgotPasswordController extends Controller
      */
     protected function sendResetLinkResponse(Request $request, $response)
     {
-        \Flash::success('Reset password link has been sent to your email. Please check your mailbox.');
+        \Flash::success('Parolni tiklash havolasi elektron pochtangizga yuborildi. Iltimos, pochta qutingizni tekshiring.');
 
         return back()->with('status', trans($response));
     }

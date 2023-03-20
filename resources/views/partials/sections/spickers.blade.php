@@ -1,6 +1,6 @@
 <!-- section begin -->
 <section id="section-speakers" class="text-light" data-bgimage="url(public/images-event/bg/1.jpg'}}) fixed top center" data-stellar-background-ratio=".2">
-<div class="wm wm-border dark wow fadeInDown">@lang('asosiy-sahifa.spikerlar')</div>
+<div class="wm wm-border dark wow fadeInDown d-none d-sm-block d-sm-none d-md-none d-lg-block d-lg-none d-xl-block">@lang('asosiy-sahifa.spikerlar')</div>
     <div class="container">
       <div class="row">
         <div class="col-md-6 offset-md-3 text-center wow fadeInUp">

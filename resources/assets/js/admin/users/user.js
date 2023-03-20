@@ -236,14 +236,14 @@ $(document).ready(function () {
         swalDelete.fire({
             title: 'Qaroringiz qatiymi?',
             input: 'text',
-            inputPlaceholder: 'Write "archive" to archive this user',
-            html: 'want to archive this "' + header + '" ? After archive all its conversations will be archive.',
+            inputPlaceholder: 'Arxivlash uchun “arxiv” deb yozing',
+            html: 'Ushbu "' + header + '" ni arxivlashni xohlaysizmi? Arxivlangandan so\'ng uning barcha suhbatlari arxivlanadi.',
             icon: 'warning',
             showCancelButton: true,
-            confirmButtonText: 'Archive',
+            confirmButtonText: 'Arxivlash',
             inputValidator: (value) => {
-                if (value !== "archive") {
-                    return 'You need to write "archive"'
+                if (value !== "arxiv") {
+                    return '"Arxiv" deb yozishingiz kerak';
                 }
             }
         }).then((result) => {
