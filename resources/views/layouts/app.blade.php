@@ -48,7 +48,7 @@
                 if (isSubscribed) {
                     OneSignal.showNativePrompt();
                 } else {
-                    if (confirm('Are you sure to disable web notification ?')) {
+                    if (confirm("Veb-xabarnomani o'chirishga ishonchingiz komilmi?")) {
                         OneSignal.getUserId(function (userId) {
                             OneSignal.setSubscription(false);
                             updateWebPushNotification(false, userId);

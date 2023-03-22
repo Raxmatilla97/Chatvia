@@ -96,7 +96,7 @@
                 <div class="form-group bordered-input w-100">
                     <div class="form-group pl-0  d-flex">
                         {!! Form::checkbox('is_subscribed',$isSubscribed,$isSubscribed, ['id' => 'webNotification']) !!}
-                        &nbsp;<lable for="is_subscribed" class="mb-0">Enable Web Notification</lable>
+                        &nbsp;<lable for="is_subscribed" class="mb-0">Bildirishnomalar kelishini yoqish</lable>
                     </div>
                 </div>
                 <div class="d-flex w-100">

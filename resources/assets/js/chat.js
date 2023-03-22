@@ -2141,9 +2141,9 @@ $(document).ready(function () {
             '</span>\n' +
             '          </div>';
 
-        if (timelineDate == 'Today' &&
+        if (timelineDate == 'Bugun' &&
             $('.chat-conversation').find($('.chat__msg-day-title')).text() ==
-            'Today') {
+            'Bugun') {
             return '';
         }
 
