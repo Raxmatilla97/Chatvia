@@ -2,10 +2,10 @@
 
 use Symfony\Component\Console\Input\Input;
 
-Route::get('/setlocale/{locale}',function($lang = null){
-    \Session::put('locale',$lang);
-    return redirect()->back();   
-});
+// Route::get('/setlocale/{locale}',function($lang = null){
+//     \Session::put('locale',$lang);
+//     return redirect()->back();   
+// });
 
 Route::group(['middleware'=>'language'],function ()
 {
@@ -20,7 +20,9 @@ Route::group(['middleware'=>'language'],function ()
        
     Route::get('activate', 'AuthController@verifyAccount');
     Route::get('/home', 'HomeController@index')->name('home');
-    
+
+    Route::get('/statistika', 'StatstikaController@index')->name('statistika');
+
     // CRUDlar resurslari    
     Route::get('/news/search/', 'NewsController@search')->name('news.search');
     Route::get('/news/men-yaratgan', 'NewsController@menYaratgan')->name('news.menyaratgan');
