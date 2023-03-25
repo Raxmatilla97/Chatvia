@@ -67,6 +67,26 @@ body{
       <i class="nav-icon icon-speech mr-4"></i> {{ __('messages.statistika') }}
   </a>
 </li>
+
+<li class="nav-title text-center" style="background-color: #ec167f">Video kurslar</li>
+
+
+<li class="nav-item {{ Request::is('onlineVideoDars*') ? 'active' : '' }}">
+  <a class="nav-link" href="{{ route('onlineVideoDars.index') }}">
+      <i class="fa fa-youtube-play nav-icon mr-4"></i>
+      <span>Online Video Kurslar</span>
+  </a>
+</li>
+@if(Auth::user()->hasRole('Admin'))
+<li class="nav-item {{ Request::is('news.moderatsiya') ? 'active' : '' }}">
+  <a class="nav-link" href="{{ route('news.moderatsiya') }}">
+    <i class="fa fa-check-circle nav-icon mr-4"></i>
+      <span style="margin-right: 5px;">Moderatsiya</span>
+      <span class="badge badge-warning"> {{ App\Models\News::where('is_ready', '=', 0)->get(['id'])->count()}}</span>
+  </a>
+</li>
+@endif
+
 <li class="nav-title text-center" style="background-color: #ec167f">YANGILIKLAR</li>
 <li class="nav-item {{ Request::is('news.index') ? 'active' : '' }}" >
     <a class="nav-link" href="{{ route('news.index') }}">
@@ -169,16 +189,6 @@ body{
       <span>Yangi resurs yaratish</span>
   </a>
 </li>
-
-@if(Auth::user()->hasRole('Admin'))
-<li class="nav-item {{ Request::is('onlineVideoDars*') ? 'active' : '' }}">
-  <a class="nav-link" href="{{ route('onlineVideoDars.index') }}">
-      <i class="fa fa-youtube-play nav-icon mr-4"></i>
-      <span>Online Video Darslar</span>
-  </a>
-</li>
-@endif
-
 @if(Auth::user()->hasRole('Admin'))
 <li class="nav-item {{ Request::is('modulMazmunis.moderatsiya') ? 'active' : '' }}">
   <a class="nav-link" href="{{ route('modulMazmunis.moderatsiya') }}">
@@ -224,3 +234,9 @@ body{
         </a>
     </li>
 @endif
+{{-- <li class="nav-item {{ Request::is('onlineVideolars*') ? 'active' : '' }}">
+    <a class="nav-link" href="{{ route('onlineVideolars.index') }}">
+        <i class="nav-icon icon-cursor"></i>
+        <span>Online Videolars</span>
+    </a>
+</li> --}}

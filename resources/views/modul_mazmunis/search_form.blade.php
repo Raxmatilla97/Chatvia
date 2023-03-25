@@ -4,7 +4,7 @@
     
         <div class="input-group" style="margin-top: 10px;">
             <input type="text" class="form-control form-control-lg" name="search"
-                placeholder="Yangiliklarni qidirish formasi" >                                                        
+                placeholder="Modul mazmuni resurslarini qidirish formasi" >                                                        
                 <span class="input-group-btn">
                 <button type="submit" class="btn btn-default">
                     <span class="glyphicon glyphicon-search"></span> 

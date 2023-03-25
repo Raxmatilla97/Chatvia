@@ -141,3 +141,6 @@ Route::group(['middleware'=>'language'],function ()
 
 
 
+
+
+Route::resource('onlineVideolars', 'OnlineVideolarController');

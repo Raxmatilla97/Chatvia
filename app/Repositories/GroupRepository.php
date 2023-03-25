@@ -197,7 +197,7 @@ class GroupRepository extends BaseRepository
         $newUserNames = substr($newUserNames, 0, strlen($newUserNames) - 2);
         $msgInput = [
             'to_id'        => $group->id,
-            'message'      => Auth::user()->name." qo'shilgan : $newUserNames",
+            'message'      => Auth::user()->name." qo'shdi : $newUserNames",
             'is_group'     => true,
             'message_type' => Conversation::MESSAGE_TYPE_BADGES,
             'add_members'  => true,

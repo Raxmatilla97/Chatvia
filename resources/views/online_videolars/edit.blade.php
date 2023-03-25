@@ -3,9 +3,9 @@
 @section('content')
     <ol class="breadcrumb">
           <li class="breadcrumb-item">
-             <a href="{!! route('onlineVideoDars.index') !!}">Online video kurslar ro'yxati</a>
+             <a href="{!! route('onlineVideolars.index') !!}">Online Videolar</a>
           </li>
-          <li class="breadcrumb-item active">O'zgartirish</li>
+          <li class="breadcrumb-item active">Edit</li>
         </ol>
     <div class="container-fluid">
          <div class="animated fadeIn">
@@ -15,12 +15,12 @@
                       <div class="card">
                           <div class="card-header">
                               <i class="fa fa-edit fa-lg"></i>
-                              <strong>Video kursni o'zgartirish</strong>
+                              <strong>Edit Online Videolar</strong>
                           </div>
                           <div class="card-body">
-                              {!! Form::model($onlineVideoDars, ['route' => ['onlineVideoDars.update', $onlineVideoDars->id], 'method' => 'patch', 'files' => true]) !!}
+                              {!! Form::model($onlineVideolar, ['route' => ['onlineVideolars.update', $onlineVideolar->id], 'method' => 'patch']) !!}
 
-                              @include('online_video_dars.fields')
+                              @include('online_videolars.fields')
 
                               {!! Form::close() !!}
                             </div>

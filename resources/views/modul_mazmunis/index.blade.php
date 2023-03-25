@@ -8,30 +8,30 @@
     border: var(--cui-nav-tabs-border-width) solid transparent;
     border-top-left-radius: var(--cui-nav-tabs-border-radius);
     border-top-right-radius: var(--cui-nav-tabs-border-radius);
-}
-.nav-tabs {
-    --cui-nav-tabs-border-width: 1px;
-    --cui-nav-tabs-border-color: #c4c9d0;
-    --cui-nav-tabs-border-radius: 0.375rem;
-    --cui-nav-tabs-link-hover-border-color: #d8dbe0 #d8dbe0 #c4c9d0;
-    --cui-nav-tabs-link-active-color: #768192;
-    --cui-nav-tabs-link-active-bg: #fff;
-    --cui-nav-tabs-link-active-border-color: #c4c9d0 #c4c9d0 #fff;
-    border-bottom: var(--cui-nav-tabs-border-width) solid var(--cui-nav-tabs-border-color);
-}
-.nav {
-    --cui-nav-link-padding-x: 1rem;
-    --cui-nav-link-padding-y: 0.5rem;
-    --cui-nav-link-font-weight: ;
-    --cui-nav-link-color: var(--cui-link-color);
-    --cui-nav-link-hover-color: var(--cui-link-hover-color);
-    --cui-nav-link-disabled-color: #8a93a2;
-    display: flex;
-    flex-wrap: wrap;
-    padding-left: 0;
-    margin-bottom: 0;
-    list-style: none;
-}
+    }
+    .nav-tabs {
+        --cui-nav-tabs-border-width: 1px;
+        --cui-nav-tabs-border-color: #c4c9d0;
+        --cui-nav-tabs-border-radius: 0.375rem;
+        --cui-nav-tabs-link-hover-border-color: #d8dbe0 #d8dbe0 #c4c9d0;
+        --cui-nav-tabs-link-active-color: #768192;
+        --cui-nav-tabs-link-active-bg: #fff;
+        --cui-nav-tabs-link-active-border-color: #c4c9d0 #c4c9d0 #fff;
+        border-bottom: var(--cui-nav-tabs-border-width) solid var(--cui-nav-tabs-border-color);
+    }
+    .nav {
+        --cui-nav-link-padding-x: 1rem;
+        --cui-nav-link-padding-y: 0.5rem;
+        --cui-nav-link-font-weight: ;
+        --cui-nav-link-color: var(--cui-link-color);
+        --cui-nav-link-hover-color: var(--cui-link-hover-color);
+        --cui-nav-link-disabled-color: #8a93a2;
+        display: flex;
+        flex-wrap: wrap;
+        padding-left: 0;
+        margin-bottom: 0;
+        list-style: none;
+    }
 </style>
     <ol class="breadcrumb">
         <li class="breadcrumb-item">Modul Mazmuni sahifasi</li>
