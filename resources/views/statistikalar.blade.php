@@ -9,44 +9,29 @@
     <ol class="breadcrumb">
         <li class="breadcrumb-item">Satatistikalar</li>
     </ol>
-    <div class="container-fluid">
+    <div class="container">
         <div class="row">
-            <div class="col-lg-12 ml-4" style="background: #fff;">
+            <div class="col-lg-12 " style="background: #fff;">
                 
                   <div class="row">
-                    <div class="col-lg-2">
+                    <div class="col-lg-6">
                         <div class="col-xs-12 mt-4 text-center">
-                            <h2>Yangiliklar <br> ({{$yangiliklar}} ta)</h2>
+                            <h2>Yangiliklar  ({{$yangiliklar}} ta)</h2>
                           </div>
                         
-                      <ul data-pie-id="svg" class="mt-4" style="font-size: 15px;">
-                        <li data-value="{{$yangiliklar_is_active_true}}">Aktiv yangiliklar ({{$yangiliklar_is_active_true}})</li>
-                        <li data-value="{{$yangiliklar_is_active_false}}">No aktiv yangiliklar ({{$yangiliklar_is_active_false}})</li>
-                        <li data-value="{{$yangiliklar_is_moderate_false}}">Moderatsiya jarayonida ({{$yangiliklar_is_moderate_false}})</li>
-                        <li data-value="{{$yangiliklar_is_moderate_true}}">Moderatsiyadan o'tgan ({{$yangiliklar_is_moderate_true}})</li>
+                      <ul data-pie-id="svg" class="mt-4" style="font-size: 22px;">
+                        <li class="mb-3" data-value="{{$yangiliklar_is_active_true}}">Aktiv yangiliklar ({{$yangiliklar_is_active_true}})</li>
+                        <li class="mb-3" data-value="{{$yangiliklar_is_active_false}}">No aktiv yangiliklar ({{$yangiliklar_is_active_false}})</li>
+                        <li class="mb-3" data-value="{{$yangiliklar_is_moderate_false}}">Moderatsiya jarayonida ({{$yangiliklar_is_moderate_false}})</li>
+                        <li class="mb-3" data-value="{{$yangiliklar_is_moderate_true}}">Moderatsiyadan o'tgan ({{$yangiliklar_is_moderate_true}})</li>
                         
                       </ul>
                     </div>
                    
-                    <div class="col-lg-3">
+                    <div class="col-lg-5">
                       <div id="svg"></div>
                     </div>
-                    <div class="col-lg-2">
-                        <div class="col-xs-12 mt-4 text-center">
-                            <h2>Modul mazmuni <br> ({{$modul}} ta)</h2>
-                          </div>
-                      <ul data-pie-id="my-cool-chart" data-options='{"donut": "true"}' class="mt-4" style="font-size: 15px;">
-                        <li data-value="{{$modul_is_active_true}}">Aktiv resurslar({{$modul_is_active_true}})</li>
-                        <li data-value="{{$modul_is_active_false}}">No aktiv resurslar ({{$modul_is_active_false}})</li>
-                        <li data-value="{{$modul_is_moderate_false}}">Moderatsiya jarayonida ({{$modul_is_moderate_false}})</li>
-                        <li data-value="{{$modul_is_moderate_true}}">Moderatsiyadan o'tgan ({{$modul_is_moderate_true}})</li>
-                        </ul>
-                        
-                    </div>                  
-                    <div class="col-lg-3 mr-4">
-                        
-                        <div id="my-cool-chart"></div>
-                    </div>
+                  
                 </div>
             </div>
            
@@ -59,18 +44,7 @@
                         <h2 style="color: #fff;">Yangiliklar statistikasi</h2>
                       </div>
                     <div class="row">
-                        <div class="col-md-3 col-sm-6">
-                            <!-- item -->
-                            <div class="item">
-                                <!-- Icon -->
-                                <div class="icon bg-red"><i class="fa fa-desktop"></i></div>
-                                <!-- Headings -->
-                                <h3><a href="/statistika#">Umumiy yangiliklar soni</a></h3>
-                                <h2><a href="/statistika#" class="red">{{$yangiliklar}}</a></h2>
-                                <!-- Heading with arrow -->
-                             
-                            </div>
-                        </div>
+                      
                         <div class="col-md-3 col-sm-6">
                             <!-- item -->
                             <div class="item">
@@ -123,34 +97,149 @@
                        
                       
                     </div>
+                </div>
+            </div>
+
+
+            <div class="ui-248">
+                
+                <div class="container">
+                    <div class="col-xs-12 mt-4 text-center">
+                        <h2 style="color: #fff;">Foydalanuvchilar statistikasi</h2>
+                      </div>
+                    <div class="row">
+                      
+                        <div class="col-md-4 col-sm-6">
+                            <!-- item -->
+                            <div class="item">
+                                <!-- Icon -->
+                                <div class="icon bg-green"><i class="fa fa-gift"></i></div>
+                                <!-- Headings -->
+                                <h3><a href="/statistika#">Ro'yxatdan o'tganlar</a></h3>
+                                <h2><a href="/statistika#" class="green">{{$users}}</a></h2>
+                                <!-- Heading with arrow -->
+                                
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                            <!-- item -->
+                            <div class="item">
+                                <!-- Icon -->
+                                <div class="icon bg-lblue"><i class="fa fa-bug"></i></div>
+                                <!-- Headings -->
+                                <h3><a href="/statistika#">O'qituvchilar</a></h3>
+                                <h2><a href="/statistika#" class="lblue">{{$users_teachers}}</a></h2>
+                                <!-- Heading with arrow -->
+                              
+                            </div>
+                        </div>
+                        <div class="col-md-4 col-sm-6">
+                            <!-- item -->
+                            <div class="item">
+                                <!-- Icon -->
+                                <div class="icon bg-orange"><i class="fa fa-code"></i></div>
+                                <!-- Headings -->
+                                <h3><a href="/statistika#">Talabalar</a></h3>
+                                <h2><a href="/statistika#" class="orange">{{$users_students}}</a></h2>
+                                <!-- Heading with arrow -->
+                                
+                            </div>
+                        </div>
+                      
+                        
+                       
+                      
+                    </div>
+                </div>
+            </div>
+
+            <div class="ui-248">
+                
+                <div class="container">
+                    <div class="col-xs-12 mt-4 text-center">
+                        <h2 style="color: #fff;">Online video kurslar</h2>
+                      </div>
+                    <div class="row">
+                      
+                        <div class="col-md-6 col-sm-6">
+                            <!-- item -->
+                            <div class="item">
+                                <!-- Icon -->
+                                <div class="icon bg-green"><i class="fa fa-gift"></i></div>
+                                <!-- Headings -->
+                                <h3><a href="/statistika#">Aktiv video kurslar</a></h3>
+                                <h2><a href="/statistika#" class="green">test</a></h2>
+                                <!-- Heading with arrow -->
+                                
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <!-- item -->
+                            <div class="item">
+                                <!-- Icon -->
+                                <div class="icon bg-lblue"><i class="fa fa-bug"></i></div>
+                                <!-- Headings -->
+                                <h3><a href="/statistika#">Video darslar</a></h3>
+                                <h2><a href="/statistika#" class="lblue">test</a></h2>
+                                <!-- Heading with arrow -->
+                              
+                            </div>
+                        </div>
+                      
+                        
+                       
+                      
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row" style="background-color: #fff;">
+                <div class="col-lg-6">
+                    <div class="col-xs-12 mt-4 text-center">
+                        <h2>Modul mazmuni bo'limlar miqyosida</h2>
+                    </div>
+                    
+                  <ul data-pie-id="svg3" class="mt-4" style="font-size: 22px;">
+                    <li class="mb-3" data-value="{{$modul_mavzular}}">Mavzular ({{$modul_mavzular}})</li>
+                    <li class="mb-3" data-value="{{$modul_tagdimotlar}}">Tag'dimotlar ({{$modul_tagdimotlar}})</li>
+                    <li class="mb-3" data-value="{{$modul_video_darslar}}">Video darslar ({{$modul_video_darslar}})</li>
+                    <li class="mb-3" data-value="{{$modul_oqish_uchun_tafsiya}}">O'qish uchun tafsiya qilingan manbalar ({{$modul_oqish_uchun_tafsiya}})</li>
+                    <li class="mb-3" data-value="{{$modul_maqola_va_tezislar}}">Maqola va tezislar ({{$modul_maqola_va_tezislar}})</li>
+                    <li class="mb-3" data-value="{{$modul_ilmiy_ishlar}}">Ilmiy ishlar ({{$modul_ilmiy_ishlar}})</li>
+                    <li class="mb-3" data-value="{{$modul_meyoriy_hujjatlar}}">Meyoriy hujjatlar ({{$modul_meyoriy_hujjatlar}})</li>
+                    <li class="mb-3" data-value="{{$modul_shaxsiy_hujjatlar}}">Shaxsiy hujjatlar ({{$modul_shaxsiy_hujjatlar}})</li>
+
+                  </ul>
+                </div>
+               
+                <div class="col-lg-5">
+                  <div id="svg3"></div>
+                </div>
+              
+            </div>
+
+
+            <div class="animated fadeIn">
+                <div class="ui-248">
+                    
+                    <div class="container">                         
                     
                     <div class="col-xs-12 mt-4 text-center">
                         <h2 style="color: #fff;">Modul mazmuni statistikasi</h2>
                       </div>
-                    <div class="row">
-                      
-                        <div class="col-md-3 col-sm-6">
-                            <!-- item -->
-                            <div class="item">
-                                <!-- Icon -->
-                                <div class="icon bg-yellow"><i class="fa fa-ils"></i></div>
-                                <!-- Headings -->
-                                <h3><a href="/statistika#">Latest Visitor</a></h3>
-                                <h2><a href="/statistika#" class="yellow">5,305</a></h2>
-                                <!-- Heading with arrow -->
-                                <h5 class="clearfix">Total Income <span>5,439 <i class="fa fa-angle-double-up green"></i></span></h5>
-                            </div>
-                        </div>
+                    <div class="row">                     
+                    
                         <div class="col-md-3 col-sm-6">
                             <!-- item -->
                             <div class="item">
                                 <!-- Icon -->
                                 <div class="icon bg-purple"><i class="fa fa-download"></i></div>
                                 <!-- Headings -->
-                                <h3><a href="/statistika#">Latest Visitor</a></h3>
-                                <h2><a href="/statistika#" class="purple">5,305</a></h2>
+                                <h3><a href="/statistika#">Aktiv resurslar</a></h3>
+                                <h2><a href="/statistika#" class="purple">{{$modul_is_active_true}}</a></h2>
                                 <!-- Heading with arrow -->
-                                <h5 class="clearfix">Total Income <span>5,439 <i class="fa fa-angle-double-down red"></i></span></h5>
+                             
                             </div>
                         </div>
                         <div class="col-md-3 col-sm-6">
@@ -159,16 +248,73 @@
                                 <!-- Icon -->
                                 <div class="icon bg-blue"><i class="fa fa-automobile"></i></div>
                                 <!-- Headings -->
-                                <h3><a href="/statistika#">Latest Visitor</a></h3>
-                                <h2><a href="/statistika#" class="blue">5,305</a></h2>
+                                <h3><a href="/statistika#">No aktiv resurslar</a></h3>
+                                <h2><a href="/statistika#" class="blue">{{$modul_is_active_false}}</a></h2>
                                 <!-- Heading with arrow -->
-                                <h5 class="clearfix">Total Income <span>5,439 <i class="fa fa-angle-double-up green"></i></span></h5>
+                              
                             </div>
                         </div>
+
+                        <div class="col-md-3 col-sm-6">
+                            <!-- item -->
+                            <div class="item">
+                                <!-- Icon -->
+                                <div class="icon bg-orange"><i class="fa fa-code"></i></div>
+                                <!-- Headings -->
+                                <h3><a href="/statistika#">Moderatsiyadagi resurslar</a></h3>
+                                <h2><a href="/statistika#" class="orange">{{$modul_is_moderate_false}}</a></h2>
+                                <!-- Heading with arrow -->
+                                
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6">
+                            <!-- item -->
+                            <div class="item">
+                                <!-- Icon -->
+                                <div class="icon bg-rose"><i class="fa fa-cloud"></i></div>
+                                <!-- Headings -->
+                                <h3><a href="/statistika#">Moderatsiyadan o'tgan resurslar</a></h3>
+                                <h2><a href="/statistika#" class="rose">{{$modul_is_moderate_true}}</a></h2>
+                                <!-- Heading with arrow -->
+                               
+                            </div>
+                        </div>                        
                     </div>
                 </div>
             
             </div>
+           
+                <div class="row">
+                    <div class="col-lg-12 " style="background: #fff;">                    
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="col-xs-12 mt-4 text-center">
+                                    <h2>Modul mazmuni resurslari  ({{$modul}} ta)</h2>
+                                </div>
+                                
+                              <ul data-pie-id="svg2" class="mt-4" style="font-size: 22px;">
+                                <li class="mb-3" data-value="{{$modul_is_active_true}}">Aktiv resurslar ({{$modul_is_active_true}})</li>
+                                <li class="mb-3" data-value="{{$modul_is_active_false}}">No aktiv resurslar ({{$modul_is_active_false}})</li>
+                                <li class="mb-3" data-value="{{$modul_is_moderate_false}}">Moderatsiya jarayonida ({{$modul_is_moderate_false}})</li>
+                                <li class="mb-3" data-value="{{$modul_is_moderate_true}}">Moderatsiyadan o'tgan ({{$modul_is_moderate_true}})</li>
+                                
+                              </ul>
+                            </div>
+                           
+                            <div class="col-lg-5">
+                              <div id="svg2"></div>
+                            </div>
+                          
+                        </div>
+                        <hr>
+                    
+                    </div>
+                   
+                </div>
+           
+           
+
+            
         
           
   

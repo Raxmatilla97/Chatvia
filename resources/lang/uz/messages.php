@@ -24,7 +24,7 @@ return [
     'whats_your_status'       => "Sizning statusingiz nima?",
 
     //menu.blade keys
-    'conversations'           => 'Chat yozishmalar',
+    'conversations'           => 'Xabarlar',
     'users'                   => 'Foydalanuvchilar',
     'roles'                   => 'Rollar',
 
@@ -239,6 +239,6 @@ return [
     'xabar_yozish_mumkin' => "Guruhning barcha a'zolari guruhga xabar yuborishlari mumkin.",
     'admin_xabar_yoza_oladi' => "Guruhga faqat admin xabar yuborishi mumkin.",
     'cancel' => "Yopish",
-    '' => "",
+    'statistika' => "Statistika",
     '' => "",
 ];

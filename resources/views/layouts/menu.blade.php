@@ -62,6 +62,11 @@ body{
         <i class="nav-icon icon-speech mr-4"></i> {{ __('messages.conversations') }}
     </a>
 </li>
+<li class="nav-item {{ Request::is('statistika*') ? 'active' : '' }}">
+  <a class="nav-link {{ Request::is('statistika*') ? 'active' : '' }}" href="{{ url('statistika')  }}">
+      <i class="nav-icon icon-speech mr-4"></i> {{ __('messages.statistika') }}
+  </a>
+</li>
 <li class="nav-title text-center" style="background-color: #ec167f">YANGILIKLAR</li>
 <li class="nav-item {{ Request::is('news.index') ? 'active' : '' }}" >
     <a class="nav-link" href="{{ route('news.index') }}">
