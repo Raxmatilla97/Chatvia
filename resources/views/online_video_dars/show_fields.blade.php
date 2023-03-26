@@ -39,7 +39,10 @@
         <img style="height: 400px; display: block;
         margin-left: auto;
         margin-right: auto;
-        width: 50%;"
+        
+        max-width: 100%;
+    min-width: 50%;"
+        
         
         @if($onlineVideoDars->img)
           src="{{ asset('image')}}/{{$onlineVideoDars->img}}"
@@ -135,7 +138,7 @@
           <div class="mt-5">
               <div class="docs-example">
                   <div class="alert alert-info" role="alert">
-                      <h4 class="alert-heading">Video darsni ko'rish</h4>
+                      <h4 class="alert-heading">Video darslarni ko'rish</h4>
                       <p>Siz bu yerdan joylangan video darslarni ko'rishingiz mumkin.</p>
                       <hr>
                       @php

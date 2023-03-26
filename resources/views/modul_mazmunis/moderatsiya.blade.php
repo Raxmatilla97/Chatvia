@@ -35,14 +35,14 @@
                                         @foreach($modulMazmunis as $resurs)
                                                 <tr>
                                                     <td>{{ $resurs->title }}</td>
-                                                    <td>@if($resurs->is_moderate)
+                                                    <td>@if($resurs->is_active)
                                                         <p class="btn btn-success btn-sm">Aktiv</p>
                                                         @else
                                                         <p class="btn btn-danger btn-sm">No Aktiv</p>
                                                         @endif
                                                     
                                                     </td>             
-                                                    <td>@if($resurs->is_ready)
+                                                    <td>@if($resurs->is_moderate)
                                                         <p class="btn btn-success btn-sm">Tasdiqlangan</p>
                                                     @else
                                                         <p class="btn btn-danger btn-sm">Tasdiqlanmagan</p>

@@ -68,7 +68,7 @@
                                             <div class="row row-cols-1 row-cols-2 g-4 " >    
                                                 @foreach ($modulMazmunis as $modul )
                                                     @if(str_contains(url()->current(), '/modulMazmunis/category/shaxsiy_hujjatlar'))    
-                                                        @if($modul->is_active and $modul->is_moderate and $modul->is_private == 1 )   
+                                                        @if($modul->is_active and $modul->is_moderate and $modul->is_private == 1 and  $modul->user_id == Auth::user()->id)   
                                                         <div class="col">
                                                             <div class="card" style="width: 20rem;">
                                                                 <img src="@if($modul->img)

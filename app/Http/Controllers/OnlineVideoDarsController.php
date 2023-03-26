@@ -38,9 +38,10 @@ class OnlineVideoDarsController extends AppBaseController
     public function index(Request $request)
     {
         $onlineVideoDars = $this->onlineVideoDarsRepository->paginate(15);
-
+        
         return view('online_video_dars.index')
             ->with('onlineVideoDars', $onlineVideoDars);
+           
     }
 
     
@@ -108,10 +109,11 @@ class OnlineVideoDarsController extends AppBaseController
                     ->pluck('kurs_id');
         
         // Foydalanuvchining kurslari bo'yicha video darslari
-        $videoKurs = OnlineVideoDars::where('user_id', $user_id)
-                ->whereIn('id', $kurslar)
+        $videoKurs = OnlineVideoDars::whereIn('id', $kurslar)
                 ->orderBy('created_at', 'DESC')
                 ->paginate(15);
+
+        // dd($videoKurs);
      
         return view('online_video_dars.men_azo_bolgan')->with('videoKurs', $videoKurs);
     }
@@ -238,6 +240,8 @@ class OnlineVideoDarsController extends AppBaseController
         
         $videolar = OnlineVideolar::where("videokurs_id", $id)->count();
         $edit = true;
+
+      
 
         $onlineVideolars = OnlineVideolar::where("videokurs_id", $id)->get();
 

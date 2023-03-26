@@ -41,6 +41,10 @@
     <div class="form-group col-sm-3">
         {!! Form::label('file', "Yuklanishi kerak bo'lgan faylni yuklang:") !!}
         {!! Form::file('file') !!}
+        @if(isset($file_old) != "")
+        <a href="/files/{{$file_old}}" target="_blank"><button type="button" class="btn btn-primary btn-sm mt-3">Faylni yuklab olish</button></a>
+        @endif
+        
     </div>
 
     <div class="form-group col-sm-4">

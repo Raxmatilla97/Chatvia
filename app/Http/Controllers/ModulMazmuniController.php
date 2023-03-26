@@ -122,12 +122,14 @@ class ModulMazmuniController extends AppBaseController
     public function store(CreateModulMazmuniRequest $request)
     {
         $request['slug'] = date('His').'-'.Str::slug($request->title);
-        if ($request['is_moderate'] == null ) {
+        if ($request['is_moderate'] == "" ) {
             $request['is_moderate'] = '0';
         }
         $request['user_id'] = Auth::user()->id;
         if ($request['category'] == 'shaxsiy_hujjatlar') {
-            $is_public = 1;
+            $is_public = 1;            
+            $request['is_moderate'] = '1';
+           
         } else {
             $is_public = 0;
         }
@@ -204,7 +206,13 @@ class ModulMazmuniController extends AppBaseController
             return redirect(route('modulMazmunis.index'));
         }
 
-        return view('modul_mazmunis.edit')->with('modulMazmuni', $modulMazmuni);
+       $file_old = $modulMazmuni->file;
+      
+
+        return view('modul_mazmunis.edit')
+        ->with('modulMazmuni', $modulMazmuni)
+        ->with('file_old', $file_old);
+
     }
 
     /**
@@ -219,10 +227,10 @@ class ModulMazmuniController extends AppBaseController
     {
            
         $request['slug'] = date('His').'-'.Str::slug($request->title);
-        if ($request['is_moderate'] == null ) {
+        if ($request['is_moderate'] == "" ) {
             $request['is_moderate'] = '0';
         }
-        $request['user_id'] = Auth::user()->id;
+        // $request['user_id'] = Auth::user()->id;
         if ($request['category'] == 'shaxsiy_hujjatlar') {
             $is_public = 1;
         } else {

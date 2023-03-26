@@ -1,5 +1,7 @@
 
-@if($modulMazmuni->is_active and $modulMazmuni->is_moderate and $modulMazmuni->is_private == 0)
+
+@if($modulMazmuni->is_active == 1 and $modulMazmuni->is_moderate == 1 and $modulMazmuni->is_private == 0 or Auth::user()->hasRole('Admin') )
+
   @include('modul_mazmunis.show_fields_if')
 @else
   @if($modulMazmuni->user_id == Auth::user()->id )

@@ -13,14 +13,10 @@
         <tbody>
         @foreach($modulMazmunis as $modulMazmuni)      
             @if(str_contains(url()->current(), '/modulMazmunis/category/shaxsiy_hujjatlar'))   
-                @if($modulMazmuni->is_active == 1 and $modulMazmuni->is_private == 1 and $modulMazmuni->is_moderate == 1)                
+                @if($modulMazmuni->is_active == 1 and $modulMazmuni->is_private == 1 and $modulMazmuni->is_moderate == 1 and $modulMazmuni->user_id == Auth::user()->id)                
                     <tr>
                         <td>
-                            @if($modulMazmuni->is_private or $modulMazmuni->user_id == Auth::user()->id or Auth::user()->hasRole('Admin'))
-                                <a href="{{ route('modulMazmunis.show', [$modulMazmuni->id]) }}"><b>{{ $modulMazmuni->title }}</b></a>
-                            @else
-                                {{ $modulMazmuni->title }}
-                            @endif
+                            <a href="{{ route('modulMazmunis.show', [$modulMazmuni->id]) }}"><b>{{ $modulMazmuni->title }}</b></a>
                         </td>
                         <td>
                             @if($modulMazmuni->category == "mavular")
@@ -86,11 +82,7 @@
                 @if($modulMazmuni->is_active == 1 and $modulMazmuni->is_private == 0 and $modulMazmuni->is_moderate == 1)                
                     <tr>
                         <td>
-                            @if($modulMazmuni->is_private or $modulMazmuni->user_id == Auth::user()->id or Auth::user()->hasRole('Admin'))
-                                <a href="{{ route('modulMazmunis.show', [$modulMazmuni->id]) }}"><b>{{ $modulMazmuni->title }}</b></a>
-                            @else
-                                {{ $modulMazmuni->title }}
-                            @endif
+                            <a href="{{ route('modulMazmunis.show', [$modulMazmuni->id]) }}"><b>{{ $modulMazmuni->title }}</b></a>
                         </td>
                         <td>
                             @if($modulMazmuni->category == "mavular")
@@ -139,8 +131,8 @@
                         <td>
                             {!! Form::open(['route' => ['modulMazmunis.destroy', $modulMazmuni->id], 'method' => 'delete']) !!}
                             <div class='btn-group'>
-                                @if($modulMazmuni->is_private or $modulMazmuni->user_id == Auth::user()->id or Auth::user()->hasRole('Admin'))
                                 <a href="{{ route('modulMazmunis.show', [$modulMazmuni->id]) }}" class='btn btn-ghost-success'><i class="fa fa-eye"></i></a>
+                                @if($modulMazmuni->is_private or $modulMazmuni->user_id == Auth::user()->id or Auth::user()->hasRole('Admin'))                               
                                 @endif                       
                                 @if($modulMazmuni->user_id == Auth::user()->id or Auth::user()->hasRole('Admin'))
                                 <a href="{{ route('modulMazmunis.edit', [$modulMazmuni->id]) }}" class='btn btn-ghost-info'><i class="fa fa-edit"></i></a>

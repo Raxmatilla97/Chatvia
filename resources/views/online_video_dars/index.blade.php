@@ -34,7 +34,7 @@
     }
 </style>
     <ol class="breadcrumb">
-        <li class="breadcrumb-item">Modul Mazmuni sahifasi</li>
+        <li class="breadcrumb-item">Onlayn video kurslar</li>
     </ol>
     <div class="container-fluid">
         <div class="animated fadeIn">
@@ -44,7 +44,7 @@
                     <div class="card">
                         <div class="card-header">
                              <i class="fa fa-align-justify"></i>
-                            Modul mazmuni
+                            Video kurslar
                             @if(Auth::user()->hasRole('Admin'))
                                 <a class="pull-right" href="{{ route('onlineVideoDars.create') }}"><i class="fa fa-plus-square fa-lg"></i></a>
                             @endif
@@ -83,7 +83,7 @@
                                                                 <div class="card-body">
                                                                 <h5 class="card-title">{{ $videoKurs->title }}</h5>
                                                                 <p class="card-text">{{ $videoKurs->user->name }}</p>
-                                                                <p class="card-text"> <b style="color: blue;">{{ $videoKurs->qachon_boladi}} {{ $videoKurs->qachon_boladi_soat}}</b></p>
+                                                                <p class="card-text"> <b style="color: blue;">Video darslar: {{ App\Models\OnlineVideolar::where("videokurs_id", $videoKurs->id)->count() }}</b></p>
                                                                 <a href="{{ route('onlineVideoDars.show', [$videoKurs->id]) }}" class="btn btn-primary">Video kursni ko'rish</a>
                                                                 </div>
                                                             </div> 

@@ -10,7 +10,8 @@
     <div class="my-3 p-3 bg-white rounded box-shadow">
             <!-- Img Field -->
     <div class="form-group">     
-        <img style="height: 400px; display: block; margin-left: auto; margin-right: auto;"
+        <img style="height: 400px; display: block; margin-left: auto; margin-right: auto; max-width: 100%;
+        min-width: 60%;"
         
         @if($news->img)
           src="/image/{{ $news->img }}"
