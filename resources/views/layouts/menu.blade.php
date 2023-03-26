@@ -84,6 +84,21 @@ body{
       <span>Video kurs yaratish</span>
   </a>
 </li>
+
+<li class="nav-item {{ Request::is('onlineVideoDars*') ? 'active' : '' }}">
+  <a class="nav-link" href="{{ route('onlineVideoDars.menyaratgan') }}">
+    <i class="fa fa-user-plus nav-icon mr-4"></i>
+      <span>Men yaratgan video kurslar</span>
+  </a>
+</li>
+
+<li class="nav-item {{ Request::is('onlineVideoDars*') ? 'active' : '' }}">
+  <a class="nav-link" href="{{ route('onlineVideoDars.menzobolgan') }}">
+    <i class="fa fa-users nav-icon mr-4"></i>
+      <span>Men a'zo bo'lgan kurslar</span>
+  </a>
+</li>
+
 @if(Auth::user()->hasRole('Admin'))
 <li class="nav-item {{ Request::is('news.moderatsiya') ? 'active' : '' }}">
   <a class="nav-link" href="{{ route('onlineVideoDars.moderatsiya') }}">

@@ -3,17 +3,20 @@
 namespace App\Http\Controllers;
 
 use Flash;
-use Illuminate\Support\Carbon;
 use Response;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
+use App\Models\OnlineVideolar;
+use Illuminate\Support\Carbon;
 use App\Models\OnlineVideoDars;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Redirect;
 use App\Http\Controllers\AppBaseController;
 use App\Repositories\OnlineVideoDarsRepository;
 use App\Http\Requests\CreateOnlineVideoDarsRequest;
 use App\Http\Requests\UpdateOnlineVideoDarsRequest;
-use App\Models\OnlineVideolar;
+use PhpParser\Node\Stmt\If_;
 
 class OnlineVideoDarsController extends AppBaseController
 {
@@ -54,7 +57,86 @@ class OnlineVideoDarsController extends AppBaseController
          
     }
 
+    /**
+     * Men yaratgan yangiliklarni jadvalini ko'rish
+     *
+     */
 
+     public function menYaratgan(){
+        $videoKurs = OnlineVideoDars::orderBy('created_at', 'DESC')->where('user_id', '=', Auth::user()->id)->paginate(15);
+      
+        return view('online_video_dars.men_yaratgan')
+            ->with('videoKurs', $videoKurs);
+         
+    }
+
+    // Kurslarga a'zo bo'lish uchun
+
+    public function azoBolish(Request $request){
+        // dd($request);
+        DB::table('online_kurs_user')->insert([
+            'user_id' => $request->user_id,
+            'kurs_id' => $request->kurs_id
+        ]);
+        Flash::success("Video kursga a'zo bo'ldingiz!");
+
+        return Redirect::back();
+    }
+
+    // Kurslarga a'zolikni olib tashlash uchun
+
+    public function azoOlibtashlash(Request $request){
+        // dd($request);
+        DB::table('online_kurs_user')
+        ->where('user_id', $request['user_id'])
+        ->where('kurs_id', $request['kurs_id'])
+        ->delete();
+
+        Flash::success("Video kursdan a'zoligizni olib tashladingiz!");
+        
+        return Redirect::back();
+    }
+
+    // Men a'zo bo'lgan kurslar
+
+    public function menAzoBolgan(Request $request){
+        $user_id = Auth::user()->id;
+
+        // Foydalanuvchi tomonidan olingan barcha kurslar
+        $kurslar = DB::table('online_kurs_user')
+                    ->where('user_id', $user_id)
+                    ->pluck('kurs_id');
+        
+        // Foydalanuvchining kurslari bo'yicha video darslari
+        $videoKurs = OnlineVideoDars::where('user_id', $user_id)
+                ->whereIn('id', $kurslar)
+                ->orderBy('created_at', 'DESC')
+                ->paginate(15);
+     
+        return view('online_video_dars.men_azo_bolgan')->with('videoKurs', $videoKurs);
+    }
+
+     /**
+     * Qidirish funksiyasi
+     *
+     */
+    public function search(Request $request){
+        // Get the search value from the request
+        $search = $request->input('search');
+      
+        // Search in the title and body columns from the posts table
+        $onlineVideoDars = OnlineVideoDars::query()
+            ->where('title', 'LIKE', "%{$search}%")
+            ->orWhere('content', 'LIKE', "%{$search}%")
+            ->paginate(15);
+    
+        // Return the search view with the resluts compacted
+        return view('online_video_dars.search', compact('onlineVideoDars'));
+    }
+
+
+    
+    
     /**
      * Show the form for creating a new OnlineVideoDars.
      *
@@ -110,6 +192,22 @@ class OnlineVideoDarsController extends AppBaseController
      */
     public function show($id)
     {
+        $user_id = Auth::user()->id;
+        $qatnashgan = DB::table('online_kurs_user')
+                  ->where('user_id', $user_id)
+                  ->where('kurs_id', $id)
+                  ->exists();
+
+        if ($qatnashgan) {
+            $qatnashgan = true;
+        } else {
+            $qatnashgan = false;
+        }
+
+
+
+       $videolar = OnlineVideolar::where('videokurs_id', '=', $id)->get();
+      
         $onlineVideoDars = $this->onlineVideoDarsRepository->find($id);
 
         if (empty($onlineVideoDars)) {
@@ -118,7 +216,12 @@ class OnlineVideoDarsController extends AppBaseController
             return redirect(route('onlineVideoDars.index'));
         }
 
-        return view('online_video_dars.show')->with('onlineVideoDars', $onlineVideoDars);
+        return view('online_video_dars.show')
+        ->with('onlineVideoDars', $onlineVideoDars)
+        ->with('qatnashgan', $qatnashgan)
+        ->with('videolar', $videolar);
+
+
     }
 
     /**

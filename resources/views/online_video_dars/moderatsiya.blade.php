@@ -26,7 +26,7 @@
                                                 <th>Aktivligi</th>
                                                 <th>Moderatsiya</th>
                                                 <th>Yaratilgan sana</th>
-                                                {{-- <th>Yaratgan</th> --}}
+                                                <th>Yaratgan</th>
                                                 <th colspan="3">Amaliyot</th>
                                             </tr>
                                         </thead>
@@ -53,7 +53,7 @@
                                                     
                                                 </td>
                                                     <td>{{ $resurs->created_at }}</td>
-                                                    {{-- <td><p class="btn btn-info btn-sm">{{ $resurs->user->name }}</p></td> --}}
+                                                    <td><p class="btn btn-info btn-sm">{{ $resurs->user->name }}</p></td>
                                                     <td></td>
                                                     <td>
                                                         {!! Form::open(['route' => ['onlineVideoDars.destroy', $resurs->id], 'method' => 'delete']) !!}

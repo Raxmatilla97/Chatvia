@@ -8,6 +8,31 @@
       </div>
     </div>
 
+    <div class="alert alert-info" role="alert">
+      <h4 class="alert-heading">Onlayn video kursga a'zo bo'ling!</h4>
+      <p>Siz istagan video kurslarga a'zo bo'lib ko'pgina video darslarni kuzatishingiz mumkin.</p>
+      <hr>
+      <p class="mb-0">
+          @if($qatnashgan)
+              <form action="{{route('onlineVideoDars.azoolibtashlash')}}" method="POST">
+                  @csrf
+                  <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                  <input type="hidden" name="kurs_id" value="{{$onlineVideoDars->id}}">
+                  <button class="btn btn-danger text-center" type="submit">Kursdan a'zolikni olib tashlash</button>
+              </form>  
+          @else
+              <form action="{{route('onlineVideoDars.azobolish')}}" method="POST">
+                  @csrf
+                  <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                  <input type="hidden" name="kurs_id" value="{{$onlineVideoDars->id}}">
+                  <button class="btn btn-success text-center" type="submit">Kursga a'zo bo'lish</button>
+              </form>
+          @endif
+         
+
+      </p>
+    </div> 
+
     <div class="my-3 p-3 bg-white rounded box-shadow">
             <!-- Img Field -->
     <div class="form-group d-flex align-items-center justify-content-center h-100 w-80   ">   
@@ -41,8 +66,8 @@
                 <div class="mt-5">
                     <div class="docs-example">
                         <div class="alert alert-success" role="alert">
-                            <h4 class="alert-heading">Onlayn video dars</h4>
-                            <p>Siz bu yerdan onlayn jonli video darslarni ko'rishingiz mumkin.</p>
+                            <h4 class="alert-heading">Onlayn jonli dars</h4>
+                            <p>Siz bu yerdan onlayn jonli darslarni ko'rishingiz mumkin.</p>
                             <hr>
                             @if($onlineVideoDars->online_dars_holati == "hali_boshlanmagan" or $onlineVideoDars->online_dars_holati == "dars_boshlangan")       
                             <h2 class="text-center mb-4"> Online darsning bo'lish vaqti: ({{$onlineVideoDars->qachon_boladi}} - {{$onlineVideoDars->qachon_boladi_soat}})</h2>
@@ -89,8 +114,8 @@
             <div class="mt-5">
                 <div class="docs-example">
                     <div class="alert alert-info" role="alert">
-                        <h4 class="alert-heading">Video darsni ko'rish</h4>
-                        <p>Siz bu yerdan joylangan video darslarni ko'rishingiz mumkin.</p>
+                        <h4 class="alert-heading">Asosiy video</h4>
+                        <p>Kursga qo'yilgan asosiy video</p>
                         <hr>
                         <iframe width="100%" height="440" src="{{$convertUrl}}" title="{{ $onlineVideoDars->title }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         
@@ -99,10 +124,43 @@
             </div>
         @else
             <div class="alert alert-warning" role="alert">
-                Hech qanday video dars joylanmagan!
+                Hali asosiy video joylanmagan!
             </div>
         @endif
+
+
         
+       @if($videolar != "") 
+          
+          <div class="mt-5">
+              <div class="docs-example">
+                  <div class="alert alert-info" role="alert">
+                      <h4 class="alert-heading">Video darsni ko'rish</h4>
+                      <p>Siz bu yerdan joylangan video darslarni ko'rishingiz mumkin.</p>
+                      <hr>
+                      @php
+                        $i = 1;
+                      @endphp
+                      @foreach ($videolar as $item)
+                      @php
+                      $videolarUrl = $item->youtube;
+                      $convertsUrl = str_replace("watch?v=", "embed/", $videolarUrl);
+                      @endphp
+                      <h2 class="text-center mb-4">{{$i++}}# {{ $item->title }}</h2>
+                      
+                      <iframe class="mb-4" width="100%" height="440" src="{{ $convertsUrl }}" title="{{ $item->title }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                      <hr class="mb-4">  
+                      @endforeach
+                      
+                  </div>
+              </div>  
+          </div>
+      @else
+          <div class="alert alert-warning" role="alert">
+              Hech qanday video dars joylanmagan!
+          </div>
+      @endif
+
       
       <small class="d-block text-right mt-3">
         <a href="#">{{ $onlineVideoDars->created_at }}</a>

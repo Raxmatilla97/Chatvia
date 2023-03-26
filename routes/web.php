@@ -15,6 +15,12 @@ Route::group(['middleware'=>'language'],function ()
     
     Auth::routes();
 
+    // Video kurslar uchun routerlar
+    Route::get('/onlineVideoDars/search/', 'OnlineVideoDarsController@search')->name('onlineVideoDars.search');
+    Route::get('/onlineVideoDars/men-azo-bolgan-kurslar', 'OnlineVideoDarsController@menAzoBolgan')->name('onlineVideoDars.menzobolgan');
+    Route::post('/onlineVideoDars/azo-bolish', 'OnlineVideoDarsController@azoBolish')->name('onlineVideoDars.azobolish');
+    Route::post('/onlineVideoDars/azo-olibtashlash', 'OnlineVideoDarsController@azoOlibtashlash')->name('onlineVideoDars.azoolibtashlash');
+    Route::get('/onlineVideoDars/men-yaratgan', 'OnlineVideoDarsController@menYaratgan')->name('onlineVideoDars.menyaratgan');
     Route::get('/onlineVideoDars/moderatsiya', 'OnlineVideoDarsController@moderatsiya')->name('onlineVideoDars.moderatsiya');  
     Route::resource('onlineVideoDars', 'OnlineVideoDarsController');
     // Route::prefix('profile')->group(function () {

@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-lg-8" style="margin: auto;     margin-bottom: 15px;">
-    <form action="{{ route('modulMazmunis.search') }}" method="GET" role="search">
+    <form action="{{ route('onlineVideoDars.search') }}" method="GET" role="search">
     
         <div class="input-group" style="margin-top: 10px;">
             <input type="text" class="form-control form-control-lg" name="search"
