@@ -18,6 +18,8 @@ class CreateOnlineVideolarsTable extends Migration
             $table->increments('id');
             $table->string('title');
             $table->string('youtube');
+            $table->integer('videokurs_id')->unsigned();
+            $table->foreign('videokurs_id')->references('id')->on('online_video_dars');
             $table->timestamps();
             $table->softDeletes();
         });

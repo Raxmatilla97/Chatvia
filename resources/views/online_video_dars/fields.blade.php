@@ -24,64 +24,66 @@
    
 </div>
 
-<div class="row col-sm-12 col-lg-12">
+<div class="alert alert-success" role="alert">
+    <h4 class="alert-heading mb-4">Online jonli dars tashkil qilish va asosiy videoni joylash</h4>
+    <div class="row col-sm-12 col-lg-12">
    
 
-    <div class="form-group col-sm-2" >
-        {{-- <input name="qachon_boladi" data-date-format="dd/mm/yyyy" id="datepicker"> --}}
-        {!! Form::label('qachon_boladi', "Online dars bo'ladigan kun:") !!}
-        {!! Form::text('qachon_boladi', null, ['class' => 'form-control', 'id' => 'datepicker']) !!}
-
-        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css" rel="stylesheet"/>
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
-        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script><script type="text/javascript">
-            $('#datepicker').datepicker({
-                dateFormat: "yy-mm-dd",           
-                weekStart: 1,
-                daysOfWeekHighlighted: "6,0",
-                autoclose: true,
-                todayHighlight: true,
-            });
-            
-            $('#datepicker').datepicker("setDate", new Date());
-        </script>
-        
-    </div>
-
-    <div class="form-group col-sm-1" >
-        {{-- <input name="qachon_boladi" data-date-format="dd/mm/yyyy" id="datepicker"> --}}
-        {!! Form::label('qachon_boladi_soat', "Vaqti:") !!}
-        {!! Form::text('qachon_boladi_soat', null, ['class' => 'form-control', 'placeholder' => "13:40"]) !!}       
-        
-    </div>
-       
-    <div class="form-group col-sm-3" >
-       
-          {{-- <input name="qachon_boladi" data-date-format="dd/mm/yyyy" id="datepicker"> --}}
-          {!! Form::label('online_dars_holati', "Online dars qaysi vaqtda bo'lishini yozing:") !!}     
-          {!! Form::select('online_dars_holati', [
-          'hali_boshlanmagan' => 'Hali boshlanmagan!',
-          'dars_boshlangan' => "Online Dars boshlangan!",
-          'dars_tugagan' => "Online Dars tugagan!"        
-         
-      ], null, ['class' => 'custom-select']) !!}  
-
-           
-            
-        
-        
-    </div>
-       
-   
-   <!-- Url Content Field -->
-<div class="form-group col-sm-6">
-    {!! Form::label('yutube_video_url', "Onlayn dars bo'lmasa Youtubedan video joylash mumkin!:") !!}
-    {!! Form::text('yutube_video_url', null, ['class' => 'form-control', 'placeholder' => "https://youtube.com/ yoki boshqa sayt"]) !!}
-</div>
+        <div class="form-group col-sm-2" >
+            {{-- <input name="qachon_boladi" data-date-format="dd/mm/yyyy" id="datepicker"> --}}
+            {!! Form::label('qachon_boladi', "Online dars bo'ladigan kun:") !!}
+            {!! Form::text('qachon_boladi', null, ['class' => 'form-control', 'id' => 'datepicker']) !!}
     
-    <div class="clearfix"></div>
-</div>
+            <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/css/bootstrap-datepicker.min.css" rel="stylesheet"/>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.7.1/js/bootstrap-datepicker.min.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script><script type="text/javascript">
+                $('#datepicker').datepicker({
+                    dateFormat: "yy-mm-dd",           
+                    weekStart: 1,
+                    daysOfWeekHighlighted: "6,0",
+                    autoclose: true,
+                    todayHighlight: true,
+                });
+                
+                $('#datepicker').datepicker("setDate", new Date());
+            </script>
+            
+        </div>
+    
+        <div class="form-group col-sm-1" >
+            {{-- <input name="qachon_boladi" data-date-format="dd/mm/yyyy" id="datepicker"> --}}
+            {!! Form::label('qachon_boladi_soat', "Vaqti:") !!}
+            {!! Form::text('qachon_boladi_soat', null, ['class' => 'form-control', 'placeholder' => "13:40"]) !!}       
+            
+        </div>
+           
+        <div class="form-group col-sm-3" >
+           
+              {{-- <input name="qachon_boladi" data-date-format="dd/mm/yyyy" id="datepicker"> --}}
+              {!! Form::label('online_dars_holati', "Online dars qaysi vaqtda bo'lishini yozing:") !!}     
+              {!! Form::select('online_dars_holati', [
+              'hali_boshlanmagan' => 'Hali boshlanmagan!',
+              'dars_boshlangan' => "Online Dars boshlangan!",
+              'dars_tugagan' => "Online Dars tugagan!"        
+             
+          ], null, ['class' => 'custom-select']) !!}  
+    
+               
+            
+        </div>
+           
+       
+       <!-- Url Content Field -->
+        <div class="form-group col-sm-6">
+            {!! Form::label('yutube_video_url', "Onlayn dars bo'lmasa Youtubedan video joylash mumkin!:") !!}
+            {!! Form::text('yutube_video_url', null, ['class' => 'form-control', 'placeholder' => "youtube"]) !!}
+        </div>
+        
+        <div class="clearfix"></div>
+    </div>
+  </div>
+
 
 <!-- Content Field -->
 <div class="form-group col-sm-12 col-lg-12">
@@ -104,8 +106,19 @@
             <span style=" margin-top: 15px;" class="switch-slider" data-checked="&#x2713;" data-unchecked="&#x2715;"></span>
         </label>
     </div>
+
+
+@if(Auth::user()->hasRole('Admin'))
+<div class="form-group col-sm-6">
+    {!! Form::label('is_moderate', "Moderatsiyadan o'tganligini tasdiqlash:", ['style' => 'margin-right: 10px;']) !!}
+    <label class="checkbox-inline switch-lg switch-label switch-pill switch-success">
+        {!! Form::hidden('moderatsiya', 0) !!}
+        {!! Form::checkbox('moderatsiya', '1', null, ['class' => 'switch-input']) !!}
+        <span style=" margin-top: 15px;" class="switch-slider" data-checked="&#x2713;" data-unchecked="&#x2715;"></span>
+    </label>
+</div>    
+@endif
 </div>
-   
 
 <style>
 input[type=checkbox] {
@@ -113,8 +126,6 @@ input[type=checkbox] {
     height:3vh;
 }
 </style>
-
-
 
 <!-- Submit Field -->
 <div class="form-group col-sm-12">

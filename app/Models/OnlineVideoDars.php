@@ -42,6 +42,7 @@ class OnlineVideoDars extends Model
         'yutube_video_url',
         'qachon_boladi',
         'qachon_boladi_soat',
+        'moderatsiya',
         'online_dars_holati',
         '_method', 
         '_token'
@@ -75,6 +76,11 @@ class OnlineVideoDars extends Model
     public function user()
     {
         return $this->belongsTo('App\Models\User');
+    }
+
+    public function onlineVideolar()
+    {
+        return $this->hasOne('App\Models\OnlineVideolar');
     }
 
     

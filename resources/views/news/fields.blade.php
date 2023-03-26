@@ -63,7 +63,7 @@
     {!! Form::label('is_active', "Yangilik boshqalar ko'rishi uchun tayyormi?:", ['style' => 'margin-right: 10px;']) !!}
     <label class="checkbox-inline switch-lg switch-label switch-pill switch-success"  style="margin-right: 10px;">
         {!! Form::hidden('is_active', 0) !!}
-        {!! Form::checkbox('is_active', '1', null, ['class' => 'switch-input', 'checked']) !!}
+        {!! Form::checkbox('is_active', '1', null, ['class' => 'switch-input']) !!}
         <span style=" margin-top: 15px;" class="switch-slider" data-checked="&#x2713;" data-unchecked="&#x2715;"></span>
     </label>
 </div>
@@ -78,7 +78,7 @@
     {!! Form::label('is_ready', "Moderatsiyadan o'tganligini tasdiqlash:", ['style' => 'margin-right: 10px;']) !!}
     <label class="checkbox-inline switch-lg switch-label switch-pill switch-success">
         {!! Form::hidden('is_ready', 0) !!}
-        {!! Form::checkbox('is_ready', '1', null, ['class' => 'switch-input', 'checked']) !!}
+        {!! Form::checkbox('is_ready', '1', null, ['class' => 'switch-input']) !!}
         <span style=" margin-top: 15px;" class="switch-slider" data-checked="&#x2713;" data-unchecked="&#x2715;"></span>
     </label>
 </div>    

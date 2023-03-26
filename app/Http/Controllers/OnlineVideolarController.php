@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\CreateOnlineVideolarRequest;
-use App\Http\Requests\UpdateOnlineVideolarRequest;
-use App\Repositories\OnlineVideolarRepository;
-use App\Http\Controllers\AppBaseController;
-use Illuminate\Http\Request;
 use Flash;
 use Response;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Redirect;
+use App\Http\Controllers\AppBaseController;
+use App\Repositories\OnlineVideolarRepository;
+use App\Http\Requests\CreateOnlineVideolarRequest;
+use App\Http\Requests\UpdateOnlineVideolarRequest;
 
 class OnlineVideolarController extends AppBaseController
 {
@@ -60,7 +61,7 @@ class OnlineVideolarController extends AppBaseController
 
         Flash::success('Online Videolar saved successfully.');
 
-        return redirect(route('onlineVideolars.index'));
+        return Redirect::back();
     }
 
     /**
@@ -125,7 +126,7 @@ class OnlineVideolarController extends AppBaseController
 
         Flash::success('Online Videolar updated successfully.');
 
-        return redirect(route('onlineVideolars.index'));
+        return Redirect::back();
     }
 
     /**
@@ -142,15 +143,15 @@ class OnlineVideolarController extends AppBaseController
         $onlineVideolar = $this->onlineVideolarRepository->find($id);
 
         if (empty($onlineVideolar)) {
-            Flash::error('Online Videolar not found');
+            Flash::error('Video topilmadi');
 
             return redirect(route('onlineVideolars.index'));
         }
 
         $this->onlineVideolarRepository->delete($id);
 
-        Flash::success('Online Videolar deleted successfully.');
+        Flash::success("Video o'chirildi!");
 
-        return redirect(route('onlineVideolars.index'));
+        return Redirect::back();
     }
 }

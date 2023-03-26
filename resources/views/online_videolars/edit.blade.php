@@ -17,6 +17,7 @@
                               <i class="fa fa-edit fa-lg"></i>
                               <strong>Edit Online Videolar</strong>
                           </div>
+                          
                           <div class="card-body">
                               {!! Form::model($onlineVideolar, ['route' => ['onlineVideolars.update', $onlineVideolar->id], 'method' => 'patch']) !!}
 

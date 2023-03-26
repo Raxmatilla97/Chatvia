@@ -13,6 +13,7 @@ use App\Http\Controllers\AppBaseController;
 use App\Repositories\OnlineVideoDarsRepository;
 use App\Http\Requests\CreateOnlineVideoDarsRequest;
 use App\Http\Requests\UpdateOnlineVideoDarsRequest;
+use App\Models\OnlineVideolar;
 
 class OnlineVideoDarsController extends AppBaseController
 {
@@ -38,6 +39,21 @@ class OnlineVideoDarsController extends AppBaseController
         return view('online_video_dars.index')
             ->with('onlineVideoDars', $onlineVideoDars);
     }
+
+    
+    /**
+     * Moderatsiya uchun
+     *
+     */
+
+     public function moderatsiya(){
+        $videoKurs = OnlineVideoDars::orderBy('created_at', 'DESC')->where('moderatsiya', '=', '0')->paginate(15);
+    
+        return view('online_video_dars.moderatsiya')
+            ->with('videoKurs', $videoKurs);
+         
+    }
+
 
     /**
      * Show the form for creating a new OnlineVideoDars.
@@ -115,6 +131,13 @@ class OnlineVideoDarsController extends AppBaseController
     public function edit($id)
     {
         $onlineVideoDars = $this->onlineVideoDarsRepository->find($id);
+        $id = $onlineVideoDars->id;
+        
+        $videolar = OnlineVideolar::where("videokurs_id", $id)->count();
+        $edit = true;
+
+        $onlineVideolars = OnlineVideolar::where("videokurs_id", $id)->get();
+
 
         if (empty($onlineVideoDars)) {
             Flash::error('Online video darslar topilmadi');
@@ -122,7 +145,12 @@ class OnlineVideoDarsController extends AppBaseController
             return redirect(route('onlineVideoDars.index'));
         }
 
-        return view('online_video_dars.edit')->with('onlineVideoDars', $onlineVideoDars);
+        return view('online_video_dars.edit')
+        ->with('onlineVideoDars', $onlineVideoDars)
+        ->with('edit', $edit)
+        ->with('videolar', $videolar)
+        ->with('onlineVideolars', $onlineVideolars);
+
     }
 
     /**

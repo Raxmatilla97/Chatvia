@@ -26,7 +26,8 @@ class OnlineVideolar extends Model
 
     public $fillable = [
         'title',
-        'youtube'
+        'youtube',
+        'videokurs_id'
     ];
 
     /**
@@ -48,6 +49,11 @@ class OnlineVideolar extends Model
     public static $rules = [
         
     ];
+
+    public function videokurs()
+    {
+        return $this->belongsTo('App\Models\OnlineVideoDars');
+    }
 
     
 }

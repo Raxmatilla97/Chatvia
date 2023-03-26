@@ -33,11 +33,11 @@
                     <p>Siz bu yerdan shu mavzuga biriktirilgan videoni ko'rishingiz mumkin.</p>
                     <hr>
                     @if($modulMazmuni->url_content != "")
-                        {{-- <iframe width="100%" height="auto"
-                        src="https://www.youtube.com/embed/{{$modulMazmuni->url_content }}">
-                        </iframe>                      --}}
-                        {{-- {{dd($modulMazmuni->url_content)}} --}}                       
-                        <iframe width="100%" height="440" src="https://www.youtube.com/embed/{{$modulMazmuni->url_content }}" title="{{ $modulMazmuni->title }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                      @php
+                        $videoUrl = $modulMazmuni->url_content;
+                        $convertUrl = str_replace("watch?v=", "embed/", $videoUrl);
+                      @endphp                
+                        <iframe width="100%" height="440" src="{{$convertUrl}}" title="{{ $modulMazmuni->title }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                     @else
                         <div class="alert alert-warning" role="alert">
                             Hech qanday video biriktirilmagan!

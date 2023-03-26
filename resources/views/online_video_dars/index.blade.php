@@ -51,7 +51,7 @@
                            
                         </div>
 
-                         @include('modul_mazmunis.search_form')
+                         @include('online_video_dars.search_form')
                         
                         <div class="tab-content rounded-bottom">
                             <div class="tab-pane p-3 active preview" role="tabpanel" id="preview-1154">
@@ -69,21 +69,22 @@
                                     
                                         <div class="content">
                                             <div class="row row-cols-1 row-cols-2 g-4 " >    
-                                                @foreach ($onlineVideoDars as $modul )
+                                                @foreach ($onlineVideoDars as $videoKurs )
                                                      
-                                                        @if($modul->is_active )   
+                                                        @if($videoKurs->is_active and $videoKurs->moderatsiya)   
                                                         <div class="col">
                                                             <div class="card" style="width: 20rem;">
-                                                                <img src="@if($modul->img)
-                                                                /image/{{ $modul->img }}
+                                                                <img src="@if($videoKurs->img)
+                                                                /image/{{ $videoKurs->img }}
                                                                 @else
                                                                     {{'frontend/images/a270d270d5ca184422cf980475b99e24.gif'}}
                                                                 @endif" class="card-img-top" alt="...">
                                                                 <hr>
                                                                 <div class="card-body">
-                                                                <h5 class="card-title">{{ $modul->title }}</h5>
-                                                                <p class="card-text">{{ $modul->user->name }}</p>
-                                                                <a href="{{ route('onlineVideoDars.show', [$modul->id]) }}" class="btn btn-primary">O'qish</a>
+                                                                <h5 class="card-title">{{ $videoKurs->title }}</h5>
+                                                                <p class="card-text">{{ $videoKurs->user->name }}</p>
+                                                                <p class="card-text"> <b style="color: blue;">{{ $videoKurs->qachon_boladi}} {{ $videoKurs->qachon_boladi_soat}}</b></p>
+                                                                <a href="{{ route('onlineVideoDars.show', [$videoKurs->id]) }}" class="btn btn-primary">Video kursni ko'rish</a>
                                                                 </div>
                                                             </div> 
                                                         </div>

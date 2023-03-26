@@ -13,7 +13,7 @@
         <tbody>
             @foreach($onlineVideoDars as $onlineVideoDars)      
                 
-                    @if($onlineVideoDars->is_active == 1)                
+                    @if($onlineVideoDars->is_active == 1 and $onlineVideoDars->moderatsiya == 1)                
                         <tr>
                             <td>
                                 <a href="{{ route('onlineVideoDars.show', [$onlineVideoDars->id]) }}"><b>{{ $onlineVideoDars->title }}</b></a>                           

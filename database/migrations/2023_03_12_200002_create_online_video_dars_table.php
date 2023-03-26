@@ -23,6 +23,7 @@ class CreateOnlineVideoDarsTable extends Migration
             $table->text('content')->nullable();            
             $table->date('qachon_boladi')->nullable();
             $table->string('qachon_boladi_soat')->nullable();
+            $table->boolean('moderatsiya')->default('0');
             $table->string('online_dars_holati')->nullable();
             $table->boolean('is_active')->default('1');
             $table->string('yutube_video_url')->nullable();

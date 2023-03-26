@@ -79,14 +79,20 @@
             @endif
         @endif
 
+       
+                
         @if($onlineVideoDars->yutube_video_url != "")
+          @php
+          $videoUrl = $onlineVideoDars->yutube_video_url;
+          $convertUrl = str_replace("watch?v=", "embed/", $videoUrl);
+          @endphp
             <div class="mt-5">
                 <div class="docs-example">
                     <div class="alert alert-info" role="alert">
                         <h4 class="alert-heading">Video darsni ko'rish</h4>
                         <p>Siz bu yerdan joylangan video darslarni ko'rishingiz mumkin.</p>
                         <hr>
-                        <iframe width="100%" height="440" src="https://www.youtube.com/embed/{{$onlineVideoDars->yutube_video_url }}" title="{{ $onlineVideoDars->title }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                        <iframe width="100%" height="440" src="{{$convertUrl}}" title="{{ $onlineVideoDars->title }}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
                         
                     </div>
                 </div>  

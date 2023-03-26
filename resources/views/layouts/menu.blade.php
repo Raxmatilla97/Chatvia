@@ -77,12 +77,19 @@ body{
       <span>Online Video Kurslar</span>
   </a>
 </li>
+
+<li class="nav-item {{ Request::is('onlineVideoDars*') ? 'active' : '' }}">
+  <a class="nav-link" href="{{ route('onlineVideoDars.create') }}">
+    <i class="fa fa-plus-square nav-icon mr-4"></i>
+      <span>Video kurs yaratish</span>
+  </a>
+</li>
 @if(Auth::user()->hasRole('Admin'))
 <li class="nav-item {{ Request::is('news.moderatsiya') ? 'active' : '' }}">
-  <a class="nav-link" href="{{ route('news.moderatsiya') }}">
+  <a class="nav-link" href="{{ route('onlineVideoDars.moderatsiya') }}">
     <i class="fa fa-check-circle nav-icon mr-4"></i>
       <span style="margin-right: 5px;">Moderatsiya</span>
-      <span class="badge badge-warning"> {{ App\Models\News::where('is_ready', '=', 0)->get(['id'])->count()}}</span>
+      <span class="badge badge-warning"> {{ App\Models\OnlineVideoDars::where('moderatsiya', '=', 0)->get(['id'])->count()}}</span>
   </a>
 </li>
 @endif

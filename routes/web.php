@@ -15,6 +15,7 @@ Route::group(['middleware'=>'language'],function ()
     
     Auth::routes();
 
+    Route::get('/onlineVideoDars/moderatsiya', 'OnlineVideoDarsController@moderatsiya')->name('onlineVideoDars.moderatsiya');  
     Route::resource('onlineVideoDars', 'OnlineVideoDarsController');
     // Route::prefix('profile')->group(function () {
        
@@ -23,6 +24,7 @@ Route::group(['middleware'=>'language'],function ()
 
     Route::get('/statistika', 'StatstikaController@index')->name('statistika');
 
+    Route::resource('onlineVideolars', 'OnlineVideolarController');
     // CRUDlar resurslari    
     Route::get('/news/search/', 'NewsController@search')->name('news.search');
     Route::get('/news/men-yaratgan', 'NewsController@menYaratgan')->name('news.menyaratgan');
@@ -143,4 +145,3 @@ Route::group(['middleware'=>'language'],function ()
 
 
 
-Route::resource('onlineVideolars', 'OnlineVideolarController');
