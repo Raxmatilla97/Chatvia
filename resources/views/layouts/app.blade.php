@@ -113,7 +113,7 @@
     <button class="navbar-toggler sidebar-toggler d-lg-none mr-auto" type="button" data-toggle="sidebar-show">
         <span class="navbar-toggler-icon"></span>
     </button>
-    <a class="navbar-brand" href="{{url('/')}}">
+    <a class="navbar-brand" href="{{url('/onlineVideoDars')}}">
         <img class="navbar-brand-full" src="{{ getThumbLogoUrl() }}" width="30" height="30"
              alt="Infyom Logo">
         <img class="navbar-brand-minimized" src="{{ getThumbLogoUrl() }}" width="30"
